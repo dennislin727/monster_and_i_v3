@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvm83qs77b72y"]
+
+[ext_resource type="Script" uid="uid://d01r55e8bklv7" path="res://src腳本/entities/PlayerController.gd" id="1_qyso7"]
+[ext_resource type="Texture2D" uid="uid://dyisoaf2v82qu" path="res://icon.svg" id="2_mh8fb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x0g1"]
+size = Vector2(40, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lof64"]
+size = Vector2(40, 42)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_qyso7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mh8fb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0x0g1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="InteractionDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
+shape = SubResource("RectangleShape2D_lof64")
+
+[connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]

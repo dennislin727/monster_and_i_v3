@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://duan0a8lqkhxf"]
+
+[ext_resource type="PackedScene" uid="uid://b6rmwe8pl8fls" path="res://scenes場景/entities主角_怪物_寵物/environment環境物件/Rock.tscn" id="1_h0ov6"]
+[ext_resource type="PackedScene" uid="uid://dvm83qs77b72y" path="res://scenes場景/entities主角_怪物_寵物/Player.tscn" id="2_m76gh"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_m76gh"]
+
+[node name="Main" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="LevelContainer" type="Node2D" parent="."]
+
+[node name="Rock" parent="LevelContainer" instance=ExtResource("1_h0ov6")]
+position = Vector2(-226, -1)
+
+[node name="Player" parent="LevelContainer" instance=ExtResource("2_m76gh")]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Virtual Joystick" parent="UILayer" instance=ExtResource("3_m76gh")]
+anchors_preset = -1
+anchor_top = 0.32700002
+anchor_bottom = 0.32700002
+offset_left = -224.0
+offset_top = -220.56003
+offset_right = 218.0
+offset_bottom = 221.43997
+grow_vertical = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4

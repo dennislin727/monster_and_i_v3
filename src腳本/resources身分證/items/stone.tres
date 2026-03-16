@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://cwq0n0o2h1buv"]
+
+[ext_resource type="Script" uid="uid://6nvyxel85i2p" path="res://src腳本/resources身分證/item_resource.gd" id="1_4fv25"]
+
+[resource]
+script = ExtResource("1_4fv25")
+item_id = "mat_stone_01"
+display_name = "粗糙的碎石"
+description = "路邊隨處可見的石頭，或許能用來蓋點什麼？"
+metadata/_custom_type_script = "uid://6nvyxel85i2p"
