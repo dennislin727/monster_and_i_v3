@@ -1,19 +1,22 @@
-# res://src/components/CollectEffect.gd
+# res://src腳本/components積木/CollectEffect.gd
 extends Sprite2D
 
 func start_flying(start_pos: Vector2, target_pos: Vector2):
-	global_position = start_pos
-	scale = Vector2(0.5, 0.5)
+	self.global_position = start_pos
 	
+	# 動畫 1：噴發效果（先往上彈一下，像從石頭噴出來）
 	var tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	# 往上彈一下再飛向角落
-	tween.tween_property(self, "global_position", start_pos + Vector2(0, -50), 0.3)
+	var jump_pos = start_pos + Vector2(randf_range(-50, 50), -80) # 隨機左右噴
+	tween.tween_property(self, "global_position", jump_pos, 0.4)
+	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.4) # 稍微變大
 	
-	# 第二階段：飛往左上角（通常是背包位置）
-	var fly_tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
 	await tween.finished
-	fly_tween.tween_property(self, "global_position", Vector2(50, 50), 0.6)
-	fly_tween.tween_property(self, "scale", Vector2(0.1, 0.1), 0.6)
+	
+	# 動畫 2：飛向背包
+	var fly_tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	fly_tween.tween_property(self, "global_position", target_pos, 0.6)
+	fly_tween.tween_property(self, "scale", Vector2(0.2, 0.2), 0.6)
+	fly_tween.tween_property(self, "modulate:a", 0.0, 0.6) # 漸隱
 	
 	await fly_tween.finished
-	queue_free()
+	queue_free() # 飛到後消失

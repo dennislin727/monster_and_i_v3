@@ -11,7 +11,17 @@ var current_target: InteractableComponent = null
 func _physics_process(_delta: float) -> void:
 	# 基礎移動邏輯
 	var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = direction * move_speed
+	# 如果你發現上下反了，可以解開下一行的註解來修正：
+	direction.y = -direction.y 
+	
+	if direction != Vector2.ZERO:
+		velocity = direction * move_speed
+		# 讓角色轉向移動的方向（選配）
+		# $Sprite2D.flip_h = direction.x < 0
+	else:
+		# 摩擦力：慢慢停下來
+		velocity = velocity.move_toward(Vector2.ZERO, move_speed * 0.2)
+		
 	move_and_slide()
 	
 	# 如果有目標，就持續嘗試採集

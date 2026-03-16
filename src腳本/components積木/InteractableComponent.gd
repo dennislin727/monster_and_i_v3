@@ -32,28 +32,31 @@ func start_harvest() -> void:
 		await get_tree().create_timer(hit_interval).timeout
 		is_harvesting = false
 
-# 敲擊動畫：如果是最後一下，彈得更大！
 func play_hit_animation(is_final: bool) -> void:
 	var parent_node = get_parent()
-	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	# 使用 TRANS_ELASTIC 或 TRANS_BOUNCE 增加 Q 彈感
+	var tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	
 	if is_final:
-		# 最後一擊：變得很大然後縮小消失
-		tween.tween_property(parent_node, "scale", Vector2(1.5, 1.5), 0.1)
-		tween.parallel().tween_property(parent_node, "modulate:a", 0.0, 0.2)
+		# 最後一擊：先縮小再猛力放大，然後消失
+		tween.tween_property(parent_node, "scale", Vector2(0.8, 0.8), 0.05)
+		tween.tween_property(parent_node, "scale", Vector2(1.8, 1.8), 0.15)
+		tween.parallel().tween_property(parent_node, "modulate:a", 0.0, 0.15)
+		# 這裡多等一小段時間，讓玩家看清楚爆炸感
+		await tween.finished
+		await get_tree().create_timer(0.1).timeout 
 	else:
-		# 普通擊打：左右抖動 + 微微壓扁
-		tween.tween_property(parent_node, "scale", Vector2(1.2, 0.8), 0.05)
-		tween.tween_property(parent_node, "scale", Vector2(1.0, 1.0), 0.05)
-		# 這裡可以加入 SignalBus.emit("play_sound", "hit_stone") 未來擴充音效
-	
+		# 普通擊打：稍微壓扁再彈回
+		parent_node.scale = Vector2(1.2, 0.8) # 瞬間壓扁
+		tween.tween_property(parent_node, "scale", Vector2(1.0, 1.0), 0.2)
+		
 	await tween.finished
 
 func finish_harvest() -> void:
-	print("[Interactable] %s 採集完成！噴發物： %s" % [interact_name, item_data.display_name])
-	
-	# 這裡發送訊號給未來的「噴發特效系統」
-	# SignalBus.request_effect_collect.emit(global_position, item_data.icon)
+	# 觸發噴發特效（傳送位置與圖示）
+	# 如果你的 item_data.world_texture 沒設定，可以用 icon
+	var tex = item_data.world_texture if item_data.world_texture else item_data.icon
+	SignalBus.request_effect_collect.emit(global_position, tex)
 	
 	SignalBus.item_collected.emit(item_data)
 	get_parent().queue_free()

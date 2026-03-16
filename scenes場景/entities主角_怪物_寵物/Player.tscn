@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvm83qs77b72y"]
 
 [ext_resource type="Script" uid="uid://d01r55e8bklv7" path="res://src腳本/entities/PlayerController.gd" id="1_qyso7"]
-[ext_resource type="Texture2D" uid="uid://dyisoaf2v82qu" path="res://icon.svg" id="2_mh8fb"]
+[ext_resource type="Texture2D" uid="uid://cmnptmibenhqb" path="res://assets圖片_字體_音效/frame0000.png" id="2_0rmin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0x0g1"]
 size = Vector2(40, 42)
@@ -13,7 +13,9 @@ size = Vector2(40, 42)
 script = ExtResource("1_qyso7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_mh8fb")
+position = Vector2(2.2888184e-05, -12.999977)
+scale = Vector2(0.29142857, 0.29142857)
+texture = ExtResource("2_0rmin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0x0g1")
