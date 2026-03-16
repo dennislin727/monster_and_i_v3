@@ -1,16 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://duan0a8lqkhxf"]
+[gd_scene load_steps=7 format=3 uid="uid://duan0a8lqkhxf"]
 
 [ext_resource type="PackedScene" uid="uid://b6rmwe8pl8fls" path="res://scenes場景/entities主角_怪物_寵物/environment環境物件/Rock.tscn" id="1_h0ov6"]
 [ext_resource type="PackedScene" uid="uid://dvm83qs77b72y" path="res://scenes場景/entities主角_怪物_寵物/Player.tscn" id="2_m76gh"]
+[ext_resource type="Texture2D" uid="uid://cf35m28c8rnto" path="res://assets圖片_字體_音效/底圖01.png" id="3_ka6fj"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_m76gh"]
 [ext_resource type="Script" uid="uid://1vw4ls1gqdiq" path="res://src腳本/components積木/EffectManager.gd" id="4_48icw"]
-[ext_resource type="Texture2D" uid="uid://cs2k6g8e1bvx0" path="res://assets圖片_字體_音效/icon.svg" id="5_mil28"]
+[ext_resource type="Script" uid="uid://cv27paar7s2fo" path="res://src腳本/components積木/SealManager.gd" id="6_ka6fj"]
 
 [node name="Main" type="Node2D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
 [node name="LevelContainer" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelContainer"]
+position = Vector2(29, 132)
+scale = Vector2(0.14007777, 0.2161306)
+texture = ExtResource("3_ka6fj")
 
 [node name="Rock" parent="LevelContainer" instance=ExtResource("1_h0ov6")]
 position = Vector2(-226, -1)
@@ -21,22 +27,21 @@ position = Vector2(-226, -1)
 
 [node name="Virtual Joystick" parent="UILayer" instance=ExtResource("3_m76gh")]
 anchors_preset = -1
-anchor_left = 0.003
-anchor_top = 0.291
-anchor_right = 0.003
-anchor_bottom = 0.291
-offset_left = -221.16
-offset_top = -221.48001
-offset_right = 220.84
-offset_bottom = 220.51999
-grow_horizontal = 0
+anchor_left = 0.5
+anchor_top = 0.827
+anchor_right = 0.5
+anchor_bottom = 0.827
+offset_left = -221.0
+offset_top = -220.56006
+offset_right = 221.0
+offset_bottom = 221.43994
+grow_horizontal = 2
 size_flags_horizontal = 8
-size_flags_vertical = 8
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="EffectManager" type="Node2D" parent="UILayer"]
 script = ExtResource("4_48icw")
 
-[node name="Sprite2D" type="Sprite2D" parent="UILayer/EffectManager"]
-position = Vector2(-36, -36)
-scale = Vector2(0.4375, 0.4375)
-texture = ExtResource("5_mil28")
+[node name="SealManager" type="Node2D" parent="UILayer"]
+script = ExtResource("6_ka6fj")

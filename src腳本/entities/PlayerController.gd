@@ -9,17 +9,24 @@ extends CharacterBody2D
 var current_target: InteractableComponent = null
 
 func _physics_process(_delta: float) -> void:
-	# 基礎移動邏輯
-	var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	# 如果你發現上下反了，可以解開下一行的註解來修正：
-	direction.y = -direction.y 
+	# 1. 獲取原始輸入
+	var raw_input: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
+	# 2. 修正方向 (如果你的上下左右還是反的，就在這裡加負號)
+	var direction: Vector2 = Vector2.ZERO
+	direction.x = raw_input.x  # 如果左右反了，改為 -raw_input.x
+	direction.y = raw_input.y  # 如果上下反了，改為 -raw_input.y
+	
+	# 3. 執行移動
 	if direction != Vector2.ZERO:
 		velocity = direction * move_speed
-		# 讓角色轉向移動的方向（選配）
-		# $Sprite2D.flip_h = direction.x < 0
+		
+		# 修正：因為原圖朝左，所以往右走時才翻轉
+		if direction.x > 0:
+			$Sprite2D.flip_h = true  # 往右走，翻轉圖片
+		elif direction.x < 0:
+			$Sprite2D.flip_h = false # 往左走，恢復原圖（朝左）
 	else:
-		# 摩擦力：慢慢停下來
 		velocity = velocity.move_toward(Vector2.ZERO, move_speed * 0.2)
 		
 	move_and_slide()

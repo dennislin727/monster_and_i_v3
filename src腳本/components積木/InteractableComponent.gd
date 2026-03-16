@@ -53,10 +53,9 @@ func play_hit_animation(is_final: bool) -> void:
 	await tween.finished
 
 func finish_harvest() -> void:
-	# 觸發噴發特效（傳送位置與圖示）
-	# 如果你的 item_data.world_texture 沒設定，可以用 icon
-	var tex = item_data.world_texture if item_data.world_texture else item_data.icon
-	SignalBus.request_effect_collect.emit(global_position, tex)
+	if item_data and item_data.icon:
+		SignalBus.request_effect_collect.emit(global_position, item_data.icon)
+		print("[Interactable] 已經發出噴發請求，位置：", global_position) # 加這行來確認
 	
 	SignalBus.item_collected.emit(item_data)
 	get_parent().queue_free()
