@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvm83qs77b72y"]
+
+[ext_resource type="Script" uid="uid://d01r55e8bklv7" path="res://src腳本/entities/PlayerController.gd" id="1_qyso7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yr335"]
+load_path = "res://.godot/imported/frame0000.png-78222c54d9ab0141ca7aa980746acd2a.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x0g1"]
+size = Vector2(40, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lof64"]
+size = Vector2(40, 42)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_qyso7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CompressedTexture2D_yr335")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0x0g1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="InteractionDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
+shape = SubResource("RectangleShape2D_lof64")
+
+[connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]

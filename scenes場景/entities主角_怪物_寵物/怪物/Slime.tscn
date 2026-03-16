@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckgvmt8hosbxi"]
+
+[ext_resource type="PackedScene" uid="uid://11w2oebc7t4a" path="res://src腳本/components積木/InteractableComponent.tscn" id="1_44hqg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3dvs"]
+size = Vector2(62, 60)
+
+[node name="Slime" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i3dvs")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("1_44hqg")]

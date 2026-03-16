@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://duan0a8lqkhxf"]
 
 [ext_resource type="PackedScene" uid="uid://b6rmwe8pl8fls" path="res://scenes場景/entities主角_怪物_寵物/environment環境物件/Rock.tscn" id="1_h0ov6"]
-[ext_resource type="PackedScene" uid="uid://dvm83qs77b72y" path="res://scenes場景/entities主角_怪物_寵物/Player.tscn" id="2_m76gh"]
-[ext_resource type="Texture2D" uid="uid://cf35m28c8rnto" path="res://assets圖片_字體_音效/底圖01.png" id="3_ka6fj"]
+[ext_resource type="Texture2D" uid="uid://dc4f218eks2to" path="res://assets圖片_字體_音效/環境/參考圖/ComfyUI_00855_.jpg" id="1_ka6fj"]
+[ext_resource type="PackedScene" uid="uid://dvm83qs77b72y" path="res://scenes場景/entities主角_怪物_寵物/主角/Player.tscn" id="2_m76gh"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_m76gh"]
 [ext_resource type="Script" uid="uid://1vw4ls1gqdiq" path="res://src腳本/components積木/EffectManager.gd" id="4_48icw"]
 [ext_resource type="Script" uid="uid://cv27paar7s2fo" path="res://src腳本/components積木/SealManager.gd" id="6_ka6fj"]
@@ -13,28 +13,78 @@
 
 [node name="LevelContainer" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="LevelContainer"]
-position = Vector2(29, 132)
-scale = Vector2(0.14007777, 0.2161306)
-texture = ExtResource("3_ka6fj")
+[node name="Map" type="Sprite2D" parent="LevelContainer"]
+position = Vector2(689, 5)
+scale = Vector2(1.5598692, 1.3284395)
+texture = ExtResource("1_ka6fj")
 
 [node name="Rock" parent="LevelContainer" instance=ExtResource("1_h0ov6")]
 position = Vector2(-226, -1)
 
+[node name="Sprite2D" parent="LevelContainer/Rock" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="InteractableComponent" parent="LevelContainer/Rock" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="LevelContainer/Rock/InteractableComponent" index="0"]
+position = Vector2(-2, 0)
+metadata/_edit_lock_ = true
+
+[node name="Rock2" parent="LevelContainer" instance=ExtResource("1_h0ov6")]
+position = Vector2(-136, -293)
+
+[node name="Sprite2D" parent="LevelContainer/Rock2" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="InteractableComponent" parent="LevelContainer/Rock2" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="LevelContainer/Rock2/InteractableComponent" index="0"]
+position = Vector2(-2, 0)
+metadata/_edit_lock_ = true
+
+[node name="Rock3" parent="LevelContainer" instance=ExtResource("1_h0ov6")]
+position = Vector2(585, -135)
+
+[node name="Sprite2D" parent="LevelContainer/Rock3" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="InteractableComponent" parent="LevelContainer/Rock3" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="LevelContainer/Rock3/InteractableComponent" index="0"]
+position = Vector2(-2, 0)
+metadata/_edit_lock_ = true
+
+[node name="Rock4" parent="LevelContainer" instance=ExtResource("1_h0ov6")]
+position = Vector2(-992, -109)
+
+[node name="Sprite2D" parent="LevelContainer/Rock4" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="InteractableComponent" parent="LevelContainer/Rock4" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="LevelContainer/Rock4/InteractableComponent" index="0"]
+position = Vector2(-2, 0)
+metadata/_edit_lock_ = true
+
 [node name="Player" parent="LevelContainer" instance=ExtResource("2_m76gh")]
+scale = Vector2(0.475, 0.475)
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="Virtual Joystick" parent="UILayer" instance=ExtResource("3_m76gh")]
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.827
-anchor_right = 0.5
-anchor_bottom = 0.827
-offset_left = -221.0
-offset_top = -220.56006
-offset_right = 221.0
-offset_bottom = 221.43994
+anchor_left = 0.49600002
+anchor_top = 0.83100003
+anchor_right = 0.49600002
+anchor_bottom = 0.83100003
+offset_left = -221.12003
+offset_top = -220.68005
+offset_right = 220.87997
+offset_bottom = 221.31995
 grow_horizontal = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -45,3 +95,8 @@ script = ExtResource("4_48icw")
 
 [node name="SealManager" type="Node2D" parent="UILayer"]
 script = ExtResource("6_ka6fj")
+
+[editable path="LevelContainer/Rock"]
+[editable path="LevelContainer/Rock2"]
+[editable path="LevelContainer/Rock3"]
+[editable path="LevelContainer/Rock4"]
