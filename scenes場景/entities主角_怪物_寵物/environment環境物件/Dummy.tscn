@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://btx2lj8ytew4t"]
+
+[ext_resource type="PackedScene" uid="uid://cdbjqixa2gq31" path="res://src腳本/components積木/HurtboxComponent.tscn" id="1_f84xj"]
+[ext_resource type="Texture2D" uid="uid://bnc3gjeunxg2s" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50002.png" id="1_jb6wp"]
+
+[node name="Dummy" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -30)
+texture = ExtResource("1_jb6wp")
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("1_f84xj")]

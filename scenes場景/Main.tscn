@@ -1,11 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://duan0a8lqkhxf"]
+[gd_scene load_steps=14 format=3 uid="uid://duan0a8lqkhxf"]
 
 [ext_resource type="PackedScene" uid="uid://b6rmwe8pl8fls" path="res://scenes場景/entities主角_怪物_寵物/environment環境物件/Rock.tscn" id="1_h0ov6"]
 [ext_resource type="Texture2D" uid="uid://dc4f218eks2to" path="res://assets圖片_字體_音效/環境/參考圖/ComfyUI_00855_.jpg" id="1_ka6fj"]
 [ext_resource type="PackedScene" uid="uid://dvm83qs77b72y" path="res://scenes場景/entities主角_怪物_寵物/主角/Player.tscn" id="2_m76gh"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_m76gh"]
+[ext_resource type="PackedScene" uid="uid://ckgvmt8hosbxi" path="res://scenes場景/entities主角_怪物_寵物/怪物/Slime.tscn" id="4_7uwit"]
 [ext_resource type="Script" uid="uid://1vw4ls1gqdiq" path="res://src腳本/components積木/EffectManager.gd" id="4_48icw"]
+[ext_resource type="PackedScene" uid="uid://btx2lj8ytew4t" path="res://scenes場景/entities主角_怪物_寵物/environment環境物件/Dummy.tscn" id="5_222e3"]
+[ext_resource type="FontFile" uid="uid://c2uixuydo8x6w" path="res://assets圖片_字體_音效/PixelFont.ttf" id="5_ta4ua"]
+[ext_resource type="Script" uid="uid://bars7nlebjeqa" path="res://src腳本/components積木/SealToggleButton.gd" id="6_3vicl"]
 [ext_resource type="Script" uid="uid://cv27paar7s2fo" path="res://src腳本/components積木/SealManager.gd" id="6_ka6fj"]
+[ext_resource type="Script" uid="uid://brm55aglai57s" path="res://src腳本/components積木/DashButton.gd" id="7_3vicl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7uwit"]
+bg_color = Color(0.740951, 0.565101, 0.3118, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_222e3"]
+bg_color = Color(0.93, 0.93, 0.93, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
 
 [node name="Main" type="Node2D"]
 
@@ -14,81 +33,99 @@
 [node name="LevelContainer" type="Node2D" parent="."]
 
 [node name="Map" type="Sprite2D" parent="LevelContainer"]
-position = Vector2(689, 5)
-scale = Vector2(1.5598692, 1.3284395)
+position = Vector2(703, -20)
+scale = Vector2(0.508755, 0.508755)
 texture = ExtResource("1_ka6fj")
 
 [node name="Rock" parent="LevelContainer" instance=ExtResource("1_h0ov6")]
-position = Vector2(-226, -1)
+position = Vector2(113, -94)
 
 [node name="Sprite2D" parent="LevelContainer/Rock" index="0"]
 metadata/_edit_lock_ = true
 
-[node name="InteractableComponent" parent="LevelContainer/Rock" index="1"]
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" parent="LevelContainer/Rock/InteractableComponent" index="0"]
-position = Vector2(-2, 0)
-metadata/_edit_lock_ = true
-
-[node name="Rock2" parent="LevelContainer" instance=ExtResource("1_h0ov6")]
-position = Vector2(-136, -293)
-
-[node name="Sprite2D" parent="LevelContainer/Rock2" index="0"]
-metadata/_edit_lock_ = true
-
-[node name="InteractableComponent" parent="LevelContainer/Rock2" index="1"]
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" parent="LevelContainer/Rock2/InteractableComponent" index="0"]
-position = Vector2(-2, 0)
-metadata/_edit_lock_ = true
-
-[node name="Rock3" parent="LevelContainer" instance=ExtResource("1_h0ov6")]
-position = Vector2(585, -135)
-
-[node name="Sprite2D" parent="LevelContainer/Rock3" index="0"]
-metadata/_edit_lock_ = true
-
-[node name="InteractableComponent" parent="LevelContainer/Rock3" index="1"]
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" parent="LevelContainer/Rock3/InteractableComponent" index="0"]
-position = Vector2(-2, 0)
-metadata/_edit_lock_ = true
-
-[node name="Rock4" parent="LevelContainer" instance=ExtResource("1_h0ov6")]
-position = Vector2(-992, -109)
-
-[node name="Sprite2D" parent="LevelContainer/Rock4" index="0"]
-metadata/_edit_lock_ = true
-
-[node name="InteractableComponent" parent="LevelContainer/Rock4" index="1"]
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" parent="LevelContainer/Rock4/InteractableComponent" index="0"]
-position = Vector2(-2, 0)
-metadata/_edit_lock_ = true
+[node name="Slime" parent="LevelContainer" instance=ExtResource("4_7uwit")]
+position = Vector2(-11, -47)
 
 [node name="Player" parent="LevelContainer" instance=ExtResource("2_m76gh")]
-scale = Vector2(0.475, 0.475)
+position = Vector2(56, 22)
+
+[node name="Dummy" parent="LevelContainer" instance=ExtResource("5_222e3")]
+position = Vector2(-68, -9)
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="Virtual Joystick" parent="UILayer" instance=ExtResource("3_m76gh")]
 anchors_preset = -1
-anchor_left = 0.49600002
-anchor_top = 0.83100003
-anchor_right = 0.49600002
-anchor_bottom = 0.83100003
-offset_left = -221.12003
-offset_top = -220.68005
-offset_right = 220.87997
-offset_bottom = 221.31995
+anchor_left = 0.524
+anchor_top = 0.797063
+anchor_right = 0.524
+anchor_bottom = 0.8
+offset_left = -111.64
+offset_top = -108.12
+offset_right = 100.36
+offset_bottom = 110.0
 grow_horizontal = 2
+pivot_offset = Vector2(107, 111)
 size_flags_horizontal = 8
 size_flags_vertical = 4
-metadata/_edit_use_anchors_ = true
+
+[node name="Base" parent="UILayer/Virtual Joystick" index="0"]
+modulate = Color(1, 1, 1, 0.647059)
+anchors_preset = -1
+offset_left = -98.0
+offset_top = -98.9998
+offset_right = 102.0
+offset_bottom = 101.0
+grow_vertical = 1
+
+[node name="Tip" parent="UILayer/Virtual Joystick/Base" index="0"]
+anchors_preset = -1
+anchor_left = 0.512
+anchor_right = 0.512
+offset_left = -69.4
+offset_top = -70.0
+offset_right = 65.6
+offset_bottom = 73.0
+pivot_offset = Vector2(72, 67)
+
+[node name="SealToggleButton" type="Button" parent="UILayer"]
+z_index = 10
+anchors_preset = -1
+anchor_left = 0.101
+anchor_top = 0.274
+anchor_right = 0.101
+anchor_bottom = 0.274
+offset_left = -20.36
+offset_top = -18.36
+offset_right = 20.64
+offset_bottom = 21.64
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_ta4ua")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_7uwit")
+text = "封印"
+script = ExtResource("6_3vicl")
+
+[node name="DashButton" type="Button" parent="UILayer"]
+z_index = 10
+anchors_preset = -1
+anchor_left = 0.887
+anchor_top = 0.709
+anchor_right = 0.887
+anchor_bottom = 0.709
+offset_left = -19.32
+offset_top = -19.76
+offset_right = 19.68
+offset_bottom = 19.24
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_ta4ua")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_222e3")
+text = "瞬移"
+script = ExtResource("7_3vicl")
 
 [node name="EffectManager" type="Node2D" parent="UILayer"]
 script = ExtResource("4_48icw")
@@ -96,7 +133,8 @@ script = ExtResource("4_48icw")
 [node name="SealManager" type="Node2D" parent="UILayer"]
 script = ExtResource("6_ka6fj")
 
+[connection signal="pressed" from="UILayer/SealToggleButton" to="UILayer/SealToggleButton" method="_on_pressed"]
+[connection signal="pressed" from="UILayer/DashButton" to="UILayer/DashButton" method="_on_pressed"]
+
 [editable path="LevelContainer/Rock"]
-[editable path="LevelContainer/Rock2"]
-[editable path="LevelContainer/Rock3"]
-[editable path="LevelContainer/Rock4"]
+[editable path="UILayer/Virtual Joystick"]

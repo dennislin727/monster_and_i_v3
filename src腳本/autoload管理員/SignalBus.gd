@@ -1,24 +1,20 @@
-# res://src/autoload/SignalBus.gd
+# res://src腳本/autoload管理員/SignalBus.gd
 extends Node
 
-# --- 遊戲狀態訊號 ---
+# --- 遊戲狀態 ---
 signal game_started
-signal game_paused(is_paused: bool)
 
-# --- 玩家相關訊號 (使用 Dictionary 傳遞多數值，或 Resource 傳遞對象) ---
+# --- 玩家與戰鬥 ---
 signal player_health_changed(current_hp: int, max_hp: int)
-signal player_exp_gained(amount: int)
-signal player_leveled_up(new_level: int)
+signal dash_requested # 🔴 新增：瞬移請求訊號
 
-# --- 物品與蒐集 ---
-# 這裡遵循我們的規範：傳送整個 Resource 資料，而非單一數值
+# --- 物品與特效 ---
 signal item_collected(item_data: Resource) 
+signal request_effect_collect(pos: Vector2, icon: Texture2D) 
 
-# --- 封印系統 (Pet Sealing) ---
+# --- 封印系統 ---
+signal seal_mode_toggled(is_enabled: bool) # 控制封印模式開關
 signal seal_process_started(target_entity: CharacterBody2D)
-signal seal_attempt_finished(is_success: bool, result_pet_data: Resource)
 
 func _ready() -> void:
-	print("[SignalBus] 電台已上線，準備轉發訊號。")
-
-signal request_effect_collect(pos: Vector2, icon: Texture2D)
+	print("[SignalBus] 電台頻道更新完畢，所有系統已可對接。")

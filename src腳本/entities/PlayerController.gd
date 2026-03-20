@@ -1,57 +1,72 @@
-# res://src/entities/player_controller.gd (請將此腳本存放在 src)
+# res://src腳本/entities/PlayerController.gd
 class_name PlayerController
 extends CharacterBody2D
 
-@export var move_speed: float = 300.0
+@export var move_speed: float = 200.0
+@export var dash_distance: float = 80.0
 
-@onready var interaction_detector: Area2D = $InteractionDetector
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var state_machine: Node = $StateMachine
 
+# 數據中心
+var last_direction: Vector2 = Vector2.DOWN
+var is_dashing: bool = false
+var is_seal_mode: bool = false
 var current_target: InteractableComponent = null
+var current_enemy: HurtboxComponent = null
+
+func _ready() -> void:
+	if SignalBus.has_signal("dash_requested"):
+		SignalBus.dash_requested.connect(perform_dash)
+	add_to_group("player")
+	
+	# 初始化狀態機：讓每個狀態都知道誰是主角
+	for state in state_machine.get_children():
+		state.player = self
+	
+	SignalBus.seal_mode_toggled.connect(func(enabled: bool): is_seal_mode = enabled)
 
 func _physics_process(_delta: float) -> void:
-	# 1. 獲取原始輸入
-	var raw_input: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if is_dashing: return
 	
-	# 2. 修正方向 (如果你的上下左右還是反的，就在這裡加負號)
-	var direction: Vector2 = Vector2.ZERO
-	direction.x = raw_input.x  # 如果左右反了，改為 -raw_input.x
-	direction.y = raw_input.y  # 如果上下反了，改為 -raw_input.y
-	
-	# 3. 執行移動
-	if direction != Vector2.ZERO:
-		velocity = direction * move_speed
-		
-		# 修正：因為原圖朝左，所以往右走時才翻轉
-		if direction.x > 0:
-			$Sprite2D.flip_h = true  # 往右走，翻轉圖片
-		elif direction.x < 0:
-			$Sprite2D.flip_h = false # 往左走，恢復原圖（朝左）
+	# 基礎物理移動 (永遠在跑，除非封印模式)
+	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if is_seal_mode:
+		velocity = Vector2.ZERO
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, move_speed * 0.2)
-		
-	move_and_slide()
+		if input_dir != Vector2.ZERO:
+			last_direction = input_dir.normalized()
+			velocity = input_dir * move_speed
+		else:
+			velocity = velocity.move_toward(Vector2.ZERO, move_speed * 0.2)
 	
-	# 如果有目標，就持續嘗試採集
-	if current_target:
-		current_target.start_harvest()
+	move_and_slide()
 
-	# 簡單的交互偵測 (按下 Space 鍵或畫面上點擊)
-	if Input.is_action_just_pressed("ui_accept"):
-		try_interact()
+# 提供給狀態機使用的工具函數
+func get_dir_string() -> String:
+	var x = abs(last_direction.x); var y = abs(last_direction.y)
+	if y > x * 1.5: return "down" if last_direction.y > 0 else "up"
+	elif x > y * 1.5: return "side"
+	else: return "side_down" if last_direction.y > 0 else "side_up"
 
-func try_interact() -> void:
-	# 取得範圍內重疊的 Area
-	var areas = interaction_detector.get_overlapping_areas()
-	for area in areas:
-		if area is InteractableComponent:
-			area.interact(self) # 呼叫組件的互動方法
-			return # 每次只互動一個
+func update_flip() -> void:
+	anim_sprite.flip_h = (last_direction.x > 0)
 
+func perform_dash() -> void:
+	if is_dashing: return
+	is_dashing = true
+	var tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	anim_sprite.pause()
+	tween.tween_property(self, "global_position", global_position + (last_direction * dash_distance), 0.1)
+	await tween.finished
+	is_dashing = false
+	anim_sprite.play()
 
+# 訊號接收：只負責紀錄目標
 func _on_interaction_detector_area_entered(area: Area2D) -> void:
-	if area is InteractableComponent:
-		current_target = area
+	if area is HurtboxComponent: current_enemy = area
+	elif area is InteractableComponent: current_target = area
 
 func _on_interaction_detector_area_exited(area: Area2D) -> void:
-	if current_target == area:
-		current_target = null
+	if area == current_enemy: current_enemy = null
+	elif area == current_target: current_target = null

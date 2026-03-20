@@ -1,0 +1,197 @@
+[gd_scene load_steps=40 format=3 uid="uid://dvm83qs77b72y"]
+
+[ext_resource type="Script" uid="uid://d01r55e8bklv7" path="res://src腳本/entities/PlayerController.gd" id="1_qyso7"]
+[ext_resource type="Texture2D" uid="uid://dtd1e7g82dr7a" path="res://assets圖片_字體_音效/主角/idle_down/frame0000.png" id="2_aqpdo"]
+[ext_resource type="Texture2D" uid="uid://po43ix2de7wi" path="res://assets圖片_字體_音效/主角/idle_down/frame0001.png" id="3_aqpdo"]
+[ext_resource type="Texture2D" uid="uid://cuyl61ku1ewq1" path="res://assets圖片_字體_音效/主角/idle_down/frame0002.png" id="4_5qcbw"]
+[ext_resource type="Texture2D" uid="uid://c34f1d38mp52u" path="res://assets圖片_字體_音效/主角/idle_down/frame0003.png" id="5_yv7xt"]
+[ext_resource type="Texture2D" uid="uid://dmu8xw4dpf62q" path="res://assets圖片_字體_音效/主角/idle_down/frame0004.png" id="6_yddop"]
+[ext_resource type="Texture2D" uid="uid://bsppnqo7otvwm" path="res://assets圖片_字體_音效/主角/idle_down/frame0005.png" id="7_eni4n"]
+[ext_resource type="Texture2D" uid="uid://che5cnq84giog" path="res://assets圖片_字體_音效/主角/idle_down/frame0006.png" id="8_6ffkx"]
+[ext_resource type="Texture2D" uid="uid://yllcu5be5foa" path="res://assets圖片_字體_音效/主角/idle_side/frame10000.png" id="9_42b2k"]
+[ext_resource type="Texture2D" uid="uid://5twdae7ybgi7" path="res://assets圖片_字體_音效/主角/idle_side/frame10001.png" id="10_e5e5u"]
+[ext_resource type="Texture2D" uid="uid://dwdvagl6b47mk" path="res://assets圖片_字體_音效/主角/idle_side/frame10002.png" id="11_tdca0"]
+[ext_resource type="Texture2D" uid="uid://bsmvu83jd7iu1" path="res://assets圖片_字體_音效/主角/idle_side/frame10003.png" id="12_o0teh"]
+[ext_resource type="Texture2D" uid="uid://df3ekx5ami8o2" path="res://assets圖片_字體_音效/主角/idle_side/frame10004.png" id="13_stvjk"]
+[ext_resource type="Texture2D" uid="uid://efgovotxh6ea" path="res://assets圖片_字體_音效/主角/idle_side/frame10005.png" id="14_rm0v6"]
+[ext_resource type="Texture2D" uid="uid://c1y33nsvpukvv" path="res://assets圖片_字體_音效/主角/idle_side/frame10006.png" id="15_ad1bl"]
+[ext_resource type="Texture2D" uid="uid://d4hrw6h0xodlp" path="res://assets圖片_字體_音效/主角/idle_side/frame10007.png" id="16_pg3xb"]
+[ext_resource type="Texture2D" uid="uid://be7t6vo767mot" path="res://assets圖片_字體_音效/主角/idle_side/frame10008.png" id="17_2mvmt"]
+[ext_resource type="Texture2D" uid="uid://cmau6y68fwlof" path="res://assets圖片_字體_音效/主角/idle_side_up/frame20000.png" id="18_0txh4"]
+[ext_resource type="Texture2D" uid="uid://b0n5mge5ofepn" path="res://assets圖片_字體_音效/主角/idle_side_up/frame20001.png" id="19_5pp8b"]
+[ext_resource type="Texture2D" uid="uid://cnuhengtosfxe" path="res://assets圖片_字體_音效/主角/idle_side_up/frame20002.png" id="20_qvar0"]
+[ext_resource type="Texture2D" uid="uid://d4a7manudiuvi" path="res://assets圖片_字體_音效/主角/idle_side_up/frame20003.png" id="21_vecef"]
+[ext_resource type="Texture2D" uid="uid://bv6aodwa7uq8i" path="res://assets圖片_字體_音效/主角/idle_side_up/frame20004.png" id="22_ftatp"]
+[ext_resource type="Texture2D" uid="uid://dsl6iehc22opa" path="res://assets圖片_字體_音效/主角/idle_side_up/frame20005.png" id="23_ed7k5"]
+[ext_resource type="Texture2D" uid="uid://cup54xqxxflu5" path="res://assets圖片_字體_音效/主角/idle_side_up/frame20006.png" id="24_bnn2t"]
+[ext_resource type="Texture2D" uid="uid://yboq75h54otl" path="res://assets圖片_字體_音效/主角/idle_side_up/frame20007.png" id="25_ft1l7"]
+[ext_resource type="Texture2D" uid="uid://d2ao186el53nl" path="res://assets圖片_字體_音效/主角/idle_side_up/frame20008.png" id="26_5slh1"]
+[ext_resource type="Texture2D" uid="uid://bxdtjvdahg6jr" path="res://assets圖片_字體_音效/主角/idle_up/frame30000.png" id="27_ylp2y"]
+[ext_resource type="Texture2D" uid="uid://clkia4d301pql" path="res://assets圖片_字體_音效/主角/idle_up/frame30001.png" id="28_xpu5r"]
+[ext_resource type="Texture2D" uid="uid://cvqbayjactixf" path="res://assets圖片_字體_音效/主角/idle_up/frame30002.png" id="29_ltiix"]
+[ext_resource type="Texture2D" uid="uid://b7ysgeqpg64i8" path="res://assets圖片_字體_音效/主角/idle_up/frame30003.png" id="30_up5yq"]
+[ext_resource type="Texture2D" uid="uid://bbcf5m3whhpdy" path="res://assets圖片_字體_音效/主角/idle_up/frame30004.png" id="31_vis0w"]
+[ext_resource type="Texture2D" uid="uid://cy6ua8g54cbg8" path="res://assets圖片_字體_音效/主角/idle_up/frame30005.png" id="32_10831"]
+[ext_resource type="Texture2D" uid="uid://ciiwjofmikihp" path="res://assets圖片_字體_音效/主角/idle_up/frame30006.png" id="33_ogth1"]
+[ext_resource type="Texture2D" uid="uid://c6jr206ohtq2c" path="res://assets圖片_字體_音效/主角/idle_up/frame30007.png" id="34_ldtxy"]
+[ext_resource type="Texture2D" uid="uid://dx5bfi2ip0bcv" path="res://assets圖片_字體_音效/主角/idle_up/frame30008.png" id="35_q0i6y"]
+[ext_resource type="Script" uid="uid://ecwlhrahg2mt" path="res://scenes場景/entities主角_怪物_寵物/主角/idle.gd" id="36_e5e5u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lnm4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aqpdo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aqpdo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5qcbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yv7xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yddop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eni4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6ffkx")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_42b2k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_e5e5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tdca0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_o0teh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_stvjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rm0v6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ad1bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pg3xb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_2mvmt")
+}],
+"loop": true,
+"name": &"idle_side",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_0txh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_5pp8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_qvar0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_vecef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ftatp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ed7k5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_bnn2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ft1l7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_5slh1")
+}],
+"loop": true,
+"name": &"idle_side_up",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_ylp2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_xpu5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_ltiix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_up5yq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_vis0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_10831")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ogth1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_ldtxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_q0i6y")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 11.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x0g1"]
+size = Vector2(32, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lof64"]
+size = Vector2(56, 77)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_qyso7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lnm4k")
+animation = &"idle_side_up"
+frame_progress = 0.329028
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 41)
+shape = SubResource("RectangleShape2D_0x0g1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.4, 1.4)
+
+[node name="InteractionDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
+position = Vector2(0, 24.5)
+shape = SubResource("RectangleShape2D_lof64")
+
+[node name="StateMachine" type="Node2D" parent="."]
+
+[node name="Idle" type="Node2D" parent="."]
+script = ExtResource("36_e5e5u")
+
+[connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]

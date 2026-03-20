@@ -12,7 +12,7 @@ config_version=5
 
 config/name="怪物與我v3"
 run/main_scene="uid://duan0a8lqkhxf"
-config/features=PackedStringArray("4.5", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -22,8 +22,8 @@ SignalBus="*res://src腳本/autoload管理員/SignalBus.gd"
 
 [display]
 
-window/size/viewport_width=720
-window/size/viewport_height=1280
+window/size/viewport_width=360
+window/size/viewport_height=640
 window/size/window_width_override=360
 window/size/window_height_override=640
 window/stretch/mode="canvas_items"

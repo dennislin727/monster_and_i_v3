@@ -16,40 +16,40 @@ var is_harvesting: bool = false
 signal harvested(item: ItemResource, pos: Vector2)
 
 func start_harvest() -> void:
-	if is_harvesting or current_hits >= max_hits:
-		return
+	# 如果正在採集中，就跳過，防止一秒鐘被判定採集 60 次
+	if is_harvesting: return
 	
 	is_harvesting = true
 	current_hits += 1
 	
-	# 執行敲擊動畫
-	await play_hit_animation(current_hits == max_hits)
+	await play_hit_animation(current_hits >= max_hits)
 	
 	if current_hits >= max_hits:
 		finish_harvest()
 	else:
-		# 敲完一下，冷卻一小段時間才能敲下一波
-		await get_tree().create_timer(hit_interval).timeout
+		# 🔴 這裡是關鍵：縮短 CD 時間，讓主角的五連砍能跟上
+		await get_tree().create_timer(0.1).timeout 
 		is_harvesting = false
 
 func play_hit_animation(is_final: bool) -> void:
 	var parent_node = get_parent()
-	# 使用 TRANS_ELASTIC 或 TRANS_BOUNCE 增加 Q 彈感
 	var tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	
 	if is_final:
-		# 最後一擊：先縮小再猛力放大，然後消失
-		tween.tween_property(parent_node, "scale", Vector2(0.8, 0.8), 0.05)
-		tween.tween_property(parent_node, "scale", Vector2(1.8, 1.8), 0.15)
-		tween.parallel().tween_property(parent_node, "modulate:a", 0.0, 0.15)
-		# 這裡多等一小段時間，讓玩家看清楚爆炸感
-		await tween.finished
-		await get_tree().create_timer(0.1).timeout 
+		# 最後一擊：猛力壓扁後向上噴發消失
+		tween.tween_property(parent_node, "scale", Vector2(1.6, 0.4), 0.05) # 壓得超扁
+		tween.tween_property(parent_node, "scale", Vector2(0.2, 2.0), 0.1)  # 向上拉長噴射
+		tween.parallel().tween_property(parent_node, "modulate:a", 0.0, 0.1)
 	else:
-		# 普通擊打：稍微壓扁再彈回
-		parent_node.scale = Vector2(1.2, 0.8) # 瞬間壓扁
-		tween.tween_property(parent_node, "scale", Vector2(1.0, 1.0), 0.2)
+		# 普通敲擊：壓扁 (Y縮小) + 變寬 (X變大) -> 經典的 Q 彈感
+		# 因為重心在底部，所以 Y 縮小時，頂部會往下掉，底部不動
+		parent_node.scale = Vector2(1.3, 0.7) # 瞬間壓扁
+		tween.tween_property(parent_node, "scale", Vector2(1.0, 1.0), 0.25)
 		
+		# 加上一點點隨機左右晃動，更有「受力」的感覺
+		parent_node.rotation_degrees = randf_range(-10, 10)
+		tween.parallel().tween_property(parent_node, "rotation_degrees", 0.0, 0.2)
+	
 	await tween.finished
 
 func finish_harvest() -> void:

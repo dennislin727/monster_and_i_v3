@@ -1,16 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6rmwe8pl8fls"]
+[gd_scene load_steps=6 format=3 uid="uid://b6rmwe8pl8fls"]
 
 [ext_resource type="Script" uid="uid://cp6jcoh6f6ejc" path="res://scenes場景/entities主角_怪物_寵物/environment環境物件/Rock.gd" id="1_2ejva"]
 [ext_resource type="Script" uid="uid://qi2anmbkijqa" path="res://src腳本/components積木/InteractableComponent.gd" id="1_58sbn"]
+[ext_resource type="Texture2D" uid="uid://xd6p02mr7cnv" path="res://assets圖片_字體_音效/環境/小石頭/frame40000.png" id="2_2ejva"]
 [ext_resource type="Resource" uid="uid://cwq0n0o2h1buv" path="res://src腳本/resources身分證/items/stone.tres" id="2_48iwc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fb7vx"]
-size = Vector2(126, 126)
+size = Vector2(55, 32)
 
 [node name="Rock" type="Node2D"]
 script = ExtResource("1_2ejva")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-33, -60)
+texture = ExtResource("2_2ejva")
+centered = false
 
 [node name="InteractableComponent" type="Area2D" parent="."]
 script = ExtResource("1_58sbn")
@@ -18,4 +22,5 @@ item_data = ExtResource("2_48iwc")
 interact_name = "粗糙的碎石"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+position = Vector2(2, -16)
 shape = SubResource("RectangleShape2D_fb7vx")
