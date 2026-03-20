@@ -172,3 +172,12 @@ func _reset():
 		for action in [action_left, action_right, action_down, action_up]:
 			if Input.is_action_pressed(action):
 				Input.action_release(action)
+
+# 在 UILayer 的某個管理腳本中，或直接在 SignalBus 監聽
+func _on_seal_mode_toggled(is_enabled: bool):
+	if is_enabled:
+		# 開啟封印模式時，禁用搖桿，防止一邊畫圓一邊走路
+		$VirtualJoystick.hide()
+		$VirtualJoystick.set_process_input(false)
+	else:
+		$VirtualJoystick.set_process_input(true)

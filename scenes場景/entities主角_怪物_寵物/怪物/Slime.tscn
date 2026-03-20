@@ -176,12 +176,13 @@ size = Vector2(18, 7)
 [node name="Slime" type="CharacterBody2D"]
 y_sort_enabled = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-65, -75)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["monsters"]]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_2d1fv")
 animation = &"idle_down"
 frame_progress = 0.228009
 centered = false
+offset = Vector2(-65, -75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)

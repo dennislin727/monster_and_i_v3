@@ -1,4 +1,4 @@
-[gd_scene load_steps=185 format=3 uid="uid://dvm83qs77b72y"]
+[gd_scene load_steps=187 format=3 uid="uid://dvm83qs77b72y"]
 
 [ext_resource type="Script" uid="uid://d01r55e8bklv7" path="res://src腳本/entities/PlayerController.gd" id="1_qyso7"]
 [ext_resource type="Texture2D" uid="uid://cpg3tisst1u6x" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0000.png" id="2_aqpdo"]
@@ -181,6 +181,8 @@
 [ext_resource type="Texture2D" uid="uid://ymc3yyhlpwtm" path="res://assets圖片_字體_音效/主角/attack/attack_up/frame20015.png" id="115_h67uw"]
 [ext_resource type="Texture2D" uid="uid://cqs2r34qj1scs" path="res://assets圖片_字體_音效/主角/attack/attack_up/frame20016.png" id="116_8wbdm"]
 [ext_resource type="Script" uid="uid://d1alojbjdir26" path="res://src腳本/states狀態機/PlayerStateMachine.gd" id="180_an8vw"]
+[ext_resource type="Script" uid="uid://bhcbk11by1xld" path="res://src腳本/components積木/ShadowComponent.gd" id="180_dlhrn"]
+[ext_resource type="Script" uid="uid://gcd8r5recv2w" path="res://src腳本/states狀態機/PlayerAttackState.gd" id="181_an8vw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lnm4k"]
 animations = [{
@@ -896,11 +898,11 @@ y_sort_enabled = true
 script = ExtResource("1_qyso7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -30)
+y_sort_enabled = true
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_lnm4k")
-animation = &"attack_up_3"
-frame = 5
-frame_progress = 1.0
+animation = &"attack_side_1"
+offset = Vector2(1, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
@@ -928,7 +930,10 @@ script = ExtResource("65_evrsp")
 script = ExtResource("65_evrsp")
 
 [node name="Attack" type="Node2D" parent="StateMachine"]
-script = ExtResource("65_evrsp")
+script = ExtResource("181_an8vw")
+
+[node name="ShadowComponent" type="AnimatedSprite2D" parent="."]
+script = ExtResource("180_dlhrn")
 
 [connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]
 [connection signal="area_exited" from="InteractionDetector" to="." method="_on_interaction_detector_area_exited"]

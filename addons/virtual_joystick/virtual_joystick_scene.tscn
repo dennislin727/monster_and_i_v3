@@ -6,14 +6,19 @@
 
 [node name="Virtual Joystick" type="Control"]
 layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
+anchor_top = 0.653
+anchor_right = 1.006
 anchor_bottom = 1.0
-offset_top = -308.0
-offset_right = 300.0
-offset_bottom = -8.0
-grow_vertical = 0
+offset_top = 0.0799561
+offset_right = 629.84
+offset_bottom = 389.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.365, 0.365)
+mouse_filter = 1
 script = ExtResource("1_8x4dy")
+joystick_mode = 1
+visibility_mode = 2
 
 [node name="Base" type="TextureRect" parent="."]
 layout_mode = 1
@@ -31,7 +36,7 @@ grow_vertical = 2
 pivot_offset = Vector2(100, 100)
 mouse_force_pass_scroll_events = false
 texture = ExtResource("2_jhjs2")
-stretch_mode = 5
+stretch_mode = 2
 
 [node name="Tip" type="TextureRect" parent="Base"]
 layout_mode = 1

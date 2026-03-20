@@ -27,3 +27,4 @@ func _physics_process(delta):
 
 	move_and_slide()
 	# 根據 velocity 播放動畫 (這部分邏輯可以跟主角共用)
+	

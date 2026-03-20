@@ -1,12 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://btx2lj8ytew4t"]
+[gd_scene load_steps=4 format=3 uid="uid://btx2lj8ytew4t"]
 
 [ext_resource type="PackedScene" uid="uid://cdbjqixa2gq31" path="res://src腳本/components積木/HurtboxComponent.tscn" id="1_f84xj"]
 [ext_resource type="Texture2D" uid="uid://bnc3gjeunxg2s" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50002.png" id="1_jb6wp"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jb6wp"]
+load_path = "res://.godot/imported/frame50002.png-83ebdd732daece78c39ca75e6aae629a.ctex"
+
 [node name="Dummy" type="StaticBody2D"]
 
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.396078)
+y_sort_enabled = true
+position = Vector2(0.0563679, -0.109841)
+rotation = -2.79253
+skew = 0.783653
+texture = SubResource("CompressedTexture2D_jb6wp")
+offset = Vector2(3.73106, -15.2144)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -30)
+y_sort_enabled = true
 texture = ExtResource("1_jb6wp")
+offset = Vector2(-1, -30)
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("1_f84xj")]
+
+[node name="CollisionShape2D" parent="HurtboxComponent" index="0"]
+position = Vector2(0, -15)
+scale = Vector2(1.64, 1.64)
+
+[editable path="HurtboxComponent"]

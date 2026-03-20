@@ -1,4 +1,5 @@
 # res://src腳本/autoload管理員/SignalBus.gd
+@warning_ignore("unused_signal")
 extends Node
 
 # --- 遊戲狀態 ---
@@ -18,3 +19,9 @@ signal seal_process_started(target_entity: CharacterBody2D)
 
 func _ready() -> void:
 	print("[SignalBus] 電台頻道更新完畢，所有系統已可對接。")
+
+# res://src腳本/autoload管理員/SignalBus.gd
+# ... 原有內容 ...
+
+signal seal_ui_requested(is_show: bool) # 🔴 通知 UI 顯示濾鏡與張眼
+signal seal_button_reset_requested     # 🔴 當封印失敗，通知按鈕恢復原狀

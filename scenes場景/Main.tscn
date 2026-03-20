@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://duan0a8lqkhxf"]
+[gd_scene load_steps=16 format=3 uid="uid://duan0a8lqkhxf"]
 
 [ext_resource type="PackedScene" uid="uid://b6rmwe8pl8fls" path="res://scenes場景/entities主角_怪物_寵物/environment環境物件/Rock.tscn" id="1_h0ov6"]
 [ext_resource type="Texture2D" uid="uid://dc4f218eks2to" path="res://assets圖片_字體_音效/環境/參考圖/ComfyUI_00855_.jpg" id="1_ka6fj"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bars7nlebjeqa" path="res://src腳本/components積木/SealToggleButton.gd" id="6_3vicl"]
 [ext_resource type="Script" uid="uid://cv27paar7s2fo" path="res://src腳本/components積木/SealManager.gd" id="6_ka6fj"]
 [ext_resource type="Script" uid="uid://brm55aglai57s" path="res://src腳本/components積木/DashButton.gd" id="7_3vicl"]
+[ext_resource type="Script" uid="uid://bgrjw0e48jav5" path="res://src腳本/ui/SealUI.gd" id="12_msxc1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7uwit"]
 bg_color = Color(0.740951, 0.565101, 0.3118, 1)
@@ -26,66 +27,76 @@ corner_radius_top_right = 100
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_msxc1"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
 [node name="Main" type="Node2D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
+[node name="Light" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Light"]
+color = Color(0.537983, 0.507, 0.65, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Light"]
+rotation = -5.04924
+blend_mode = 2
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 1.5
+
 [node name="LevelContainer" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Map" type="Sprite2D" parent="LevelContainer"]
-position = Vector2(703, -20)
+z_index = -1
+position = Vector2(678, -335)
 scale = Vector2(0.508755, 0.508755)
 texture = ExtResource("1_ka6fj")
+offset = Vector2(49.1395, 619.158)
 
 [node name="Rock" parent="LevelContainer" instance=ExtResource("1_h0ov6")]
-position = Vector2(113, -94)
-
-[node name="Sprite2D" parent="LevelContainer/Rock" index="0"]
-metadata/_edit_lock_ = true
+position = Vector2(69, -119)
 
 [node name="Slime" parent="LevelContainer" instance=ExtResource("4_7uwit")]
 position = Vector2(-11, -47)
 
+[node name="Dummy" parent="LevelContainer" instance=ExtResource("5_222e3")]
+y_sort_enabled = true
+position = Vector2(-68, -9)
+
 [node name="Player" parent="LevelContainer" instance=ExtResource("2_m76gh")]
 position = Vector2(56, 22)
-
-[node name="Dummy" parent="LevelContainer" instance=ExtResource("5_222e3")]
-position = Vector2(-68, -9)
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="Virtual Joystick" parent="UILayer" instance=ExtResource("3_m76gh")]
-anchors_preset = -1
-anchor_left = 0.524
-anchor_top = 0.797063
-anchor_right = 0.524
-anchor_bottom = 0.8
-offset_left = -111.64
-offset_top = -108.12
-offset_right = 100.36
-offset_bottom = 110.0
-grow_horizontal = 2
+anchor_top = 0.7
+anchor_right = 0.994
+offset_left = -63.0
+offset_top = -57.0
+offset_right = 546.16
+offset_bottom = 247.0
 pivot_offset = Vector2(107, 111)
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
 [node name="Base" parent="UILayer/Virtual Joystick" index="0"]
-modulate = Color(1, 1, 1, 0.647059)
-anchors_preset = -1
-offset_left = -98.0
-offset_top = -98.9998
-offset_right = 102.0
-offset_bottom = 101.0
-grow_vertical = 1
+modulate = Color(0.64, 0.64, 0.64, 1)
+self_modulate = Color(1, 1, 1, 0.811765)
 
 [node name="Tip" parent="UILayer/Virtual Joystick/Base" index="0"]
-anchors_preset = -1
-anchor_left = 0.512
-anchor_right = 0.512
-offset_left = -69.4
-offset_top = -70.0
-offset_right = 65.6
-offset_bottom = 73.0
+modulate = Color(0.74, 0.948, 1, 1)
+offset_left = -67.5
+offset_top = -71.5
+offset_right = 67.5
+offset_bottom = 71.5
 pivot_offset = Vector2(72, 67)
 
 [node name="SealToggleButton" type="Button" parent="UILayer"]
@@ -133,8 +144,26 @@ script = ExtResource("4_48icw")
 [node name="SealManager" type="Node2D" parent="UILayer"]
 script = ExtResource("6_ka6fj")
 
+[node name="SealUI" type="Control" parent="UILayer" groups=["seal_ui"]]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("12_msxc1")
+
+[node name="Filter" type="ColorRect" parent="UILayer/SealUI"]
+visible = false
+modulate = Color(0, 0, 0, 0.521569)
+layout_mode = 0
+offset_left = -3.0
+offset_right = 365.0
+offset_bottom = 644.0
+mouse_filter = 2
+
+[node name="EyeCutIn" type="AnimatedSprite2D" parent="UILayer/SealUI"]
+sprite_frames = SubResource("SpriteFrames_msxc1")
+animation = &"open"
+
 [connection signal="pressed" from="UILayer/SealToggleButton" to="UILayer/SealToggleButton" method="_on_pressed"]
+[connection signal="toggled" from="UILayer/SealToggleButton" to="UILayer/SealToggleButton" method="_on_toggled"]
 [connection signal="pressed" from="UILayer/DashButton" to="UILayer/DashButton" method="_on_pressed"]
 
-[editable path="LevelContainer/Rock"]
 [editable path="UILayer/Virtual Joystick"]
