@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SkillResource" load_steps=2 format=3 uid="uid://jlbk0vfvv6wo"]
+
+[ext_resource type="Script" uid="uid://dsfdn1urr6jud" path="res://src腳本/resources身分證/SkillResource.gd" id="1_nl3bv"]
+
+[resource]
+script = ExtResource("1_nl3bv")
+skill_name = "新技能"
+type = 0
+animation_name = "spell"
+cooldown = 15.0
+startup_time = 0.4
+trigger_delay = 1.06
+recovery_time = 0.6
+dash_before_skill = true
+dash_distance = 120.0
+power = 45
+max_hp_pct = 0.4
+show_warning_circle = false
+warning_color = Color(1, 0, 0, 0.4)
+recovery_animation = "idle"
+metadata/_custom_type_script = "uid://dsfdn1urr6jud"
