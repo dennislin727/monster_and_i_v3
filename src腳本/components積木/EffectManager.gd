@@ -3,6 +3,7 @@ extends Node2D
 
 func _ready() -> void:
 	SignalBus.request_effect_collect.connect(_on_collect_effect)
+	SignalBus.damage_spawned.connect(_on_damage_spawned)
 
 func _on_collect_effect(world_pos: Vector2, texture: Texture2D) -> void:
 	if texture == null:
@@ -31,3 +32,15 @@ func _on_collect_effect(world_pos: Vector2, texture: Texture2D) -> void:
 	# 目標點：螢幕左上角 (例如 70, 70)
 	var target_pos = Vector2(70, 70)
 	sprite.start_flying(screen_pos, target_pos)
+
+func _on_damage_spawned(pos: Vector2, value: int, is_player: bool):
+	var label = Label.new()
+	label.set_script(load("res://src腳本/components積木/FloatingNumber.gd"))
+	add_child(label)
+	
+	# 轉換座標到螢幕
+	label.global_position = get_viewport().get_canvas_transform() * pos
+	
+	# 設定顏色：主角扣血用紅/橘，怪物扣血用白/黃
+	var color = Color.ORANGE if is_player else Color.YELLOW
+	label.start(value, color)
