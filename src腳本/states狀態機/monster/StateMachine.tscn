@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://c01w12lox72v"]
+
+[ext_resource type="Script" uid="uid://dbr2qesu5rwmf" path="res://src腳本/states狀態機/monster/MonsterStateMachine.gd" id="1_jtrai"]
+[ext_resource type="Script" uid="uid://5ftfv01g73ls" path="res://src腳本/states狀態機/monster/MonsterIdleState.gd" id="2_52fat"]
+[ext_resource type="Script" uid="uid://chggdop0tgffd" path="res://src腳本/states狀態機/monster/MonsterWanderState.gd" id="3_52fat"]
+[ext_resource type="Script" uid="uid://bl6hmij33j1tr" path="res://src腳本/states狀態機/monster/MonsterSpellState.gd" id="3_pxuns"]
+[ext_resource type="Script" uid="uid://0a3xh8qsnhxx" path="res://src腳本/states狀態機/monster/MonsterHurtState.gd" id="4_jfe63"]
+[ext_resource type="Script" uid="uid://b7fu1ws8bnmyq" path="res://src腳本/states狀態機/monster/MonsterChaseState.gd" id="4_pxuns"]
+[ext_resource type="Script" uid="uid://c54x8cgg0ekou" path="res://src腳本/states狀態機/monster/MonsterFleeState.gd" id="7_jfe63"]
+
+[node name="StateMachine" type="Node"]
+script = ExtResource("1_jtrai")
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("2_52fat")
+
+[node name="Wander" type="Node" parent="."]
+script = ExtResource("3_52fat")
+
+[node name="Chase" type="Node" parent="."]
+script = ExtResource("4_pxuns")
+
+[node name="Spell" type="Node" parent="."]
+script = ExtResource("3_pxuns")
+
+[node name="Hurt" type="Node" parent="."]
+script = ExtResource("4_jfe63")
+
+[node name="Flee" type="Node" parent="."]
+script = ExtResource("7_jfe63")

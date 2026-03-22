@@ -1,4 +1,4 @@
-[gd_scene load_steps=187 format=3 uid="uid://dvm83qs77b72y"]
+[gd_scene load_steps=191 format=3 uid="uid://dvm83qs77b72y"]
 
 [ext_resource type="Script" uid="uid://d01r55e8bklv7" path="res://src腳本/entities/PlayerController.gd" id="1_qyso7"]
 [ext_resource type="Texture2D" uid="uid://cpg3tisst1u6x" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0000.png" id="2_aqpdo"]
@@ -180,6 +180,10 @@
 [ext_resource type="Texture2D" uid="uid://clyvmjeidab2j" path="res://assets圖片_字體_音效/主角/attack/attack_up/frame20014.png" id="114_8y8rt"]
 [ext_resource type="Texture2D" uid="uid://ymc3yyhlpwtm" path="res://assets圖片_字體_音效/主角/attack/attack_up/frame20015.png" id="115_h67uw"]
 [ext_resource type="Texture2D" uid="uid://cqs2r34qj1scs" path="res://assets圖片_字體_音效/主角/attack/attack_up/frame20016.png" id="116_8wbdm"]
+[ext_resource type="Texture2D" uid="uid://bfy31esglhuux" path="res://assets圖片_字體_音效/主角/hit/frame0000.png" id="117_i4a03"]
+[ext_resource type="Texture2D" uid="uid://8dvuipfioc5o" path="res://assets圖片_字體_音效/主角/hit/frame0001.png" id="118_glg42"]
+[ext_resource type="Texture2D" uid="uid://c03ay30ipcnyy" path="res://assets圖片_字體_音效/主角/hit/frame0002.png" id="119_5ibks"]
+[ext_resource type="Texture2D" uid="uid://be78garljadsw" path="res://assets圖片_字體_音效/主角/hit/frame0003.png" id="120_1874a"]
 [ext_resource type="Script" uid="uid://d1alojbjdir26" path="res://src腳本/states狀態機/PlayerStateMachine.gd" id="180_an8vw"]
 [ext_resource type="Script" uid="uid://bhcbk11by1xld" path="res://src腳本/components積木/ShadowComponent.gd" id="180_dlhrn"]
 [ext_resource type="Script" uid="uid://gcd8r5recv2w" path="res://src腳本/states狀態機/PlayerAttackState.gd" id="181_an8vw"]
@@ -623,6 +627,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("117_i4a03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_glg42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_5ibks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_1874a")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_aqpdo")
 }, {
 "duration": 1.0,
@@ -891,17 +912,19 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e5e5u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lof64"]
-size = Vector2(43, 48)
+size = Vector2(33, 49)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
+safe_margin = 0.1
 script = ExtResource("1_qyso7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_lnm4k")
-animation = &"attack_side_1"
+animation = &"hit"
+frame_progress = 0.809011
 offset = Vector2(1, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -914,9 +937,10 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="InteractionDetector" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
-position = Vector2(1.5, -23)
+position = Vector2(1.5, -23.5)
 shape = SubResource("RectangleShape2D_lof64")
 metadata/_edit_lock_ = true
 
