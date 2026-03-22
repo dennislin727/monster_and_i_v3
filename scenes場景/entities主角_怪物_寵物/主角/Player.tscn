@@ -638,7 +638,11 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("120_1874a")
 }],
+<<<<<<< HEAD
 "loop": false,
+=======
+"loop": true,
+>>>>>>> 7b075d86e301c5e59bc262ee2693a51f1efe938d
 "name": &"hit",
 "speed": 10.0
 }, {
@@ -923,7 +927,11 @@ y_sort_enabled = true
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_lnm4k")
 animation = &"hit"
+<<<<<<< HEAD
 frame_progress = 0.809011
+=======
+frame_progress = 0.615559
+>>>>>>> 7b075d86e301c5e59bc262ee2693a51f1efe938d
 offset = Vector2(1, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

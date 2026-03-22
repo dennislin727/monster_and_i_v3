@@ -144,7 +144,11 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_lltqd")
 }],
+<<<<<<< HEAD
 "loop": false,
+=======
+"loop": true,
+>>>>>>> 7b075d86e301c5e59bc262ee2693a51f1efe938d
 "name": &"attack_down",
 "speed": 10.0
 }, {
@@ -707,7 +711,11 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("106_6vu4f")
 }],
+<<<<<<< HEAD
 "loop": false,
+=======
+"loop": true,
+>>>>>>> 7b075d86e301c5e59bc262ee2693a51f1efe938d
 "name": &"spell",
 "speed": 15.0
 }]
@@ -784,8 +792,12 @@ force_refresh = null
 
 [node name="AnimatedSprite2D" parent="LevelContainer/MonsterBase" index="1"]
 sprite_frames = SubResource("SpriteFrames_tl5i2")
+<<<<<<< HEAD
 animation = &"idle_down"
 frame_progress = 0.0820944
+=======
+animation = &"attack_down"
+>>>>>>> 7b075d86e301c5e59bc262ee2693a51f1efe938d
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 

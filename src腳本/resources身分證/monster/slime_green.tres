@@ -134,7 +134,11 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_i3jgf")
 }],
+<<<<<<< HEAD
 "loop": false,
+=======
+"loop": true,
+>>>>>>> 7b075d86e301c5e59bc262ee2693a51f1efe938d
 "name": &"attack_down",
 "speed": 10.0
 }, {
@@ -697,7 +701,11 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("103_pej1h")
 }],
+<<<<<<< HEAD
 "loop": false,
+=======
+"loop": true,
+>>>>>>> 7b075d86e301c5e59bc262ee2693a51f1efe938d
 "name": &"spell",
 "speed": 15.0
 }]
@@ -705,13 +713,21 @@ animations = [{
 [resource]
 script = ExtResource("1_tl5i2")
 monster_name = "史萊姆"
+<<<<<<< HEAD
 max_hp = 100
+=======
+max_hp = 50
+>>>>>>> 7b075d86e301c5e59bc262ee2693a51f1efe938d
 move_speed = 60.0
 chase_speed = 90.0
 aggro_type = 0
 detection_range = 180.0
 attack_range = 45.0
+<<<<<<< HEAD
 actions_before_spell = 1
+=======
+actions_before_spell = 3
+>>>>>>> 7b075d86e301c5e59bc262ee2693a51f1efe938d
 skills = Array[ExtResource("3_g4vo1")]([ExtResource("4_bmry3")])
 drop_item = ExtResource("1_ni2wy")
 drop_chance = 0.5

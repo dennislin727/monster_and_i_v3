@@ -107,5 +107,44 @@ func _on_interaction_detector_area_exited(area: Area2D) -> void:
 	elif area == current_target: current_target = null
 
 func hit_current_target() -> void:
+<<<<<<< HEAD
 	if current_target: current_target.start_harvest()
 	elif current_enemy: current_enemy.take_damage(10)
+=======
+	if current_target:
+		# 這是採集物
+		current_target.start_harvest()
+		# 震動相機 (Shake Effect) 增加打擊感
+		apply_camera_shake(0.2)
+	elif current_enemy:
+		# 這是怪物
+		current_enemy.take_damage(10)
+		apply_camera_shake(0.3)
+
+func apply_camera_shake(intensity: float):
+	var cam = $Camera2D
+	var tween = create_tween()
+	# 簡單的隨機抖動
+	for i in range(4):
+		tween.tween_property(cam, "offset", Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity)) * 10, 0.05)
+	tween.tween_property(cam, "offset", Vector2.ZERO, 0.05)
+	
+func take_damage(amount: int):
+	if is_dashing: return # 瞬移無敵幀
+	
+	# 1. 播放受擊動畫
+	if anim_sprite.sprite_frames.has_animation("hit"):
+		anim_sprite.play("hit")
+	
+	# 2. 暫時失去控制 (硬直)
+	is_dashing = true 
+	
+	# 3. 視覺震動
+	var t = create_tween()
+	t.tween_property(anim_sprite, "modulate", Color.RED, 0.1)
+	t.tween_property(anim_sprite, "modulate", Color.WHITE, 0.1)
+	
+	await get_tree().create_timer(0.2).timeout
+	is_dashing = false
+	# 恢復原本動畫由狀態機接管
+>>>>>>> 7b075d86e301c5e59bc262ee2693a51f1efe938d

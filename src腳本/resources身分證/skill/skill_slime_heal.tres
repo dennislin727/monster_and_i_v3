@@ -7,6 +7,7 @@ script = ExtResource("1_nl3bv")
 skill_name = "新技能"
 type = 0
 animation_name = "spell"
+<<<<<<< HEAD
 cooldown = 2.0
 startup_time = 0.6
 trigger_delay = 0.5
@@ -15,4 +16,11 @@ dash_before_skill = true
 dash_distance = 120.0
 power = 100
 max_hp_pct = 0.4
+=======
+cooldown = 5.0
+power = 10
+range_radius = 100.0
+min_hp_percentage = 0.0
+max_hp_percentage = 0.3
+>>>>>>> 7b075d86e301c5e59bc262ee2693a51f1efe938d
 metadata/_custom_type_script = "uid://dsfdn1urr6jud"
