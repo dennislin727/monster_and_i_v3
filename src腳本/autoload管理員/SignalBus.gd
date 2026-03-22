@@ -8,6 +8,7 @@ signal game_started
 # --- 玩家與戰鬥 ---
 signal player_health_changed(current_hp: int, max_hp: int)
 signal dash_requested # 🔴 新增：瞬移請求訊號
+signal damage_spawned(pos: Vector2, value: int, is_player: bool) # 🔴 飄字請求
 
 # --- 物品與特效 ---
 signal item_collected(item_data: Resource) 

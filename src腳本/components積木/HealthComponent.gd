@@ -5,20 +5,21 @@ extends Node
 signal health_changed(current_hp: int, max_hp: int)
 signal died
 
-@export var max_hp: int = 3
-@onready var current_hp: int = max_hp
+@export var max_hp: int = 100
+@onready var current_hp: int = max_hp:
+	set(value):
+		current_hp = clamp(value, 0, max_hp)
+		health_changed.emit(current_hp, max_hp)
+		# 🔴 核心修正：如果是主角，發電報給左上角血條
+		if get_parent().is_in_group("player"):
+			SignalBus.player_health_changed.emit(current_hp, max_hp)
 
 func take_damage(amount: int) -> void:
 	if current_hp <= 0: return
+	self.current_hp -= amount
 	
-	current_hp -= amount
-	health_changed.emit(current_hp, max_hp)
-	print("[Health] %s 受傷了，剩餘血量: %d" % [get_parent().name, current_hp])
-	
-	# 🔴 觸發父節點的受擊效果 (不論是石頭還是怪物)
 	var parent = get_parent()
 	if parent.has_method("play_hit_animation"):
-		# 傳入 True 代表沒血了，觸發粉碎動畫
 		parent.play_hit_animation(current_hp <= 0)
 	
 	if current_hp <= 0:

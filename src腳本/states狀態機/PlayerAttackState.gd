@@ -1,71 +1,88 @@
 # res://src腳本/states狀態機/PlayerAttackState.gd
 extends Node
 
+# --- 1. 引用與變數 ---
 var player: PlayerController
 var combo_index: int = 1
-var is_swinging: bool = false # 揮刀 + 喘息的總鎖定時間
+var is_swinging: bool = false      # 🔴 動畫鎖定：揮刀中
+var has_hit_this_swing: bool = false # 🔴 傷害鎖定：防止單次揮刀重複傷害
 
-# 🔴 調整這裡來對齊石頭的震動速度
-@export var recovery_time: float = 0.4 # 攻擊完後的「喘息/僵直」時間
+# 調整攻擊間的「喘息時間」
+@export var recovery_time: float = 0.2 
+
+# --- 2. 狀態切換接口 ---
 
 func enter() -> void:
 	is_swinging = false
-	start_attack_sequence()
+	_execute_combo()
 
 func exit() -> void:
 	is_swinging = false
+	combo_index = 1 # 離開戰鬥範圍後重置連招
+	print("[AttackState] 停止戰鬥，重置連招")
 
 func _process(_delta: float) -> void:
-	# 此狀態下不由 _process 主動觸發，由 start_attack_sequence 的循環控制
-	pass
+	if not player: return
+	
+	# 🔴 核心自動化：如果揮完一刀，且目標還在，就自動啟動下一段
+	if not is_swinging:
+		if player.current_enemy or player.current_target:
+			_execute_combo()
+		else:
+			# 如果沒目標了，is_swinging 為 false 會讓狀態機在下一影格切換回 Move
+			pass
 
-func start_attack_sequence() -> void:
+# --- 3. 核心戰鬥邏輯 ---
+
+func _execute_combo() -> void:
 	if is_swinging: return
 	is_swinging = true
+	has_hit_this_swing = false
 	
-	# 1. 決定方向與動畫
+	# A. 決定動畫名稱
 	var dir = player.get_dir_string()
 	var anim_name = "attack_%s_%d" % [dir, combo_index]
 	
+	# B. 動畫存在檢查 (如果畫了 3 段，第 4 段會自動跳回第 1 段)
 	if not player.anim_sprite.sprite_frames.has_animation(anim_name):
 		combo_index = 1
 		anim_name = "attack_%s_1" % dir
 	
-	# 2. 播放攻擊動畫
+	# C. 執行視覺表現
 	player.update_flip()
 	player.anim_sprite.play(anim_name)
+	# print("[AttackState] 執行連招: ", anim_name)
 	
-	# 🔴 核心調整：同步傷害觸發
-	# 假設 8 影格的動畫中，第 3-4 幀是砍下去的瞬間
-	# 我們用計時器精確控制傷害爆發點，對齊石頭的震動
-	await get_tree().create_timer(0.12).timeout # 這裡的數值可微調
-	trigger_damage_logic()
+	# D. 🔴 自動傷害判定 (保險絲)
+	# 即使動畫沒加標籤，0.15 秒後也會自動判定一次傷害
+	get_tree().create_timer(0.15).timeout.connect(func():
+		if is_swinging and not has_hit_this_swing:
+			_trigger_damage()
+	)
 	
-	# 3. 等待劈砍動畫播完
-	await player.anim_sprite.animation_finished
+	# E. 等待動畫播完
+	if player.anim_sprite.is_playing():
+		await player.anim_sprite.animation_finished
 	
-	# 4. 🔴 進入「喘息/待機」階段
-	var idle_anim = "idle_" + player.get_dir_string()
-	player.anim_sprite.play(idle_anim)
-	
-	# 在這裡停頓一段時間，讓玩家「收招」
+	# F. 🔴 增加「收刀喘息」：讓攻擊不要像電風扇一樣快
+	# 播放對應方向的 idle 動畫
+	player.anim_sprite.play("idle_" + dir)
 	await get_tree().create_timer(recovery_time).timeout
 	
+	# G. 解鎖，準備下一段
 	is_swinging = false
-	
-	# 5. 判斷是否要繼續下一擊 (如果有目標且沒移動逃跑)
-	if player.current_enemy or player.current_target:
-		combo_index = (combo_index % 5) + 1
-		start_attack_sequence()
-	else:
-		# 沒目標了，is_swinging = false 會讓狀態機在下一幀把我們切回 Move
-		combo_index = 1
+	combo_index = (combo_index % 5) + 1
 
-func trigger_damage_logic() -> void:
-	# 觸發採集
-	if player.current_target:
-		player.current_target.start_harvest()
+# 🔴 統一傷害觸發點
+func _trigger_damage() -> void:
+	if has_hit_this_swing: return
+	has_hit_this_swing = true
 	
-	# 觸發假人傷害
-	if player.current_enemy and player.current_enemy.has_method("take_damage"):
-		player.current_enemy.take_damage(10)
+	# 呼叫 Controller 裡的判定邏輯
+	if player.has_method("hit_current_target"):
+		player.hit_current_target()
+
+# --- 4. 動畫影格回傳 (選配) ---
+# 如果你在動畫裡有加 Method Track 呼叫此函數，會比保險絲更精準
+func hit_event() -> void:
+	_trigger_damage()
