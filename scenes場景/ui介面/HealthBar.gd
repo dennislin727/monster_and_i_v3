@@ -1,20 +1,22 @@
-# res://src腳本/ui/HealthBar.gd
+# res://scenes場景/ui介面/HealthBar.gd
 extends TextureProgressBar
 
-var health_component: HealthComponent
-
 func setup(target_health: HealthComponent) -> void:
-	health_component = target_health
-	health_component.health_changed.connect(_on_health_changed)
-	max_value = health_component.max_hp
-	value = health_component.current_hp
-	hide() # 初始隱藏
+	# 🔴 確保數值同步
+	max_value = target_health.max_hp
+	value = target_health.current_hp
+	
+	# 監聽血量變動
+	target_health.health_changed.connect(_on_health_changed)
+	
+	# 初始隱藏，被打才顯示
+	modulate.a = 0 
 
 func _on_health_changed(curr: int, _max: int) -> void:
 	value = curr
-	show() # 被打就顯示
 	
-	# 簡單的消失計時器
+	# 療癒的淡入淡出效果
 	var t = create_tween()
-	t.tween_interval(2.0)
-	t.tween_callback(hide)
+	t.tween_property(self, "modulate:a", 1.0, 0.2) # 顯示
+	t.tween_interval(2.0) # 停留兩秒
+	t.tween_property(self, "modulate:a", 0.0, 0.5) # 消失

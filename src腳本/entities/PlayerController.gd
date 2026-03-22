@@ -124,3 +124,22 @@ func apply_camera_shake(intensity: float):
 	for i in range(4):
 		tween.tween_property(cam, "offset", Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity)) * 10, 0.05)
 	tween.tween_property(cam, "offset", Vector2.ZERO, 0.05)
+	
+func take_damage(amount: int):
+	if is_dashing: return # 瞬移無敵幀
+	
+	# 1. 播放受擊動畫
+	if anim_sprite.sprite_frames.has_animation("hit"):
+		anim_sprite.play("hit")
+	
+	# 2. 暫時失去控制 (硬直)
+	is_dashing = true 
+	
+	# 3. 視覺震動
+	var t = create_tween()
+	t.tween_property(anim_sprite, "modulate", Color.RED, 0.1)
+	t.tween_property(anim_sprite, "modulate", Color.WHITE, 0.1)
+	
+	await get_tree().create_timer(0.2).timeout
+	is_dashing = false
+	# 恢復原本動畫由狀態機接管
