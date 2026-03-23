@@ -779,6 +779,46 @@ position = Vector2(-68, -9)
 
 [node name="Player" parent="LevelContainer" instance=ExtResource("2_m76gh")]
 position = Vector2(56, 22)
+move_speed = 200.0
+dash_distance = 150.0
+dash_duration = 0.4
+
+[node name="MonsterBase" parent="LevelContainer" instance=ExtResource("6_s53su")]
+position = Vector2(-72, -139)
+data = ExtResource("7_2we8b")
+
+[node name="AnimatedSprite2D" parent="LevelContainer/MonsterBase" index="1"]
+sprite_frames = SubResource("SpriteFrames_tl5i2")
+animation = &"idle_down"
+frame_progress = 0.464947
+
+[node name="MonsterBase" parent="LevelContainer" instance=ExtResource("6_s53su")]
+position = Vector2(-72, -139)
+data = ExtResource("7_2we8b")
+
+[node name="AnimatedSprite2D" parent="LevelContainer/MonsterBase" index="1"]
+sprite_frames = SubResource("SpriteFrames_tl5i2")
+animation = &"die"
+frame = 6
+frame_progress = 1.0
+
+[node name="MonsterBase" parent="LevelContainer" instance=ExtResource("6_s53su")]
+position = Vector2(-72, -139)
+data = ExtResource("7_2we8b")
+
+[node name="AnimatedSprite2D" parent="LevelContainer/MonsterBase" index="1"]
+sprite_frames = SubResource("SpriteFrames_tl5i2")
+animation = &"idle_down"
+frame_progress = 0.941392
+
+[node name="MonsterBase" parent="LevelContainer" instance=ExtResource("6_s53su")]
+position = Vector2(-72, -139)
+data = ExtResource("7_2we8b")
+
+[node name="AnimatedSprite2D" parent="LevelContainer/MonsterBase" index="1"]
+sprite_frames = SubResource("SpriteFrames_tl5i2")
+animation = &"idle_down"
+frame_progress = 0.941392
 
 [node name="MonsterBase" parent="LevelContainer" instance=ExtResource("6_s53su")]
 position = Vector2(-72, -139)
