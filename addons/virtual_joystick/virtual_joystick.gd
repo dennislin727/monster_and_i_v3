@@ -75,6 +75,9 @@ func _ready() -> void:
 	
 	if visibility_mode == Visibility_mode.WHEN_TOUCHED:
 		hide()
+		
+	if SignalBus:
+		SignalBus.seal_mode_toggled.connect(_on_seal_mode_toggled)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
@@ -173,11 +176,15 @@ func _reset():
 			if Input.is_action_pressed(action):
 				Input.action_release(action)
 
-# 在 UILayer 的某個管理腳本中，或直接在 SignalBus 監聽
 func _on_seal_mode_toggled(is_enabled: bool):
 	if is_enabled:
-		# 開啟封印模式時，禁用搖桿，防止一邊畫圓一邊走路
-		$VirtualJoystick.hide()
-		$VirtualJoystick.set_process_input(false)
+		# 徹底停用
+		_reset()
+		self.hide()
+		self.set_process_input(false)
 	else:
-		$VirtualJoystick.set_process_input(true)
+		# 🔴 恢復處理能力，但不強制 show()
+		# 讓它維持原本的 Visibility_mode (觸碰才顯示)
+		self.set_process_input(true)
+		if visibility_mode == Visibility_mode.ALWAYS:
+			self.show()

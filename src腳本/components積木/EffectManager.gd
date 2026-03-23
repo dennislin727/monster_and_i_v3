@@ -1,33 +1,77 @@
 # res://src腳本/components積木/EffectManager.gd
 extends Node2D
 
+const ITEM_SLOT_POS = Vector2(50, 590)
+const PET_SLOT_POS = Vector2(140, 590)
+
 func _ready() -> void:
 	SignalBus.request_effect_collect.connect(_on_collect_effect)
+	SignalBus.damage_spawned.connect(_on_damage_spawned)
+	SignalBus.popup_text.connect(_on_popup_text)
+	# 🔴 核心修復：連接補血訊號
+	SignalBus.heal_spawned.connect(_on_heal_spawned)
+	
+	if SignalBus.has_signal("seal_orb_fly"):
+		SignalBus.seal_orb_fly.connect(_on_seal_orb_fly)
 
+# 處理補血跳字
+func _on_heal_spawned(world_pos: Vector2, value: int) -> void:
+	var label = Label.new()
+	label.set_script(load("res://src腳本/components積木/FloatingNumber.gd"))
+	add_child(label)
+	
+	var screen_pos = get_viewport().get_canvas_transform() * world_pos
+	label.global_position = screen_pos
+	label.start_heal(value) # 呼叫補血專用動畫
+
+# 傷害數字 (白字)
+func _on_damage_spawned(world_pos: Vector2, value: int, _is_player: bool) -> void:
+	var canvas_transform = get_viewport().get_canvas_transform()
+	var screen_pos = canvas_transform * world_pos
+	
+	var label = Label.new()
+	label.set_script(load("res://src腳本/components積木/FloatingNumber.gd"))
+	add_child(label)
+	label.global_position = screen_pos
+	label.start(value, Color.WHITE)
+
+# 通用文字 (白字)
+func _on_popup_text(world_pos: Vector2, msg: String, color: Color) -> void:
+	var label = Label.new()
+	label.set_script(load("res://src腳本/components積木/FloatingNumber.gd"))
+	add_child(label)
+	
+	# 🔴 核心邏輯：將世界座標轉換為 Canvas 座標
+	var canvas_transform = get_viewport().get_canvas_transform()
+	var screen_pos = canvas_transform * world_pos
+	
+	label.global_position = screen_pos
+	label.start_with_text(msg, color)
+
+func _create_popup_label(world_pos: Vector2) -> Label:
+	var label = Label.new()
+	label.set_script(load("res://src腳本/components積木/FloatingNumber.gd"))
+	add_child(label)
+	var screen_pos = get_viewport().get_canvas_transform() * world_pos
+	label.global_position = screen_pos
+	return label
+
+# --- 收集特效 ---
 func _on_collect_effect(world_pos: Vector2, texture: Texture2D) -> void:
-	if texture == null:
-		print("[EffectManager] 錯誤：沒有圖片資料！")
-		return
+	_spawn_flying_icon(world_pos, texture, ITEM_SLOT_POS)
 
-	# 1. 建立 Sprite
+func _on_seal_orb_fly(world_pos: Vector2) -> void:
+	var orb_texture = load("res://icon.svg") 
+	_spawn_flying_icon(world_pos, orb_texture, PET_SLOT_POS)
+
+func _spawn_flying_icon(world_pos: Vector2, texture: Texture2D, target_ui_pos: Vector2) -> void:
+	if texture == null: return
 	var sprite = Sprite2D.new()
 	sprite.texture = texture
-	# 確保它在最前面
 	sprite.z_index = 100 
+	sprite.scale = Vector2(0.6, 0.6)
 	sprite.set_script(load("res://src腳本/components積木/CollectEffect.gd"))
 	add_child(sprite)
-	
-	# 2. 計算螢幕座標 (考慮相機位置)
-	# get_canvas_transform() 會把相機移動過的「世界座標」轉成「螢幕座標」
 	var screen_pos = get_viewport().get_canvas_transform() * world_pos
-	
-	# --- 偵錯用印出 ---
-	print("石頭世界座標: ", world_pos)
-	print("轉換後螢幕座標: ", screen_pos)
-	# ----------------
-	
 	sprite.global_position = screen_pos
-	
-	# 目標點：螢幕左上角 (例如 70, 70)
-	var target_pos = Vector2(70, 70)
-	sprite.start_flying(screen_pos, target_pos)
+	sprite.start_flying(screen_pos, target_ui_pos)

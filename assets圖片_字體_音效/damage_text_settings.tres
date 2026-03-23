@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://b3ufkmcad4oyq"]
+
+[ext_resource type="FontFile" uid="uid://c2uixuydo8x6w" path="res://assets圖片_字體_音效/PixelFont.ttf" id="1_u88gs"]
+
+[resource]
+font = ExtResource("1_u88gs")
+font_size = 24
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
