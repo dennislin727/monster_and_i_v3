@@ -21,6 +21,7 @@ centered = false
 offset = Vector2(-33, -61)
 
 [node name="InteractableComponent" type="Area2D" parent="."]
+collision_layer = 2
 script = ExtResource("1_58sbn")
 item_data = ExtResource("2_48iwc")
 interact_name = "粗糙的碎石"
@@ -35,8 +36,5 @@ script = ExtResource("5_b2ni6")
 
 [node name="UIAnchor" parent="." instance=ExtResource("6_wrnp2")]
 position = Vector2(0, -39)
-
-[node name="TextureProgressBar" parent="UIAnchor" index="0"]
-size_flags_horizontal = 4
 
 [editable path="UIAnchor"]

@@ -2,99 +2,101 @@
 class_name PlayerController
 extends CharacterBody2D
 
-@export_group("移動與跳躍")
-@export var move_speed: float = 200.0
-@export var dash_distance: float = 150.0 
-@export var dash_duration: float = 0.4  
-
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var state_machine: Node = $StateMachine # 🔴 確保有這行
-@onready var interaction_detector: Area2D = $InteractionDetector
+@onready var state_machine: Node = $StateMachine
+@onready var health: HealthComponent = $HealthComponent
 
 var last_direction: Vector2 = Vector2.DOWN
 var is_dashing: bool = false
+var is_hit_stun: bool = false
+var is_invincible: bool = false
 var is_seal_mode: bool = false
+
 var current_target: InteractableComponent = null
 var current_enemy: HurtboxComponent = null
 
 func _ready() -> void:
-	# 連結訊號
+	add_to_group("player")
+	# 初始化狀態機
+	for state in state_machine.get_children():
+		state.player = self
+		
+	SignalBus.seal_mode_toggled.connect(func(e): is_seal_mode = e)
 	if SignalBus.has_signal("dash_requested"):
 		SignalBus.dash_requested.connect(perform_dash)
-	
-	add_to_group("player")
-	
-	# 初始化狀態機
-	if state_machine:
-		for state in state_machine.get_children():
-			state.player = self
-	
-	# 監聽封印模式
-	SignalBus.seal_mode_toggled.connect(func(enabled: bool): is_seal_mode = enabled)
 
 func _physics_process(_delta: float) -> void:
-	if is_dashing: return
+	# 受擊或衝刺時，不接收移動輸入
+	if is_hit_stun or is_dashing: return
 	
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
-	# 🔴 判斷：是否在畫圈（時間變慢）
-	if Engine.time_scale < 1.0:
-		velocity = Vector2.ZERO # 畫圈時鎖死
+	if input_dir != Vector2.ZERO:
+		last_direction = input_dir.normalized()
+		velocity = input_dir * 200.0
 	else:
-		# 時間正常時，恢復移動
-		if input_dir != Vector2.ZERO:
-			last_direction = input_dir.normalized()
-			velocity = input_dir * move_speed
-		else:
-			velocity = velocity.move_toward(Vector2.ZERO, move_speed * 0.2)
+		velocity = velocity.move_toward(Vector2.ZERO, 40.0)
 	
 	move_and_slide()
 
-# 提供給狀態機使用的工具函數
-func get_dir_string() -> String:
-	var x = abs(last_direction.x); var y = abs(last_direction.y)
-	if y > x * 1.5: return "down" if last_direction.y > 0 else "up"
-	elif x > y * 1.5: return "side"
-	else: return "side_down" if last_direction.y > 0 else "side_up"
+# 🔴 核心修正：統一受擊入口 (支援 0 傷害反震)
+func take_damage(amount: int):
+	# 如果是無敵/衝刺，或是血量已經歸零（且這是有傷害的攻擊），則無視
+	if is_invincible or is_dashing: return
+	if amount > 0 and health.current_hp <= 0: return
+	
+	is_hit_stun = true
+	is_invincible = true
+	
+	# 🔴 只有傷害大於 0 時，才執行數據層面的扣血與噴字
+	if amount > 0:
+		health.take_damage(amount)
+		SignalBus.damage_spawned.emit(global_position, amount, true)
+	
+	# 🔴 不管有沒有傷害，都要執行的視覺演繹：
+	# 1. 切換到受傷狀態 (自動撥放 hit 動畫)
+	state_machine.change_state(state_machine.get_node("Hurt"))
+	
+	# 2. 閃爍效果
+	var t = create_tween().set_loops(2)
+	t.tween_property(anim_sprite, "modulate:a", 0.1, 0.05)
+	t.tween_property(anim_sprite, "modulate:a", 1.0, 0.05)
+	
+	# 3. 恢復機制
+	await get_tree().create_timer(0.4).timeout
+	is_hit_stun = false
+	
+	await get_tree().create_timer(0.6).timeout
+	is_invincible = false
 
 func update_flip() -> void:
-	anim_sprite.flip_h = (last_direction.x > 0)
+	if last_direction.x != 0:
+		anim_sprite.flip_h = (last_direction.x > 0)
 
-func perform_dash() -> void:
-	if is_dashing: return
+func update_animation_by_dir(prefix: String) -> void:
+	update_flip()
+	var anim_name = prefix + get_dir_string()
+	if anim_sprite.animation != anim_name:
+		anim_sprite.play(anim_name)
+
+func get_dir_string() -> String:
+	if abs(last_direction.y) > abs(last_direction.x) * 1.5:
+		return "down" if last_direction.y > 0 else "up"
+	return "side"
+
+func hit_current_target() -> void:
+	if current_enemy: current_enemy.take_damage(45)
+	elif current_target: current_target.start_harvest()
+
+func perform_dash():
+	if is_dashing or is_hit_stun: return
 	is_dashing = true
-	
-	# 🎨 畫家參數設定區
-	var up_time = 0.2    # 跳起來的時間
-	var down_time = 0.2  # 落地（衝擊）的時間
-	var total_time = up_time + down_time # 總共 0.3s
-	
-	var target_pos = global_position + (last_direction * dash_distance)
-	
-	# 1. 水平位移 (這段時間內人物會一直往前滑)
-	var dash_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	dash_tween.tween_property(self, "global_position", target_pos, total_time)
-	
-	# 2. 垂直彈跳 (讓圖片上下晃動)
-	var jump_tween = create_tween()
-	anim_sprite.pause() 
-	
-	# 【上升段】 往斜前方跳起的感覺
-	jump_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	jump_tween.tween_property(anim_sprite, "position:y", -25.0, up_time)
-	
-	# 【下降段】 這是你說的「落地過程繼續往前」
-	# 這裡使用 EASE_IN 讓落地有加速度，且時間與水平位移同時結束
-	jump_tween.chain().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	jump_tween.tween_property(anim_sprite, "position:y", 0.0, down_time)
-	
-	# 3. 落地後的清理
-	dash_tween.finished.connect(func(): 
-		is_dashing = false
-		anim_sprite.play() # 恢復動畫
-	)
+	is_invincible = true
+	var t = create_tween()
+	t.tween_property(self, "global_position", global_position + last_direction * 150, 0.3)
+	await t.finished
+	is_dashing = false
+	is_invincible = false
 
-# 訊號接收：只負責紀錄目標
 func _on_interaction_detector_area_entered(area: Area2D) -> void:
 	if area is HurtboxComponent: current_enemy = area
 	elif area is InteractableComponent: current_target = area
@@ -103,24 +105,22 @@ func _on_interaction_detector_area_exited(area: Area2D) -> void:
 	if area == current_enemy: current_enemy = null
 	elif area == current_target: current_target = null
 
-# res://src腳本/entities/PlayerController.gd
-
-# 🔴 由動畫影格自動觸發
-func hit_current_target() -> void:
-	if current_target:
-		# 這是採集物
-		current_target.start_harvest()
-		# 震動相機 (Shake Effect) 增加打擊感
-		apply_camera_shake(0.2)
-	elif current_enemy:
-		# 這是怪物
-		current_enemy.take_damage(10)
-		apply_camera_shake(0.3)
-
-func apply_camera_shake(intensity: float):
-	var cam = $Camera2D
-	var tween = create_tween()
-	# 簡單的隨機抖動
-	for i in range(4):
-		tween.tween_property(cam, "offset", Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity)) * 10, 0.05)
-	tween.tween_property(cam, "offset", Vector2.ZERO, 0.05)
+func play_finish_animation(is_success: bool):
+	is_seal_mode = false 
+	var text_msg = "Gotcha!!" if is_success else "Fail..."
+	
+	# 🟢 直接丟出 self
+	SignalBus.popup_text.emit(self, text_msg, Color.WHITE) 
+	
+	var anim_name = "happy" if is_success else "sad"
+	anim_sprite.play(anim_name)
+	velocity = Vector2.ZERO
+	
+	print("[Player] 執行結算動畫: ", anim_name)
+	
+	# 等待動畫撥完 (假設動畫長度約 1.2 秒)
+	await get_tree().create_timer(1.2).timeout
+	
+	# 如果播完了，確保回到 idle 狀態
+	if anim_sprite.animation == anim_name:
+		update_animation_by_dir("idle_")
