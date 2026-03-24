@@ -19,7 +19,10 @@ enum AggroType { PASSIVE, AGGRESSIVE }
 @export var aggro_type: AggroType = AggroType.PASSIVE
 @export var detection_range: float = 180.0
 @export var actions_before_spell: int = 3 
+<<<<<<< HEAD
 @export var capture_rate: float = 0.5
+=======
+>>>>>>> 04a968e97d9729a30c86abd1729c40fb84f52714
 
 @export_group("技能與掉落")
 @export var skills: Array[SkillResource] = []

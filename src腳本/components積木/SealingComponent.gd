@@ -155,7 +155,11 @@ func check_result():
 	if is_instance_valid(hint_label):
 		hint_label.dismiss()
 	var hp_pct = float(health.current_hp) / health.max_hp
+<<<<<<< HEAD
 	var success_rate = monster.data.capture_rate * (1.0 + (1.0 - hp_pct))
+=======
+	var success_rate = 0.5 * (1.0 + (1.0 - hp_pct)) 
+>>>>>>> 04a968e97d9729a30c86abd1729c40fb84f52714
 	var is_success = randf() <= success_rate
 	
 	if magic_circle:
