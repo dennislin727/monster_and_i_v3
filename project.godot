@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GlobalBalance="*res://src腳本/autoload管理員/GlobalBalance.gd"
 DataManager="*res://src腳本/autoload管理員/DataManager.gd"
 SignalBus="*res://src腳本/autoload管理員/SignalBus.gd"
 
