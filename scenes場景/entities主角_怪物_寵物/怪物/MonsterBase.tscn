@@ -1,0 +1,158 @@
+[gd_scene load_steps=28 format=3 uid="uid://ckgvmt8hosbxi"]
+
+[ext_resource type="Script" uid="uid://kamax0gji0cj" path="res://src腳本/entities/monsters/MonsterBase.gd" id="1_pu83x"]
+[ext_resource type="Script" uid="uid://bhcbk11by1xld" path="res://src腳本/components積木/ShadowComponent.gd" id="2_pvi6g"]
+[ext_resource type="Texture2D" uid="uid://dxdcs14r6mi6y" path="res://assets圖片_字體_音效/ui介面/seal_UI/spell/frame0000.png" id="2_xi3xf"]
+[ext_resource type="Texture2D" uid="uid://dnmiebsx3bcd5" path="res://assets圖片_字體_音效/ui介面/seal_UI/spell/frame0001.png" id="3_54rlc"]
+[ext_resource type="Texture2D" uid="uid://n3tusvcosra1" path="res://assets圖片_字體_音效/ui介面/seal_UI/spell/frame0002.png" id="4_6jvk6"]
+[ext_resource type="Texture2D" uid="uid://cc85s3rmeld4x" path="res://assets圖片_字體_音效/ui介面/seal_UI/spell/frame0003.png" id="5_hpe0c"]
+[ext_resource type="Texture2D" uid="uid://i25m74t432ti" path="res://assets圖片_字體_音效/ui介面/seal_UI/spell/frame0004.png" id="6_mw3bl"]
+[ext_resource type="PackedScene" uid="uid://c01w12lox72v" path="res://src腳本/states狀態機/monster/StateMachine.tscn" id="7_sii4m"]
+[ext_resource type="Texture2D" uid="uid://bck6vqec2as4m" path="res://assets圖片_字體_音效/ui介面/seal_UI/spell/frame0005.png" id="7_wm10u"]
+[ext_resource type="Texture2D" uid="uid://4ql63pc8vsqf" path="res://assets圖片_字體_音效/ui介面/seal_UI/spell/frame0006.png" id="8_13yb6"]
+[ext_resource type="Texture2D" uid="uid://d3yfmd6qbgp8h" path="res://assets圖片_字體_音效/ui介面/seal_UI/spell/frame0007.png" id="9_gaxjd"]
+[ext_resource type="Texture2D" uid="uid://cjysw05najcrk" path="res://assets圖片_字體_音效/ui介面/seal_UI/spell/frame0008.png" id="10_1tkju"]
+[ext_resource type="Texture2D" uid="uid://112nhxjhryah" path="res://assets圖片_字體_音效/ui介面/seal_UI/spell/frame0009.png" id="11_gqp0s"]
+[ext_resource type="Texture2D" uid="uid://cfgm6ynyak6tp" path="res://assets圖片_字體_音效/ui介面/seal_UI/success/frame10000.png" id="12_gaxjd"]
+[ext_resource type="Texture2D" uid="uid://cy8l68idt3rwr" path="res://assets圖片_字體_音效/ui介面/seal_UI/success/frame10002.png" id="14_gqp0s"]
+[ext_resource type="Texture2D" uid="uid://tg1ptj75i7n" path="res://assets圖片_字體_音效/ui介面/seal_UI/success/frame10003.png" id="15_k8a0h"]
+[ext_resource type="Texture2D" uid="uid://bl2mct7ww31wx" path="res://assets圖片_字體_音效/ui介面/seal_UI/success/frame10004.png" id="16_fjqal"]
+[ext_resource type="Texture2D" uid="uid://dn5jw6nkln5xc" path="res://assets圖片_字體_音效/ui介面/seal_UI/success/frame10005.png" id="17_j2jy7"]
+[ext_resource type="Texture2D" uid="uid://b3firw8ig2fjs" path="res://assets圖片_字體_音效/ui介面/seal_UI/success/frame10006.png" id="18_ar3cb"]
+[ext_resource type="PackedScene" uid="uid://cdbjqixa2gq31" path="res://src腳本/components積木/HurtboxComponent.tscn" id="26_g2uis"]
+[ext_resource type="Script" uid="uid://bsvw8p158mk2f" path="res://src腳本/components積木/HealthComponent.gd" id="27_25o1u"]
+[ext_resource type="Script" uid="uid://c3tlm8y78sx62" path="res://src腳本/components積木/SealingComponent.gd" id="28_bvk6s"]
+[ext_resource type="PackedScene" uid="uid://bhk3cmoh47jfg" path="res://scenes場景/ui介面/HealthBar.tscn" id="29_hexxi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sii4m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xi3xf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_54rlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6jvk6")
+}],
+"loop": false,
+"name": &"broke",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xi3xf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_54rlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6jvk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hpe0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mw3bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wm10u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_13yb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gaxjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1tkju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gqp0s")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_gaxjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gqp0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_k8a0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fjqal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_j2jy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ar3cb")
+}],
+"loop": false,
+"name": &"success",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uoq1a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3dvs"]
+size = Vector2(18, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sii4m"]
+radius = 49.2544
+
+[node name="MonsterBase" type="CharacterBody2D" groups=["monsters"]]
+y_sort_enabled = true
+collision_layer = 2
+script = ExtResource("1_pu83x")
+
+[node name="MagicCircle" type="AnimatedSprite2D" parent="."]
+position = Vector2(5, 0)
+sprite_frames = SubResource("SpriteFrames_sii4m")
+animation = &"success"
+frame = 5
+frame_progress = 1.0
+
+[node name="ShadowComponent" type="AnimatedSprite2D" parent="."]
+script = ExtResource("2_pvi6g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["monsters"]]
+y_sort_enabled = true
+position = Vector2(6, -1)
+sprite_frames = SubResource("SpriteFrames_uoq1a")
+centered = false
+offset = Vector2(-65, -75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_i3dvs")
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("26_g2uis")]
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="HurtboxComponent" index="0"]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_sii4m")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("27_25o1u")
+
+[node name="SealingComponent" type="Node2D" parent="."]
+position = Vector2(0, -10)
+script = ExtResource("28_bvk6s")
+
+[node name="UIAnchor" parent="." instance=ExtResource("29_hexxi")]
+position = Vector2(0, -44)
+
+[node name="AccessoryPoint" type="Marker2D" parent="."]
+position = Vector2(0, -40)
+
+[node name="StateMachine" parent="." instance=ExtResource("7_sii4m")]
+
+[editable path="HurtboxComponent"]
