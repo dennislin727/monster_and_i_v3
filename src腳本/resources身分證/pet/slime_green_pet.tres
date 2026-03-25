@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PetResource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src腳本/resources身分證/PetResource.gd" id="1_pet"]
+[ext_resource type="Texture2D" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50000.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_pet")
+pet_id = "slime_green"
+pet_name = "史萊姆"
+icon = ExtResource("2_icon")
+follow_distance = 60.0
+follow_speed_mult = 1.1
+heal_amount = 15
+heal_cooldown = 10.0
+
