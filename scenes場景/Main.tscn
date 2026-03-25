@@ -974,6 +974,7 @@ data = ExtResource("7_2we8b")
 [node name="AnimatedSprite2D" parent="LevelContainer/MonsterBase" index="2"]
 sprite_frames = SubResource("SpriteFrames_tl5i2")
 animation = &"idle_down"
+frame_progress = 0.692178
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
