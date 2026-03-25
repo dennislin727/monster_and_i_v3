@@ -29,3 +29,6 @@ enum AggroType { PASSIVE, AGGRESSIVE }
 @export_group("視覺微調")
 @export var sprite_frames: SpriteFrames
 @export var accessory_offset: Vector2 = Vector2(0, -40)
+
+@export_group("封印轉化")
+@export var pet_data: PetResource

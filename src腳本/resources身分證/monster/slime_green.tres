@@ -2,6 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://dcaycpusgqs64" path="res://src腳本/resources身分證/items/slime_gel.tres" id="1_ni2wy"]
 [ext_resource type="Script" uid="uid://d1oou0w35cw77" path="res://src腳本/resources身分證/monster_resource.gd" id="1_tl5i2"]
+[ext_resource type="Resource" path="res://src腳本/resources身分證/pet/slime_green_pet.tres" id="2_pet"]
 [ext_resource type="Texture2D" uid="uid://bev8wwc8hfpc" path="res://assets圖片_字體_音效/怪物/史萊姆/attack/frame0000.png" id="2_n60bu"]
 [ext_resource type="Texture2D" uid="uid://cvqfdsul5rsbw" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50000.png" id="2_ymykt"]
 [ext_resource type="Texture2D" uid="uid://glh3yuysteaa" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50001.png" id="3_awp3i"]
@@ -720,4 +721,5 @@ drop_item = ExtResource("1_ni2wy")
 drop_chance = 0.5
 sprite_frames = SubResource("SpriteFrames_tl5i2")
 accessory_offset = Vector2(0, -40)
+pet_data = ExtResource("2_pet")
 metadata/_custom_type_script = "uid://d1oou0w35cw77"

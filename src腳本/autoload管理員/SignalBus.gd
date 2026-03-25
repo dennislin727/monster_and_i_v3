@@ -35,6 +35,7 @@ signal seal_button_reset_requested
 signal seal_orb_fly(start_pos: Vector2)                    # 光球飛向寵物欄
 signal seal_attempt_finished(success: bool, data: Resource) # 最終結果存檔
 
+signal pet_captured(pet_data: PetResource)                 # 封印成功並轉化成寵物
 func _ready():
 	print("[SignalBus] v2.2 協議已就緒。通信加密已啟動，防止循環呼叫。")
 	

@@ -148,6 +148,11 @@ func resolve_sealing(success: bool):
 		SignalBus.seal_orb_fly.emit(target_monster.global_position)
 	else:
 		SignalBus.seal_button_reset_requested.emit()
+
+	var monster_data: Resource = null
+	if is_instance_valid(target_monster):
+		monster_data = target_monster.get("data")
+	SignalBus.seal_attempt_finished.emit(success, monster_data)
 	
 	await get_tree().create_timer(1.2).timeout
 	current_state = SealState.IDLE
