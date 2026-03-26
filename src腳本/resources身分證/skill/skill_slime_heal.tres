@@ -4,10 +4,11 @@
 
 [resource]
 script = ExtResource("1_nl3bv")
-skill_name = "新技能"
+skill_name = "史萊姆治癒"
 type = 0
 animation_name = "spell"
 cooldown = 15.0
+description = "詠唱後為主人恢復生命值。治療在詠唱觸發點才生效。"
 startup_time = 0.4
 trigger_delay = 1.06
 recovery_time = 0.6
@@ -17,5 +18,8 @@ power = 70
 max_hp_pct = 0.4
 show_warning_circle = false
 warning_color = Color(1, 0, 0, 0.4)
+telegraph_fx_template_id = ""
+cast_fx_template_id = ""
+impact_fx_template_id = ""
 recovery_animation = "idle"
 metadata/_custom_type_script = "uid://dsfdn1urr6jud"

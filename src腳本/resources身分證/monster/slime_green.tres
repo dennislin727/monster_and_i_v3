@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="MonsterResource" load_steps=105 format=3 uid="uid://d04p5p21te04w"]
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=116 format=3 uid="uid://d04p5p21te04w"]
 
 [ext_resource type="Resource" uid="uid://dcaycpusgqs64" path="res://src腳本/resources身分證/items/slime_gel.tres" id="1_ni2wy"]
 [ext_resource type="Script" uid="uid://d1oou0w35cw77" path="res://src腳本/resources身分證/monster_resource.gd" id="1_tl5i2"]
-[ext_resource type="Resource" path="res://src腳本/resources身分證/pet/slime_green_pet.tres" id="2_pet"]
 [ext_resource type="Texture2D" uid="uid://bev8wwc8hfpc" path="res://assets圖片_字體_音效/怪物/史萊姆/attack/frame0000.png" id="2_n60bu"]
+[ext_resource type="Resource" uid="uid://cxdi3dgcw6ccv" path="res://src腳本/resources身分證/pet/slime_green_pet.tres" id="2_pet"]
 [ext_resource type="Texture2D" uid="uid://cvqfdsul5rsbw" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50000.png" id="2_ymykt"]
 [ext_resource type="Texture2D" uid="uid://glh3yuysteaa" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50001.png" id="3_awp3i"]
 [ext_resource type="Script" uid="uid://dsfdn1urr6jud" path="res://src腳本/resources身分證/SkillResource.gd" id="3_g4vo1"]
@@ -44,24 +44,34 @@
 [ext_resource type="Texture2D" uid="uid://bvmb1fu2xfk2k" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0000.png" id="21_cmro6"]
 [ext_resource type="Texture2D" uid="uid://vrhnkmj32kh3" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0001.png" id="22_3fv4l"]
 [ext_resource type="Texture2D" uid="uid://u2uq2eu8tnnk" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50021.png" id="22_knfbk"]
+[ext_resource type="Texture2D" uid="uid://duh2g6smfmlg2" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40000.png" id="22_nyhxw"]
 [ext_resource type="Texture2D" uid="uid://bpf1gk34ef15" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50022.png" id="23_6m8w7"]
+[ext_resource type="Texture2D" uid="uid://lhnydyrl2p2w" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40001.png" id="23_djnhb"]
 [ext_resource type="Texture2D" uid="uid://30ao2gelgt72" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0002.png" id="23_ws1al"]
+[ext_resource type="Texture2D" uid="uid://bdg8p5m7a8nn6" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40002.png" id="24_8sbrn"]
 [ext_resource type="Texture2D" uid="uid://hjkj2l2mi6h5" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0016.png" id="24_871kx"]
 [ext_resource type="Texture2D" uid="uid://5dk5ebsme3it" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0003.png" id="24_xb7j7"]
 [ext_resource type="Texture2D" uid="uid://bd3ehl6y2dy1h" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0017.png" id="25_du72w"]
 [ext_resource type="Texture2D" uid="uid://bi5rwvfi1y70m" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0004.png" id="25_evumm"]
+[ext_resource type="Texture2D" uid="uid://bwb3c57cyofsa" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40003.png" id="25_wit6q"]
 [ext_resource type="Texture2D" uid="uid://cu4ttkg2nltn6" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0005.png" id="26_0hylg"]
+[ext_resource type="Texture2D" uid="uid://fkva3sshmnd4" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40004.png" id="26_6xebi"]
 [ext_resource type="Texture2D" uid="uid://c3c4n2amkltyx" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0018.png" id="26_wsmc2"]
 [ext_resource type="Texture2D" uid="uid://ec5jmwup1s3p" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0019.png" id="27_60wx1"]
+[ext_resource type="Texture2D" uid="uid://cbwp1xgsx4n11" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40005.png" id="27_ca4mr"]
 [ext_resource type="Texture2D" uid="uid://dhct2dhqg5fkl" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0006.png" id="27_jwmr8"]
 [ext_resource type="Texture2D" uid="uid://duaqha2x0v2hn" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0020.png" id="28_8hrxt"]
 [ext_resource type="Texture2D" uid="uid://bi15br1fx24rj" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame10000.png" id="28_g2u68"]
+[ext_resource type="Texture2D" uid="uid://dkrmrgp1bakbx" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40006.png" id="28_pd2nu"]
 [ext_resource type="Texture2D" uid="uid://cu3nasdor1rci" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame10001.png" id="29_ckikm"]
+[ext_resource type="Texture2D" uid="uid://ve05uxduarx2" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40007.png" id="29_hf3xu"]
 [ext_resource type="Texture2D" uid="uid://12ld75mm0oyg" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0021.png" id="29_vsrnu"]
 [ext_resource type="Texture2D" uid="uid://cg1tfwfowuemg" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame10002.png" id="30_34lie"]
 [ext_resource type="Texture2D" uid="uid://dtedx78wl23fs" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0022.png" id="30_bd0wi"]
+[ext_resource type="Texture2D" uid="uid://5gm8almf4dge" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40008.png" id="30_h36i5"]
 [ext_resource type="Texture2D" uid="uid://ohwrewjyeg1s" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame10003.png" id="31_3v75c"]
 [ext_resource type="Texture2D" uid="uid://bnw4avj4mrol6" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0009.png" id="31_i2n6k"]
+[ext_resource type="Texture2D" uid="uid://c1h2rmwrs1dpe" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40009.png" id="31_yd234"]
 [ext_resource type="Texture2D" uid="uid://c6n6m6qr728n6" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0010.png" id="32_cwtmy"]
 [ext_resource type="Texture2D" uid="uid://uomsmy4e7tjc" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame10004.png" id="32_nyhxw"]
 [ext_resource type="Texture2D" uid="uid://eap0uso7dkvs" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame10005.png" id="33_djnhb"]
@@ -292,6 +302,41 @@ animations = [{
 "loop": false,
 "name": &"die",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_nyhxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_djnhb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_8sbrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_wit6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_6xebi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ca4mr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_pd2nu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_hf3xu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_h36i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_yd234")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -720,6 +765,9 @@ skills = Array[ExtResource("3_g4vo1")]([ExtResource("4_bmry3")])
 drop_item = ExtResource("1_ni2wy")
 drop_chance = 0.5
 sprite_frames = SubResource("SpriteFrames_tl5i2")
+head_anchor_offset = Vector2(0, -40)
+animation_anchor_overrides = {}
+frame_anchor_overrides = {}
 accessory_offset = Vector2(0, -40)
 pet_data = ExtResource("2_pet")
 metadata/_custom_type_script = "uid://d1oou0w35cw77"

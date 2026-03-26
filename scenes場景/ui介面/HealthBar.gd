@@ -1,5 +1,5 @@
 # res://scenes場景/ui介面/HealthBar.gd
-extends TextureProgressBar
+extends ProgressBar
 
 func setup(target_health: HealthComponent) -> void:
 	max_value = target_health.max_hp

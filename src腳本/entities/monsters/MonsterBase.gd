@@ -11,7 +11,8 @@ extends CharacterBody2D
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health: HealthComponent = $HealthComponent
 @onready var state_machine: MonsterStateMachine = $StateMachine
-@onready var health_bar: TextureProgressBar = get_node_or_null("UIAnchor/HealthBar")
+@onready var health_bar: ProgressBar = get_node_or_null("UIAnchor/HealthBar")
+@onready var accessory_point: Marker2D = get_node_or_null("AccessoryPoint")
 
 var target_player: PlayerController = null
 var skill_cds: Dictionary = {}
@@ -22,6 +23,7 @@ var is_dead: bool = false
 var attack_cd_timer: float = 0.0
 # 🔴 新增：霸體護盾開關
 var is_casting_protected: bool = false 
+var _last_anchor_signature: String = ""
 
 func _ready() -> void:
 	update_visuals()
@@ -33,7 +35,8 @@ func _ready() -> void:
 		if not health.died.is_connected(_on_died):
 			health.died.connect(_on_died)
 		if health_bar: health_bar.setup(health)
-	if state_machine: state_machine.init(self)
+	if state_machine and data:
+		state_machine.init(self)
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint() or is_dead: return
@@ -46,6 +49,7 @@ func _physics_process(delta: float) -> void:
 	if health_bar:
 		var should_show = target_player != null or health.current_hp < health.max_hp
 		health_bar.modulate.a = move_toward(health_bar.modulate.a, 1.0 if should_show else 0.0, delta * 2.0)
+	_update_accessory_anchor()
 
 # 根據當前狀態決定轉向邏輯
 func play_monster_animation(anim_name: String):
@@ -132,6 +136,21 @@ func update_visuals():
 	if data and data.sprite_frames:
 		$AnimatedSprite2D.sprite_frames = data.sprite_frames
 		$AnimatedSprite2D.play("idle_down")
+	_update_accessory_anchor(true)
+
+func get_resolved_head_anchor_offset(global_fallback: Vector2 = Vector2(0, -40)) -> Vector2:
+	if not data or not anim:
+		return global_fallback
+	return data.resolve_head_anchor_offset(anim.animation, anim.frame, global_fallback)
+
+func _update_accessory_anchor(force: bool = false) -> void:
+	if accessory_point == null or anim == null:
+		return
+	var signature := "%s:%d" % [String(anim.animation), anim.frame]
+	if not force and signature == _last_anchor_signature:
+		return
+	_last_anchor_signature = signature
+	accessory_point.position = get_resolved_head_anchor_offset(accessory_point.position)
 
 func perform_ghost_dash(dist: float):
 	if is_dead: return

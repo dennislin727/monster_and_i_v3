@@ -1,16 +1,24 @@
 # --- 修改後的 Rock.gd ---
 extends Node2D
 
-@onready var interactable = $InteractableComponent
-@onready var health = $HealthComponent
+@onready var interactable: InteractableComponent = $InteractableComponent
+@onready var health: HealthComponent = $HealthComponent
+@onready var health_bar: ProgressBar = $UIAnchor/HealthBar
 
 func _ready() -> void:
-	# 設置圖片
 	if interactable and interactable.item_data:
 		$Sprite2D.texture = interactable.item_data.icon
-	
-	# 🔴 刪除原本在這裡的 health.died 連接邏輯
-	# 因為 InteractableComponent 內部已經有連接並處理 queue_free 了
+
+	if health and health_bar:
+		health_bar.setup(health)
+
+func _physics_process(delta: float) -> void:
+	if health_bar == null or health == null:
+		return
+	var player := get_tree().get_first_node_in_group("player") as PlayerController
+	var engaged := player != null and player.current_target == interactable
+	var should_show := engaged or health.current_hp < health.max_hp
+	health_bar.modulate.a = move_toward(health_bar.modulate.a, 1.0 if should_show else 0.0, delta * 2.0)
 
 # 🔴 僅保留被 HealthComponent 呼叫的動畫函數
 func play_hit_animation(is_final: bool) -> void:

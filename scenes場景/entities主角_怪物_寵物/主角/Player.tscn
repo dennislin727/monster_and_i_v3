@@ -1,19 +1,19 @@
 [gd_scene load_steps=210 format=3 uid="uid://dvm83qs77b72y"]
 
 [ext_resource type="Script" uid="uid://d01r55e8bklv7" path="res://src腳本/entities/PlayerController.gd" id="1_qyso7"]
-[ext_resource type="Texture2D" uid="uid://cpg3tisst1u6x" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0000.png" id="2_aqpdo"]
+[ext_resource type="Texture2D" uid="uid://hkogi18a15yt" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0000.png" id="2_aqpdo"]
 [ext_resource type="Texture2D" uid="uid://h6t4x66lx3gh" path="res://assets圖片_字體_音效/主角/attack/attack_down/frame50000.png" id="2_kyryk"]
 [ext_resource type="Texture2D" uid="uid://d1qiwqup31xs0" path="res://assets圖片_字體_音效/主角/attack/attack_down/frame50001.png" id="3_an8vw"]
-[ext_resource type="Texture2D" uid="uid://71mmel63auvk" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0001.png" id="3_aqpdo"]
-[ext_resource type="Texture2D" uid="uid://bme6fha23x7mh" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0002.png" id="4_5qcbw"]
+[ext_resource type="Texture2D" uid="uid://b5twpvxtr7oec" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0001.png" id="3_aqpdo"]
+[ext_resource type="Texture2D" uid="uid://b05n7hba78paq" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0002.png" id="4_5qcbw"]
 [ext_resource type="Texture2D" uid="uid://c5bqsbx1n8ubw" path="res://assets圖片_字體_音效/主角/attack/attack_down/frame50002.png" id="4_mrwkf"]
 [ext_resource type="Texture2D" uid="uid://b1a3nr7jqu6q7" path="res://assets圖片_字體_音效/主角/attack/attack_down/frame50003.png" id="5_dlhrn"]
-[ext_resource type="Texture2D" uid="uid://nb61yfwr1yad" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0003.png" id="5_yv7xt"]
+[ext_resource type="Texture2D" uid="uid://drflsl0dhx7yd" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0003.png" id="5_yv7xt"]
 [ext_resource type="Texture2D" uid="uid://c0yhxqetaoawx" path="res://assets圖片_字體_音效/主角/attack/attack_down/frame50004.png" id="6_xddii"]
-[ext_resource type="Texture2D" uid="uid://cdx400wyemlxw" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0004.png" id="6_yddop"]
+[ext_resource type="Texture2D" uid="uid://c7jk6vp5n2pju" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0004.png" id="6_yddop"]
 [ext_resource type="Texture2D" uid="uid://brgotrml66t68" path="res://assets圖片_字體_音效/主角/attack/attack_down/frame50005.png" id="7_6ruoo"]
-[ext_resource type="Texture2D" uid="uid://dx8rwy2q5df8b" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0005.png" id="7_eni4n"]
-[ext_resource type="Texture2D" uid="uid://d0w6g85y57o0n" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0006.png" id="8_6ffkx"]
+[ext_resource type="Texture2D" uid="uid://dgvwwa5t6hk41" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0005.png" id="7_eni4n"]
+[ext_resource type="Texture2D" uid="uid://c7epia3htglbc" path="res://assets圖片_字體_音效/主角/idle/idle_down/frame0006.png" id="8_6ffkx"]
 [ext_resource type="Texture2D" uid="uid://cak2u5pkggxh4" path="res://assets圖片_字體_音效/主角/attack/attack_down/frame50006.png" id="8_uk0gc"]
 [ext_resource type="Texture2D" uid="uid://cde0gjuo2p6g3" path="res://assets圖片_字體_音效/主角/idle/idle_side/frame10000.png" id="9_42b2k"]
 [ext_resource type="Texture2D" uid="uid://cgk2fb1wqypo7" path="res://assets圖片_字體_音效/主角/attack/attack_down/frame50007.png" id="9_i4a03"]
@@ -644,6 +644,11 @@ animations = [{
 "name": &"attack_up_3",
 "speed": 15.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("117_hbapw")
@@ -1026,7 +1031,7 @@ animations = [{
 size = Vector2(16, 5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ibks"]
-radius = 25.0799
+radius = 19.0263
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
@@ -1035,15 +1040,19 @@ script = ExtResource("1_qyso7")
 
 [node name="ShadowComponent" type="AnimatedSprite2D" parent="."]
 script = ExtResource("180_dlhrn")
+base_offset = Vector2(-0.635, 12.615)
+shadow_offset_extra = Vector2(0, -1)
+shadow_scale = Vector2(1.025, 0.295)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_lnm4k")
-animation = &"sad"
-frame = 2
-frame_progress = 1.0
+animation = &"happy"
 offset = Vector2(1, -32)
+
+[node name="AccessoryPoint" type="Marker2D" parent="."]
+position = Vector2(0, -40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3.5)
@@ -1059,7 +1068,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
-position = Vector2(0, -21)
+position = Vector2(-1, -21)
 shape = SubResource("CircleShape2D_5ibks")
 
 [node name="StateMachine" type="Node2D" parent="."]

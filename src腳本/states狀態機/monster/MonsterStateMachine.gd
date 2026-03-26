@@ -8,6 +8,8 @@ var monster: MonsterBase
 
 func init(parent_monster: MonsterBase) -> void:
 	monster = parent_monster
+	if monster == null or monster.data == null:
+		return
 	for child in get_children():
 		if child is MonsterState:
 			child.monster = monster
@@ -41,5 +43,7 @@ func change_to(state_name: String) -> void:
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
+	if monster == null or monster.data == null:
+		return
 	if current_state:
 		current_state.handle_physics(delta)

@@ -22,6 +22,8 @@ func handle_physics(delta: float):
 
 # 抽取出來的偵測邏輯
 func _detect_player_logic():
+	if monster.data == null:
+		return
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		var dist = monster.global_position.distance_to(player.global_position)

@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=3 uid="uid://inventory_ui_main_v1"]
+
+[ext_resource type="Script" path="res://scenes場景/ui介面/InventoryUI.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://c2uixuydo8x6w" path="res://assets圖片_字體_音效/PixelFont.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="OpenButton" type="Button" parent="."]
+z_index = 80
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18
+anchor_top = 0.953
+anchor_right = 0.18
+anchor_bottom = 0.953
+offset_left = -28.0
+offset_top = -22.0
+offset_right = 28.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 13
+text = "背包"
+
+[node name="Panel" type="Control" parent="."]
+z_index = 50
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Root" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_constants/separation = 10
+
+[node name="TopSpacer" type="Control" parent="Panel/Root"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/Root"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "道具背包"
+
+[node name="Subtitle" type="Label" parent="Panel/Root"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.62, 0.66, 0.74, 1)
+text = "分類與堆疊（簡易版）"
+
+[node name="Tabs" type="HBoxContainer" parent="Panel/Root"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="TabItems" type="Button" parent="Panel/Root/Tabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "道具"
+
+[node name="TabHeadwear" type="Button" parent="Panel/Root/Tabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "頭飾"
+
+[node name="ItemList" type="ItemList" parent="Panel/Root"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+fixed_item_height = 26

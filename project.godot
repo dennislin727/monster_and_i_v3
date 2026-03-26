@@ -21,6 +21,7 @@ GlobalBalance="*res://src腳本/autoload管理員/GlobalBalance.gd"
 DataManager="*res://src腳本/autoload管理員/DataManager.gd"
 SignalBus="*res://src腳本/autoload管理員/SignalBus.gd"
 PetManager="*res://src腳本/autoload管理員/PetManager.gd"
+InventoryManager="*res://src腳本/autoload管理員/InventoryManager.gd"
 
 [display]
 

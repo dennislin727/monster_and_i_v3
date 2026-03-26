@@ -1,0 +1,240 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3u3q3j2pr3pj"]
+
+[ext_resource type="Script" uid="uid://5jibn5omi2v4" path="res://scenes場景/ui介面/PetUI.gd" id="1_petui"]
+[ext_resource type="FontFile" uid="uid://c2uixuydo8x6w" path="res://assets圖片_字體_音效/PixelFont.ttf" id="2_font"]
+[ext_resource type="PackedScene" path="res://scenes場景/ui介面/ConfirmDialog.tscn" id="3_confirm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon_frame_idle"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.15)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="PetUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_petui")
+
+[node name="DialogLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="ConfirmDialog" parent="DialogLayer" instance=ExtResource("3_confirm")]
+mouse_filter = 2
+
+[node name="OpenButton" type="Button" parent="."]
+z_index = 80
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.953
+anchor_right = 0.5
+anchor_bottom = 0.953
+offset_left = -22.0
+offset_top = -21.92
+offset_right = 22.0
+offset_bottom = 22.08
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "寵物"
+
+[node name="Panel" type="Control" parent="."]
+z_index = 50
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bg" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Root" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_constants/separation = 10
+
+[node name="Left" type="VBoxContainer" parent="Panel/Root"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TopSpacer" type="Control" parent="Panel/Root/Left"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/Root/Left"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.93, 0.95, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "寵物清單"
+
+[node name="ListScroll" type="ScrollContainer" parent="Panel/Root/Left"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="PetListRows" type="VBoxContainer" parent="Panel/Root/Left/ListScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="Right" type="VBoxContainer" parent="Panel/Root"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="TopSpacer" type="Control" parent="Panel/Root/Right"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+
+[node name="Title2" type="Label" parent="Panel/Root/Right"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.93, 0.95, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "寵物資訊"
+
+[node name="HeaderRow" type="HBoxContainer" parent="Panel/Root/Right"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="IconFrame" type="Panel" parent="Panel/Root/Right/HeaderRow"]
+custom_minimum_size = Vector2(88, 88)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon_frame_idle")
+
+[node name="IconButton" type="TextureButton" parent="Panel/Root/Right/HeaderRow/IconFrame"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
+
+[node name="NameBlock" type="VBoxContainer" parent="Panel/Root/Right/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Name" type="Label" parent="Panel/Root/Right/HeaderRow/NameBlock"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "尚未擁有寵物"
+autowrap_mode = 3
+
+[node name="Id" type="Label" parent="Panel/Root/Right/HeaderRow/NameBlock"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+
+[node name="Level" type="Label" parent="Panel/Root/Right/HeaderRow/NameBlock"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "等級：-"
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/Root/Right"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="DeployButton" type="Button" parent="Panel/Root/Right/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "出戰"
+
+[node name="MountButton" type="Button" parent="Panel/Root/Right/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "坐騎"
+
+[node name="ReleaseButton" type="Button" parent="Panel/Root/Right/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "放生"
+
+[node name="DetailsScroll" type="ScrollContainer" parent="Panel/Root/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="DetailsInner" type="VBoxContainer" parent="Panel/Root/Right/DetailsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="StoryHint" type="Label" parent="Panel/Root/Right/DetailsScroll/DetailsInner"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.66, 0.74, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 11
+text = "故事"
+
+[node name="Story" type="RichTextLabel" parent="Panel/Root/Right/DetailsScroll/DetailsInner"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_font")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[color=gray]（尚無故事）[/color]"
+fit_content = true
+scroll_active = false
+
+[node name="StorySkillsGap" type="Control" parent="Panel/Root/Right/DetailsScroll/DetailsInner"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="SkillsTitle" type="Label" parent="Panel/Root/Right/DetailsScroll/DetailsInner"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.66, 0.74, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 11
+text = "技能"
+
+[node name="Skills" type="VBoxContainer" parent="Panel/Root/Right/DetailsScroll/DetailsInner"]
+layout_mode = 2
+size_flags_vertical = 3

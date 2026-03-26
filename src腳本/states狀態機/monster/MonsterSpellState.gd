@@ -11,9 +11,13 @@ func enter():
 func _execute_sequence(skill: SkillResource):
 	monster.velocity = Vector2.ZERO
 	monster.skill_cds[skill] = skill.cooldown
+	var effect_manager := get_tree().get_first_node_in_group("effect_manager")
+	var facing := _facing_to_target()
 	
 	# 🔴 核心修復：施法開始，開啟霸體保護
 	monster.is_casting_protected = true
+	if effect_manager and skill.telegraph_fx_template_id != "" and effect_manager.has_method("play_template_fx_by_id"):
+		effect_manager.play_template_fx_by_id(skill.telegraph_fx_template_id, monster.global_position, effect_manager, facing)
 	
 	# 1. 瞬移
 	if skill.dash_before_skill and monster.target_player:
@@ -31,6 +35,8 @@ func _execute_sequence(skill: SkillResource):
 	
 	# 3. 播放 Spell 動畫
 	monster.play_monster_animation(skill.animation_name)
+	if effect_manager and skill.cast_fx_template_id != "" and effect_manager.has_method("play_template_fx_by_id"):
+		effect_manager.play_template_fx_by_id(skill.cast_fx_template_id, monster.global_position, effect_manager, facing)
 	
 	# 等待觸發延遲
 	await get_tree().create_timer(skill.trigger_delay).timeout
@@ -43,6 +49,8 @@ func _execute_sequence(skill: SkillResource):
 		monster.health.current_hp += skill.power
 		print("[Spell] %s 補血成功" % monster.name)
 		SignalBus.heal_spawned.emit(monster.global_position, skill.power)
+	if effect_manager and skill.impact_fx_template_id != "" and effect_manager.has_method("play_template_fx_by_id"):
+		effect_manager.play_template_fx_by_id(skill.impact_fx_template_id, monster.global_position, effect_manager, facing)
 	
 	if monster.anim.is_playing():
 		await monster.anim.animation_finished
@@ -67,3 +75,10 @@ func exit():
 
 func _clear_protection():
 	monster.is_casting_protected = false
+
+func _facing_to_target() -> Vector2:
+	if monster.target_player and is_instance_valid(monster.target_player):
+		var v := (monster.target_player.global_position - monster.global_position)
+		if v.length() > 0.001:
+			return v.normalized()
+	return Vector2.RIGHT

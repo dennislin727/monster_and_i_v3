@@ -8,6 +8,9 @@ func handle_physics(_delta: float):
 	if monster.is_dead or not monster.target_player:
 		_change_state("Idle")
 		return
+	if monster.data == null:
+		_change_state("Idle")
+		return
 
 	var dist = monster.global_position.distance_to(monster.target_player.global_position)
 	var dir = (monster.target_player.global_position - monster.global_position).normalized()

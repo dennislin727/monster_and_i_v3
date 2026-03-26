@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=3 uid="uid://confirm_dialog_ui_v1"]
+
+[ext_resource type="Script" path="res://scenes場景/ui介面/ConfirmDialog.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://c2uixuydo8x6w" path="res://assets圖片_字體_音效/PixelFont.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.12, 0.12, 0.14, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.28)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="ConfirmDialog" type="Control"]
+z_index = 200
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("1_script")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+color = Color(0, 0, 0, 0.55)
+
+[node name="PanelRoot" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -132.0
+offset_right = 158.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Column" type="VBoxContainer" parent="PanelRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="PanelRoot/Column"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "確認"
+horizontal_alignment = 1
+
+[node name="BodyLabel" type="RichTextLabel" parent="PanelRoot/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_font")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "內文"
+fit_content = true
+scroll_active = false
+
+[node name="ButtonsRow" type="HBoxContainer" parent="PanelRoot/Column"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="CancelBtn" type="Button" parent="PanelRoot/Column/ButtonsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "取消"
+
+[node name="ConfirmBtn" type="Button" parent="PanelRoot/Column/ButtonsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "確認"

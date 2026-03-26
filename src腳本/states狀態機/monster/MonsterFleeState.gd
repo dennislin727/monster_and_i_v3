@@ -6,6 +6,10 @@ func enter():
 	monster.play_monster_animation("run")
 
 func handle_physics(_delta: float):
+	if monster.data == null:
+		monster.velocity = Vector2.ZERO
+		_change_state("Idle")
+		return
 	# 1. 隨時檢查技能是否冷卻完畢 (逃跑是為了等 CD)
 	var skill = monster.get_available_skill()
 	if skill:

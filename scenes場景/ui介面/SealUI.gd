@@ -51,6 +51,7 @@ func _on_animation_finished():
 	# 🟢 大劍播完立刻消失，絕對不擋住後面的 MagicCircle
 	elif actor.animation == "sword_fall":
 		_reset_ui()
+		SignalBus.seal_sword_fall_finished.emit()
 
 func _on_draw_progress(progress: float):
 	# 🟢 如果已經進入大劍演出 (is_finishing)，就不准再動 Frame

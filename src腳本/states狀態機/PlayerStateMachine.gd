@@ -22,6 +22,10 @@ func _process(_delta: float) -> void:
 	if current_anim in ["happy", "sad"] and player.anim_sprite.is_playing():
 		return 
 		
+	# 受傷演出中：不要每幀強制切回 Move/Attack，否則不會扣血也不會播受擊
+	if current_state == $Hurt:
+		return
+
 	# 🔴 核心修復：如果正在攻擊中，鎖死狀態機，不准進行任何切換判定
 	if current_state == $Attack:
 		if current_state.get("is_swinging") == true:
@@ -56,11 +60,11 @@ func _is_target_valid_for_attack() -> bool:
 	if player.current_target: return true
 	return false
 
-func change_state(new_state: Node) -> void:
+func change_state(new_state: Node, force: bool = false) -> void:
 	if not new_state or current_state == new_state: return
 	
-	# 🔴 攻擊狀態鎖定 (二次保險)
-	if current_state == $Attack:
+	# 🔴 攻擊狀態鎖定 (二次保險) — 受傷可強制打斷攻擊
+	if not force and current_state == $Attack:
 		if current_state.get("is_swinging") == true: return
 
 	if current_state:

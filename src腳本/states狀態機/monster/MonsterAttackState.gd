@@ -3,12 +3,15 @@ extends MonsterState
 
 func enter():
 	monster.velocity = Vector2.ZERO
+	if monster.data == null:
+		_change_state("Idle")
+		return
 	# 🔴 修正：一進入攻擊狀態就先設定一個基礎冷卻，防止在動畫期間又被判定攻擊
 	monster.attack_cd_timer = monster.data.attack_cooldown
 	_execute_attack()
 
 func _execute_attack():
-	if monster.is_dead or not monster.target_player:
+	if monster.is_dead or not monster.target_player or monster.data == null:
 		_change_state("Idle")
 		return
 		
@@ -33,6 +36,11 @@ func _execute_attack():
 		if d < monster.data.attack_range + 60:
 			monster.target_player.take_damage(GlobalBalance.MONSTER_BASE_DAMAGE)
 			print("[Attack] 怪物咬了主角！")
+	var pet := get_tree().get_first_node_in_group("deployed_pet")
+	if pet and pet.has_method("take_damage_from_monster"):
+		var dp = monster.global_position.distance_to(pet.global_position)
+		if dp < monster.data.attack_range + 60:
+			pet.take_damage_from_monster(GlobalBalance.MONSTER_BASE_DAMAGE)
 
 	if monster.anim.is_playing():
 		await monster.anim.animation_finished

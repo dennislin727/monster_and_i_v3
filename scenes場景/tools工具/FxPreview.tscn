@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvms1ufh4bmeu"]
+
+[ext_resource type="Script" uid="uid://5xhmopb6kp6x" path="res://scenes場景/tools工具/FxPreview.gd" id="1_fxpreview"]
+
+[node name="FxPreview" type="Node2D"]
+script = ExtResource("1_fxpreview")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 360.0
+offset_bottom = 640.0
+color = Color(0.1, 0.13, 0.16, 1)
+
+[node name="Ground" type="ColorRect" parent="."]
+offset_top = 460.0
+offset_right = 360.0
+offset_bottom = 640.0
+color = Color(0.2, 0.24, 0.18, 1)
+
+[node name="Anchors" type="Node2D" parent="."]
+
+[node name="Firefly" type="Marker2D" parent="Anchors"]
+position = Vector2(118, 250)
+
+[node name="Fire" type="Marker2D" parent="Anchors"]
+position = Vector2(244, 470)
+
+[node name="Center" type="Marker2D" parent="Anchors"]
+position = Vector2(180, 360)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Info" type="Label" parent="CanvasLayer"]
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 340.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 14
+text = "FX Preview"

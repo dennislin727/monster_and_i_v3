@@ -5,6 +5,8 @@ var player: PlayerController
 var combo_index: int = 1
 var is_swinging: bool = false
 var is_cooling_down: bool = false
+## exit() 時中止進行中的 _execute_combo，避免換狀態後仍結算普攻
+var _strike_aborted: bool = false
 
 # 🔴 1. 這裡把 @export 拿掉，變成一般變數
 var recovery_time: float = 0.4 
@@ -26,6 +28,7 @@ func enter() -> void:
 	_execute_combo()
 
 func exit() -> void:
+	_strike_aborted = true
 	is_swinging = false
 	is_cooling_down = false
 	combo_index = 1
@@ -57,6 +60,7 @@ func _process(_delta: float) -> void:
 			pass
 
 func _execute_combo() -> void:
+	_strike_aborted = false
 	is_swinging = true
 	is_cooling_down = true # 開始攻擊的同時，也進入冷卻鎖定
 	
@@ -69,11 +73,13 @@ func _execute_combo() -> void:
 	
 	player.update_flip()
 	player.anim_sprite.play(anim_name)
-	
-	# 傷害判定
-	get_tree().create_timer(0.15).timeout.connect(func():
-		if is_swinging: player.hit_current_target()
-	)
+	# 揮刀瞬間鎖定目標，避免判定幀時已走出 InteractionDetector 導致主角與寵物都打空
+	var strike_hurtbox: HurtboxComponent = player.current_enemy
+	# 傷害判定：勿用 create_timer +「依賴 is_swinging」——若攻擊動畫比 0.15s 短，
+	# animation_finished 會先跑並把 is_swinging 設 false，導致這一刀（與寵物協攻）永遠不結算。
+	await get_tree().create_timer(0.15).timeout
+	if not _strike_aborted and is_instance_valid(player):
+		player.hit_current_target(strike_hurtbox)
 	
 	# 等待動畫播完
 	if player.anim_sprite.is_playing():

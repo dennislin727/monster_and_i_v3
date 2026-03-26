@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src腳本/tools工具/FrameBakeTool.gd" id="1_tool"]
+[ext_resource type="FontFile" uid="uid://c2uixuydo8x6w" path="res://assets圖片_字體_音效/PixelFont.ttf" id="2_font"]
+
+[node name="FrameBakeTool" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tool")
+
+[node name="Root" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Root"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="BakeViewport" type="SubViewport" parent="Root/SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+render_target_update_mode = 4
+size = Vector2i(512, 512)
+
+[node name="CaptureRoot" type="Node2D" parent="Root/SubViewportContainer/BakeViewport"]
+
+[node name="Hud" type="PanelContainer" parent="Root"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Hint" type="Label" parent="Root/Hud"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "FrameBakeTool"
+autowrap_mode = 3

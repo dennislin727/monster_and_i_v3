@@ -37,3 +37,13 @@ func take_damage(amount: int) -> void:
 	
 	if current_hp <= 0:
 		died.emit()
+
+func heal(amount: int) -> void:
+	if amount <= 0 or current_hp <= 0:
+		return
+	var parent := get_parent()
+	self.current_hp = mini(max_hp, current_hp + amount)
+	var pos := Vector2.ZERO
+	if parent is Node2D:
+		pos = (parent as Node2D).global_position
+	SignalBus.heal_spawned.emit(pos, amount)

@@ -10,7 +10,9 @@ func handle_physics(delta: float):
 	if monster.target_player:
 		_change_state("Chase")
 		return
-		
+	if monster.data == null:
+		monster.velocity = Vector2.ZERO
+		return
 	# 🔴 確保 velocity 有被設定
 	monster.velocity = monster.wander_dir * monster.data.move_speed
 	
@@ -19,6 +21,8 @@ func handle_physics(delta: float):
 		_change_state("Idle")
 		
 func _detect_player_logic():
+	if monster.data == null:
+		return
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		var dist = monster.global_position.distance_to(player.global_position)

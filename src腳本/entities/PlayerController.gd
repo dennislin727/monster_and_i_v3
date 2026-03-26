@@ -2,17 +2,27 @@
 class_name PlayerController
 extends CharacterBody2D
 
+const DEFAULT_HEAD_ANCHOR_OFFSET := Vector2(0, -40)
+
+@export_group("頭飾錨點")
+@export var head_anchor_offset: Vector2 = DEFAULT_HEAD_ANCHOR_OFFSET
+@export var animation_anchor_overrides: Dictionary = {}
+@export var frame_anchor_overrides: Dictionary = {}
+
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: Node = $StateMachine
 @onready var health: HealthComponent = $HealthComponent
 # 🟢 修正：把相機抓出來
 @onready var camera: Camera2D = $Camera2D 
+@onready var accessory_point: Marker2D = get_node_or_null("AccessoryPoint")
 
 var last_direction: Vector2 = Vector2.DOWN
 var is_dashing: bool = false
 var is_hit_stun: bool = false
 var is_invincible: bool = false
 var is_seal_mode: bool = false
+var is_perma_invincible: bool = false
+var _last_anchor_signature: String = ""
 
 var current_target: InteractableComponent = null
 var current_enemy: HurtboxComponent = null
@@ -22,10 +32,15 @@ func _ready() -> void:
 	# 初始化狀態機
 	for state in state_machine.get_children():
 		state.player = self
+
+	if health and not health.died.is_connected(_on_health_empty):
+		health.died.connect(_on_health_empty)
+	SignalBus.player_health_changed.emit(health.current_hp, health.max_hp)
 		
 	SignalBus.seal_mode_toggled.connect(func(e): is_seal_mode = e)
 	if SignalBus.has_signal("dash_requested"):
 		SignalBus.dash_requested.connect(perform_dash)
+	_update_accessory_anchor(true)
 
 func _physics_process(_delta: float) -> void:
 	if is_hit_stun or is_dashing: return
@@ -38,11 +53,19 @@ func _physics_process(_delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, GlobalBalance.PLAYER_FRICTION)
 	
 	move_and_slide()
+	_update_accessory_anchor()
+
+func _on_health_empty() -> void:
+	is_perma_invincible = true
 
 # 🔴 受擊入口
 func take_damage(amount: int):
-	if is_invincible or is_dashing: return
-	if amount > 0 and health.current_hp <= 0: return
+	if is_perma_invincible:
+		return
+	if is_invincible or is_dashing:
+		return
+	if amount > 0 and health.current_hp <= 0:
+		return
 	
 	is_hit_stun = true
 	is_invincible = true
@@ -51,7 +74,8 @@ func take_damage(amount: int):
 		health.take_damage(amount)
 		SignalBus.damage_spawned.emit(global_position, amount, true)
 	
-	state_machine.change_state(state_machine.get_node("Hurt"))
+	if state_machine and state_machine.has_method("change_state"):
+		state_machine.change_state(state_machine.get_node("Hurt"), true)
 	
 	var t = create_tween().set_loops(2)
 	t.tween_property(anim_sprite, "modulate:a", 0.1, 0.05)
@@ -77,9 +101,49 @@ func get_dir_string() -> String:
 		return "down" if last_direction.y > 0 else "up"
 	return "side"
 
-func hit_current_target() -> void:
-	if current_enemy: current_enemy.take_damage(45)
-	elif current_target: current_target.start_harvest()
+func resolve_head_anchor_offset(
+	animation_name: StringName,
+	frame_index: int,
+	fallback_offset: Vector2 = DEFAULT_HEAD_ANCHOR_OFFSET
+) -> Vector2:
+	var anim_key := String(animation_name)
+	var frame_overrides_for_anim: Dictionary = frame_anchor_overrides.get(anim_key, {})
+	if frame_overrides_for_anim.has(frame_index):
+		var frame_value = frame_overrides_for_anim[frame_index]
+		if frame_value is Vector2:
+			return frame_value
+	if animation_anchor_overrides.has(anim_key):
+		var anim_value = animation_anchor_overrides[anim_key]
+		if anim_value is Vector2:
+			return anim_value
+	return head_anchor_offset if head_anchor_offset != Vector2.ZERO else fallback_offset
+
+func get_resolved_head_anchor_offset(global_fallback: Vector2 = DEFAULT_HEAD_ANCHOR_OFFSET) -> Vector2:
+	if not anim_sprite:
+		return global_fallback
+	return resolve_head_anchor_offset(anim_sprite.animation, anim_sprite.frame, global_fallback)
+
+func _update_accessory_anchor(force: bool = false) -> void:
+	if accessory_point == null or anim_sprite == null:
+		return
+	var signature := "%s:%d" % [String(anim_sprite.animation), anim_sprite.frame]
+	if not force and signature == _last_anchor_signature:
+		return
+	_last_anchor_signature = signature
+	accessory_point.position = get_resolved_head_anchor_offset(accessory_point.position)
+
+## override：揮刀當下快照的 Hurtbox（結算在 ~0.15s 後，期間若離開偵測區 current_enemy 可能已清空）
+func hit_current_target(melee_hurtbox_override: HurtboxComponent = null) -> void:
+	var melee_hurtbox: HurtboxComponent = melee_hurtbox_override
+	if melee_hurtbox == null or not is_instance_valid(melee_hurtbox):
+		melee_hurtbox = current_enemy
+	if melee_hurtbox and is_instance_valid(melee_hurtbox):
+		melee_hurtbox.take_damage(GlobalBalance.PLAYER_BASE_DAMAGE)
+	elif current_target:
+		current_target.start_harvest()
+		melee_hurtbox = null
+	if SignalBus.has_signal("player_melee_hit"):
+		SignalBus.player_melee_hit.emit(melee_hurtbox)
 
 func perform_dash():
 	if is_dashing or is_hit_stun: return
@@ -111,7 +175,10 @@ func play_finish_animation(is_success: bool):
 	SignalBus.popup_text.emit(self, text_msg, Color.WHITE) 
 	
 	var anim_name = "happy" if is_success else "sad"
-	anim_sprite.play(anim_name)
+	if anim_sprite and anim_sprite.sprite_frames and anim_sprite.sprite_frames.has_animation(anim_name):
+		anim_sprite.play(anim_name)
+	else:
+		update_animation_by_dir("idle_")
 	velocity = Vector2.ZERO
 	
 	print("[Player] 執行結算動畫: ", anim_name)
