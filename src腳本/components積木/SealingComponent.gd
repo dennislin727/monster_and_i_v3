@@ -134,16 +134,15 @@ func _process(delta: float):
 		monster.anim.modulate.a = lerp(monster.anim.modulate.a, 1.0, delta * 2.0)
 		monster.anim.scale = monster.anim.scale.move_toward(Vector2.ONE, delta * 2.0)
 		
-		if monster.anim.animation == "hit_down":
-			if monster.anim.sprite_frames.has_animation("run_down"):
-				monster.anim.play("run_down")
-			else:
-				monster.anim.play("idle_down")
+		var cur_anim := String(monster.anim.animation)
+		if cur_anim.begins_with("hit"):
+			monster.play_monster_animation("idle")
 
 func _apply_dynamic_struggle(_delta):
-	if monster.anim.sprite_frames.has_animation("hit_down"):
-		if monster.anim.animation != "hit_down":
-			monster.anim.play("hit_down")
+	var cur_anim := String(monster.anim.animation)
+	var playing_hit := cur_anim.begins_with("hit") and monster.anim.is_playing()
+	if not playing_hit:
+		monster.play_monster_animation("hit")
 	
 	var progress_pct = current_progress / base_seal_time
 	var freq = lerp(8.0, 20.0, progress_pct) 
@@ -162,8 +161,11 @@ func check_result():
 		hint_label = null
 		
 	var hp_pct = float(health.current_hp) / health.max_hp
-	var success_rate = monster.data.capture_rate * (1.0 + (1.0 - hp_pct))
-	var is_success = randf() <= success_rate
+	var capture_rate := 0.5
+	if monster.data != null:
+		capture_rate = monster.data.capture_rate
+	var success_rate: float = capture_rate * (1.0 + (1.0 - hp_pct))
+	var is_success := randf() <= success_rate
 	
 	if magic_circle:
 		magic_circle.play("success" if is_success else "broke")
@@ -177,8 +179,8 @@ func check_result():
 		_execute_fail_fx()
 
 func _execute_capture_fx():
-	monster.set_collision_layer_value(2, false)
-	monster.set_collision_mask_value(1, false)
+	monster.collision_layer = 0
+	monster.collision_mask = 0
 	
 	var t = create_tween().set_parallel(true)
 	t.tween_property(monster.anim, "scale", Vector2.ZERO, 0.6).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
@@ -211,6 +213,9 @@ func _execute_fail_fx():
 
 func _restore_ai_control():
 	monster.set_physics_process(true)
+	var d: MonsterResource = monster.get("data") as MonsterResource
+	if d != null and not d.participates_in_combat:
+		return
 	if monster.has_node("StateMachine"):
 		var sm = monster.get_node("StateMachine")
 		sm.set_physics_process(true)

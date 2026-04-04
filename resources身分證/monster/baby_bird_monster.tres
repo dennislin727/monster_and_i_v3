@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=7 format=3 uid="uid://b8ybb1rdamb1t"]
+
+[ext_resource type="Script" uid="uid://yqjrg4yemyix" path="res://resources身分證/head_anchor/AnimAnchorEntry.gd" id="1_mr"]
+[ext_resource type="Script" uid="uid://du73m5f5giob4" path="res://resources身分證/head_anchor/FrameAnchorEntry.gd" id="2_cnnc7"]
+[ext_resource type="SpriteFrames" uid="uid://dq14b0x8klsn4" path="res://resources身分證/pet/baby_bird_sprite_frames.tres" id="2_sf"]
+[ext_resource type="Resource" uid="uid://dt28w2ff0b2cj" path="res://resources身分證/pet/baby_bird_pet.tres" id="3_pet"]
+[ext_resource type="Script" uid="uid://d1oou0w35cw77" path="res://resources身分證/monster/monster_resource.gd" id="4_kxnqn"]
+[ext_resource type="Script" uid="uid://dsfdn1urr6jud" path="res://resources身分證/skill_fx_templates/SkillResource.gd" id="5_2i7t5"]
+
+[resource]
+script = ExtResource("4_kxnqn")
+monster_name = "寶寶（湖畔）"
+max_hp = 30
+move_speed = 60.0
+chase_speed = 90.0
+attack_multiplier = 1.0
+attack_cooldown = 1.2
+attack_range = 45.0
+aggro_type = 0
+combat_style = 0
+kite_retreat_below = 100.0
+kite_chase_above = 360.0
+ranged_basic_min_dist = 52.0
+participates_in_combat = false
+detection_range = 180.0
+actions_before_spell = 3
+capture_rate = 0.5
+skills = Array[ExtResource("5_2i7t5")]([])
+drop_chance = 0.5
+gold_reward = 0
+xp_reward = 0
+sprite_frames = ExtResource("2_sf")
+head_anchor_offset = Vector2(0, -40)
+anim_offsets = Array[ExtResource("1_mr")]([])
+frame_offsets = Array[ExtResource("2_cnnc7")]([])
+add_anim_offset_row = false
+add_frame_offset_row = false
+animation_anchor_overrides = {}
+frame_anchor_overrides = {}
+accessory_offset = Vector2(0, -40)
+pet_data = ExtResource("3_pet")

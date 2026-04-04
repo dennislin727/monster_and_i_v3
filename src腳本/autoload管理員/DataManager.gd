@@ -5,7 +5,7 @@ extends Node
 var item_database: Dictionary = {}
 
 # 道具存放的資料夾路徑
-const ITEMS_PATH = "res://src腳本/resources身分證/items/"
+const ITEMS_PATH = "res://resources身分證/items/"
 
 func _ready() -> void:
 	print("[DataManager] 管理員已報到！正在掃描資源...")

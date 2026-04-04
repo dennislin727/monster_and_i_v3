@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="HeadwearResource" load_steps=23 format=3 uid="uid://ciheatxujemeb"]
+
+[ext_resource type="Texture2D" uid="uid://bfhkl2i3mpuwd" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/icon.png" id="1_mkgam"]
+[ext_resource type="Script" uid="uid://bx6yjtj17qx5e" path="res://resources身分證/headwear/headwear_resource.gd" id="1_ri0pq"]
+[ext_resource type="Texture2D" uid="uid://l4wii3mmln4j" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0000.png" id="2_lp1te"]
+[ext_resource type="Texture2D" uid="uid://dyfiwrv3r32dp" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0001.png" id="3_xlpmm"]
+[ext_resource type="Texture2D" uid="uid://bxsvro3m60emn" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0002.png" id="4_q621r"]
+[ext_resource type="Texture2D" uid="uid://cqx87vrbkw4d8" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0003.png" id="5_chddw"]
+[ext_resource type="Texture2D" uid="uid://cwq0d1p2gyx7v" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0004.png" id="6_epr0y"]
+[ext_resource type="Texture2D" uid="uid://p5uwo8myxtm5" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0005.png" id="7_velrl"]
+[ext_resource type="Texture2D" uid="uid://fmb5811xlox" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0008.png" id="10_warqf"]
+[ext_resource type="Texture2D" uid="uid://c3r2cf4uuw1op" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0009.png" id="11_h3tcg"]
+[ext_resource type="Texture2D" uid="uid://byy25lvitgnyr" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0010.png" id="12_7vfko"]
+[ext_resource type="Texture2D" uid="uid://bcq33xqxm134a" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0011.png" id="13_hspeu"]
+[ext_resource type="Texture2D" uid="uid://11yat82b0557" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0012.png" id="14_dcbo1"]
+[ext_resource type="Texture2D" uid="uid://57gocxb77adc" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0013.png" id="15_ymtob"]
+[ext_resource type="Texture2D" uid="uid://blg0l4b0rxnqu" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0016.png" id="18_bscqw"]
+[ext_resource type="Texture2D" uid="uid://cakeofjth08n2" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0017.png" id="19_8vq28"]
+[ext_resource type="Texture2D" uid="uid://dkqyak2pcdqj" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0018.png" id="20_rj5qg"]
+[ext_resource type="Texture2D" uid="uid://bxuvts16gvgpu" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0019.png" id="21_g5vuk"]
+[ext_resource type="Texture2D" uid="uid://67a16kcmulgf" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0020.png" id="22_f2k3u"]
+[ext_resource type="Texture2D" uid="uid://boe8wywp2r5s3" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0021.png" id="23_kwley"]
+[ext_resource type="Texture2D" uid="uid://bm2mbv8lcbjxq" path="res://assets圖片_字體_音效/頭飾/史萊姆帽/frame0022.png" id="24_462e6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_22m37"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lp1te")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xlpmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q621r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_chddw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_epr0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_velrl")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_warqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_h3tcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7vfko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hspeu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_dcbo1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ymtob")
+}],
+"loop": true,
+"name": &"idle_side",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_bscqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8vq28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_rj5qg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_g5vuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_f2k3u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_kwley")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_462e6")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 10.0
+}]
+
+[resource]
+script = ExtResource("1_ri0pq")
+headwear_id = "headwear_000"
+display_name = "史萊姆帽"
+description = "分裂出來的小史萊姆，放在頭上意外合適，還能當髮膠。"
+icon = ExtResource("1_mkgam")
+sprite_frames = SubResource("SpriteFrames_22m37")
+metadata/_custom_type_script = "uid://bx6yjtj17qx5e"

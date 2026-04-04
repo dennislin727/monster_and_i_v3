@@ -1,6 +1,9 @@
 # res://src腳本/components積木/FloatingNumber.gd
 extends Label
 
+## 與 Main／帳簿 UI 相同；LabelSettings 未指定 font 時在 Android 會退回系統預設字體，中文易變方塊／亂碼。
+const _PIXEL_FONT: FontFile = preload("res://assets圖片_字體_音效/PixelFont.ttf")
+
 var track_target: Node2D = null
 var offset_vector: Vector2 = Vector2.ZERO 
 var is_persistent: bool = false           
@@ -78,6 +81,7 @@ func _process(_delta: float) -> void:
 
 func _setup_visuals(txt_color: Color):
 	var settings = LabelSettings.new()
+	settings.font = _PIXEL_FONT
 	settings.font_color = txt_color
 	settings.outline_size = 2
 	settings.outline_color = Color.BLACK

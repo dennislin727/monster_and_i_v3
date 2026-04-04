@@ -11,6 +11,10 @@ var is_pressing_target: bool = false
 
 @onready var world_player: PlayerController = get_tree().get_first_node_in_group("player")
 
+func is_seal_ritual_active() -> bool:
+	return current_state != SealState.IDLE
+
+
 func _ready() -> void:
 	add_child(line_2d)
 	line_2d.width = 15.0
@@ -152,7 +156,8 @@ func resolve_sealing(success: bool):
 	var monster_data: Resource = null
 	if is_instance_valid(target_monster):
 		monster_data = target_monster.get("data")
-	SignalBus.seal_attempt_finished.emit(success, monster_data)
+	var body: Node = target_monster if is_instance_valid(target_monster) else null
+	SignalBus.seal_attempt_finished.emit(success, monster_data, body)
 	
 	await get_tree().create_timer(1.2).timeout
 	current_state = SealState.IDLE
@@ -168,7 +173,7 @@ func is_touching_monster(screen_pos: Vector2) -> bool:
 
 func find_monster_in_circle(center_screen: Vector2) -> CharacterBody2D:
 	var world_center = get_viewport().get_canvas_transform().affine_inverse() * center_screen
-	var monsters = get_tree().get_nodes_in_group("monsters")
+	var monsters = get_tree().get_nodes_in_group("sealable_entity")
 	var closest = null
 	var min_dist = 180.0 
 	

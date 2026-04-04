@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2npc_prompt_ui"]
+
+[ext_resource type="Script" path="res://scenes場景/ui介面/NpcInteractionPrompt.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://c2uixuydo8x6w" path="res://assets圖片_字體_音效/PixelFont.ttf" id="2_font"]
+
+[node name="NpcInteractionPrompt" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="PromptButton" type="Button" parent="."]
+custom_minimum_size = Vector2(132, 28)
+layout_mode = 0
+focus_mode = 0
+offset_right = 132.0
+offset_bottom = 28.0
+mouse_filter = 0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "…"
+alignment = 0

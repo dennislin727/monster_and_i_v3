@@ -79,7 +79,11 @@ func _execute_combo() -> void:
 	# animation_finished 會先跑並把 is_swinging 設 false，導致這一刀（與寵物協攻）永遠不結算。
 	await get_tree().create_timer(0.15).timeout
 	if not _strike_aborted and is_instance_valid(player):
-		player.hit_current_target(strike_hurtbox)
+		# 結算幀晚於揮刀：怪可能已死並釋放 Hurtbox；不可把已釋放參考傳進具型別參數（會在進入函式前報錯）
+		var hb: HurtboxComponent = null
+		if is_instance_valid(strike_hurtbox):
+			hb = strike_hurtbox
+		player.hit_current_target(hb)
 	
 	# 等待動畫播完
 	if player.anim_sprite.is_playing():
@@ -88,8 +92,8 @@ func _execute_combo() -> void:
 	# 🔴 動畫一結束，立刻解除移動鎖定！
 	is_swinging = false 
 	
-	# 播放 idle 喘息，並等待冷卻時間
-	player.anim_sprite.play("idle_" + dir)
+	# 播放 idle 喘息，並等待冷卻時間（與 Move 相同：斜向 → 四向 → 裸名）
+	player.anim_sprite.play(player.resolve_directional_animation_name("idle_", player.last_direction))
 	await get_tree().create_timer(recovery_time).timeout
 	
 	# 🔴 冷卻時間到，解除冷卻鎖，準備下一刀

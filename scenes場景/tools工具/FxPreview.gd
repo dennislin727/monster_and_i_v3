@@ -1,6 +1,6 @@
 extends Node2D
 
-const LIB_PATH := "res://src腳本/resources身分證/skill_fx_templates/FxTemplateLibrary.gd"
+const LIB_PATH := "res://resources身分證/skill_fx_templates/FxTemplateLibrary.gd"
 const FX_NODE_SCRIPT := "res://src腳本/components積木/ProceduralFxNode.gd"
 const TEMPLATE_IDS: Array[String] = [
 	"warning_circle",

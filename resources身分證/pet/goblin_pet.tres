@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="PetResource" load_steps=6 format=3 uid="uid://c81o5yljv7cj7"]
+
+[ext_resource type="Texture2D" uid="uid://dq604pjpya3oo" path="res://assets圖片_字體_音效/怪物/哥不林/idle_down/frame0000.png" id="1_u8hy8"]
+[ext_resource type="Script" uid="uid://dmsc6qfxhej85" path="res://resources身分證/monster/PetResource.gd" id="2_dtkv7"]
+[ext_resource type="Script" uid="uid://cohjp83qg2w1b" path="res://resources身分證/monster/PetSkillEntry.gd" id="3_6cofn"]
+[ext_resource type="Resource" uid="uid://byjnloirmiem5" path="res://resources身分證/skill/skill_goblin_stone_toss.tres" id="4_stoss"]
+
+[sub_resource type="Resource" id="Resource_i8a1b"]
+script = ExtResource("3_6cofn")
+skill = ExtResource("4_stoss")
+skill_level = 1
+
+[resource]
+script = ExtResource("2_dtkv7")
+pet_id = "goblin"
+instance_id = ""
+pet_name = "哥布林"
+nickname = "哥布林"
+icon = ExtResource("1_u8hy8")
+level = 1
+experience = 0
+story = "成天在坡頂推石頭，從遠處丟石騷擾旅人。"
+skills = Array[ExtResource("3_6cofn")]([SubResource("Resource_i8a1b")])
+follow_distance = 60.0
+follow_speed_mult = 1.7
+max_hp = 0
+heal_amount = 14
+heal_cooldown = 11.0
+luck_bonus_rate = 0.0

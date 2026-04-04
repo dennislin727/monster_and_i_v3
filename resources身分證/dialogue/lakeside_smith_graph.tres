@@ -1,0 +1,161 @@
+[gd_resource type="Resource" script_class="DialogueGraphResource" load_steps=31 format=3]
+
+[ext_resource type="Script" uid="uid://c11isnwoin5ns" path="res://resources身分證/dialogue/dialogue_graph_resource.gd" id="1_graph"]
+[ext_resource type="Script" uid="uid://7652vudm4xoq" path="res://resources身分證/dialogue/dialogue_node_resource.gd" id="2_node"]
+[ext_resource type="Script" uid="uid://bq8l8spy800nf" path="res://resources身分證/dialogue/dialogue_line_block.gd" id="3_line"]
+[ext_resource type="Script" uid="uid://cxiq4unonx0ua" path="res://resources身分證/dialogue/dialogue_choice_entry.gd" id="4_choice"]
+[ext_resource type="Script" uid="uid://o8oj5nwg16mg" path="res://resources身分證/dialogue/dialogue_effect_entry.gd" id="5_effect"]
+
+[sub_resource type="Resource" id="line_greet"]
+script = ExtResource("3_line")
+speaker = 0
+text = "嘿，你有打到小石頭嗎？可以做頭飾喔！"
+
+[sub_resource type="Resource" id="c_stone_pend"]
+script = ExtResource("4_choice")
+text = "沒有，你可以給我嗎？"
+target_node_id = "need_help"
+require_grant_once_pending = "lakeside_stone_intro"
+
+[sub_resource type="Resource" id="c_stone_done"]
+script = ExtResource("4_choice")
+text = "最近打鐵還順利嗎？"
+target_node_id = "need_help_repeat"
+require_grant_once_done = "lakeside_stone_intro"
+
+[sub_resource type="Resource" id="c_where"]
+script = ExtResource("4_choice")
+text = "要在哪裡打石頭呢？"
+target_node_id = "rocks_hint"
+
+[sub_resource type="Resource" id="c_cool"]
+script = ExtResource("4_choice")
+text = "好酷！我馬上去找看看。"
+target_node_id = "__CLOSE__"
+
+[sub_resource type="Resource" id="c_axe_req"]
+script = ExtResource("4_choice")
+text = "能借我把練習斧嗎？"
+target_node_id = "give_axe"
+min_affinity = 50
+
+[sub_resource type="Resource" id="n_greet"]
+script = ExtResource("2_node")
+node_id = "greet"
+lines = Array[ExtResource("3_line")]([SubResource("line_greet")])
+choices = Array[ExtResource("4_choice")]([SubResource("c_stone_pend"), SubResource("c_stone_done"), SubResource("c_where"), SubResource("c_cool"), SubResource("c_axe_req")])
+
+[sub_resource type="Resource" id="eff_stone"]
+script = ExtResource("5_effect")
+kind = 1
+item_id = "mat_stone_01"
+amount = 1
+grant_once_id = "lakeside_stone_intro"
+career_milestone_id = "career_smith_first_stone"
+
+[sub_resource type="Resource" id="eff_aff50"]
+script = ExtResource("5_effect")
+kind = 2
+affinity_delta = 50
+
+[sub_resource type="Resource" id="line_help"]
+script = ExtResource("3_line")
+speaker = 0
+text = "那這顆小石頭先給你，拿去敲敲看手感吧。別砸到腳啊。"
+
+[sub_resource type="Resource" id="c_hp1"]
+script = ExtResource("4_choice")
+text = "謝謝"
+target_node_id = "__CLOSE__"
+on_select_play_player_happy = true
+on_select_world_hint_instant_text = "獲得了道具: \"小石頭\" !"
+
+[sub_resource type="Resource" id="n_help"]
+script = ExtResource("2_node")
+node_id = "need_help"
+lines = Array[ExtResource("3_line")]([SubResource("line_help")])
+choices = Array[ExtResource("4_choice")]([SubResource("c_hp1")])
+on_enter_effects = Array[ExtResource("5_effect")]([SubResource("eff_stone"), SubResource("eff_aff50")])
+
+[sub_resource type="Resource" id="line_repeat"]
+script = ExtResource("3_line")
+speaker = 0
+text = "還行啦，鎚子比上次順手多了。你也要小心湖畔邊滑。"
+
+[sub_resource type="Resource" id="c_rep_th"]
+script = ExtResource("4_choice")
+text = "我會注意的"
+target_node_id = "thanks"
+
+[sub_resource type="Resource" id="c_rep_close"]
+script = ExtResource("4_choice")
+text = "待會再來"
+target_node_id = "__CLOSE__"
+
+[sub_resource type="Resource" id="n_repeat"]
+script = ExtResource("2_node")
+node_id = "need_help_repeat"
+lines = Array[ExtResource("3_line")]([SubResource("line_repeat")])
+choices = Array[ExtResource("4_choice")]([SubResource("c_rep_th"), SubResource("c_rep_close")])
+
+[sub_resource type="Resource" id="line_rocks"]
+script = ExtResource("3_line")
+speaker = 0
+text = "找找看！一旦發現，靠近後就會自動開採！"
+
+[sub_resource type="Resource" id="c_ok_go"]
+script = ExtResource("4_choice")
+text = "好的，我去看看"
+target_node_id = "__CLOSE__"
+
+[sub_resource type="Resource" id="n_rocks_hint"]
+script = ExtResource("2_node")
+node_id = "rocks_hint"
+lines = Array[ExtResource("3_line")]([SubResource("line_rocks")])
+choices = Array[ExtResource("4_choice")]([SubResource("c_ok_go")])
+
+[sub_resource type="Resource" id="line_thanks"]
+script = ExtResource("3_line")
+speaker = 0
+text = "不客氣，有空再來聊天。"
+
+[sub_resource type="Resource" id="c_th1"]
+script = ExtResource("4_choice")
+text = "待會再來"
+target_node_id = "__CLOSE__"
+
+[sub_resource type="Resource" id="n_thanks"]
+script = ExtResource("2_node")
+node_id = "thanks"
+lines = Array[ExtResource("3_line")]([SubResource("line_thanks")])
+choices = Array[ExtResource("4_choice")]([SubResource("c_th1")])
+
+[sub_resource type="Resource" id="eff_axe"]
+script = ExtResource("5_effect")
+kind = 1
+item_id = "tool_training_axe"
+amount = 1
+grant_once_id = "lakeside_axe_intro"
+career_milestone_id = "career_smith_training_axe"
+
+[sub_resource type="Resource" id="line_axe"]
+script = ExtResource("3_line")
+speaker = 0
+text = "行，這把練習斧你先拿去用，記得別往人身上招呼。"
+
+[sub_resource type="Resource" id="c_axe_close"]
+script = ExtResource("4_choice")
+text = "待會再來"
+target_node_id = "__CLOSE__"
+
+[sub_resource type="Resource" id="n_give_axe"]
+script = ExtResource("2_node")
+node_id = "give_axe"
+lines = Array[ExtResource("3_line")]([SubResource("line_axe")])
+choices = Array[ExtResource("4_choice")]([SubResource("c_axe_close")])
+on_enter_effects = Array[ExtResource("5_effect")]([SubResource("eff_axe")])
+
+[resource]
+script = ExtResource("1_graph")
+start_node_id = "greet"
+nodes = Array[ExtResource("2_node")]([SubResource("n_greet"), SubResource("n_help"), SubResource("n_repeat"), SubResource("n_rocks_hint"), SubResource("n_thanks"), SubResource("n_give_axe")])

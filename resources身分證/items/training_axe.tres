@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3]
+
+[ext_resource type="Script" uid="uid://6nvyxel85i2p" path="res://resources身分證/items/item_resource.gd" id="1_item"]
+[ext_resource type="Texture2D" uid="uid://xd6p02mr7cnv" path="res://assets圖片_字體_音效/環境/小石頭/frame40000.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_item")
+item_id = "tool_training_axe"
+display_name = "練習斧"
+type = 0
+description = "學徒借你的練習用斧頭，別拿去砍人。圖示暫用小石頭占位。"
+icon = ExtResource("2_icon")
+world_texture = ExtResource("2_icon")
+is_stackable = false
+max_stack = 1

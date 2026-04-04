@@ -848,7 +848,7 @@ size = Vector2(18, 7)
 radius = 49.2544
 
 [node name="MonsterBase" type="CharacterBody2D" groups=["monsters"]]
-y_sort_enabled = true
+z_index = 5
 collision_layer = 2
 script = ExtResource("1_pu83x")
 
@@ -864,10 +864,9 @@ base_offset = Vector2(1.28, 20.7)
 shadow_scale = Vector2(0.855, 0.415)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["monsters"]]
-y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_tl5i2")
-animation = &"happy"
-frame_progress = 0.360753
+animation = &"idle_down"
+frame_progress = 0.691555
 centered = false
 offset = Vector2(-65, -75)
 
@@ -890,10 +889,14 @@ position = Vector2(0, -10)
 script = ExtResource("28_bvk6s")
 
 [node name="UIAnchor" parent="." instance=ExtResource("29_hexxi")]
-position = Vector2(0, -44)
+position = Vector2(2, -67)
 
 [node name="AccessoryPoint" type="Marker2D" parent="."]
-position = Vector2(0, -40)
+position = Vector2(-7.155, -3.315)
+
+[node name="AccessorySprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-7.155, -3.315)
 
 [node name="StateMachine" parent="." instance=ExtResource("7_sii4m")]
 

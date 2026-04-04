@@ -1,5 +1,6 @@
 extends Control
 ## 可重用確認對話框：標題、內文（BBCode）、確認／取消按鈕。不經 SignalBus，由呼叫端接 signal。
+## 視覺以 ConfirmDialog.tscn 的 Theme Overrides 為準。
 
 signal confirmed
 signal cancelled

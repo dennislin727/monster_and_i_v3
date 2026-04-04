@@ -1,0 +1,226 @@
+[gd_scene load_steps=11 format=3 uid="uid://homestead_level_v1"]
+
+[ext_resource type="Script" path="res://src腳本/entities/homestead/LevelRoot.gd" id="1_lr"]
+[ext_resource type="Script" path="res://src腳本/entities/homestead/HomesteadZone.gd" id="2_zone"]
+[ext_resource type="Script" path="res://src腳本/entities/homestead/HomesteadCrop.gd" id="3_hc"]
+[ext_resource type="Resource" path="res://resources身分證/items/homestead_crop_demo.tres" id="4_item"]
+[ext_resource type="Texture2D" path="res://assets圖片_字體_音效/環境/小石頭/frame40000.png" id="5_tex"]
+[ext_resource type="Script" path="res://src腳本/entities/homestead/HomesteadStationVisualController.gd" id="6_stvis"]
+[ext_resource type="PackedScene" path="res://scenes場景/levels/homestead/HomesteadSoilPlot.tscn" id="7_soil"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_h"]
+size = Vector2(900, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_v"]
+size = Vector2(40, 700)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_zone_full"]
+size = Vector2(860, 680)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crop"]
+radius = 28.0
+
+[node name="HomesteadLevel" type="Node2D"]
+script = ExtResource("1_lr")
+
+[node name="Ground" type="Polygon2D" parent="."]
+z_index = -2
+color = Color(0.4, 0.58, 0.34, 1)
+polygon = PackedVector2Array(-450, -400, 450, -400, 450, 350, -450, 350)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="North" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, -420)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/North"]
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="South" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 370)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/South"]
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="West" type="StaticBody2D" parent="Walls"]
+position = Vector2(-470, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/West"]
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="East" type="StaticBody2D" parent="Walls"]
+position = Vector2(470, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/East"]
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="HomesteadZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+script = ExtResource("2_zone")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomesteadZone"]
+shape = SubResource("RectangleShape2D_zone_full")
+
+[node name="HomesteadStationRoot" type="Node2D" parent="."]
+script = ExtResource("6_stvis")
+markers_path = NodePath("StationMarkers")
+
+[node name="StationMarkers" type="Node2D" parent="HomesteadStationRoot"]
+
+[node name="M0" type="Marker2D" parent="HomesteadStationRoot/StationMarkers"]
+position = Vector2(-140, 40)
+
+[node name="M1" type="Marker2D" parent="HomesteadStationRoot/StationMarkers"]
+position = Vector2(140, 40)
+
+[node name="M2" type="Marker2D" parent="HomesteadStationRoot/StationMarkers"]
+position = Vector2(0, -80)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(0, 60)
+
+[node name="Crops" type="Node2D" parent="."]
+
+[node name="MatureCrop01" type="Area2D" parent="Crops"]
+position = Vector2(-220, -140)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hc")
+is_mature = true
+item_template = ExtResource("4_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crops/MatureCrop01"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crops/MatureCrop01"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_tex")
+
+[node name="MatureCrop02" type="Area2D" parent="Crops"]
+position = Vector2(-80, -150)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hc")
+is_mature = true
+item_template = ExtResource("4_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crops/MatureCrop02"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crops/MatureCrop02"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_tex")
+
+[node name="MatureCrop03" type="Area2D" parent="Crops"]
+position = Vector2(60, -145)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hc")
+is_mature = true
+item_template = ExtResource("4_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crops/MatureCrop03"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crops/MatureCrop03"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_tex")
+
+[node name="MatureCrop04" type="Area2D" parent="Crops"]
+position = Vector2(200, -135)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hc")
+is_mature = true
+item_template = ExtResource("4_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crops/MatureCrop04"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crops/MatureCrop04"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_tex")
+
+[node name="MatureCrop05" type="Area2D" parent="Crops"]
+position = Vector2(-200, 20)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hc")
+is_mature = true
+item_template = ExtResource("4_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crops/MatureCrop05"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crops/MatureCrop05"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_tex")
+
+[node name="MatureCrop06" type="Area2D" parent="Crops"]
+position = Vector2(-50, 10)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hc")
+is_mature = true
+item_template = ExtResource("4_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crops/MatureCrop06"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crops/MatureCrop06"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_tex")
+
+[node name="MatureCrop07" type="Area2D" parent="Crops"]
+position = Vector2(90, 15)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hc")
+is_mature = true
+item_template = ExtResource("4_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crops/MatureCrop07"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crops/MatureCrop07"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_tex")
+
+[node name="MatureCrop08" type="Area2D" parent="Crops"]
+position = Vector2(220, 25)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hc")
+is_mature = true
+item_template = ExtResource("4_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crops/MatureCrop08"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crops/MatureCrop08"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_tex")
+
+[node name="SoilPlots" type="Node2D" parent="."]
+
+[node name="SoilPlot01" parent="SoilPlots" instance=ExtResource("7_soil")]
+position = Vector2(-200, -130)
+
+[node name="SoilPlot02" parent="SoilPlots" instance=ExtResource("7_soil")]
+position = Vector2(-120, -95)
+
+[node name="SoilPlot03" parent="SoilPlots" instance=ExtResource("7_soil")]
+position = Vector2(-38, -62)
+
+[node name="SoilPlot04" parent="SoilPlots" instance=ExtResource("7_soil")]
+position = Vector2(52, -32)

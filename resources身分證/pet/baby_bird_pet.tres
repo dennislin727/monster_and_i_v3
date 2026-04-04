@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="PetResource" load_steps=7 format=3 uid="uid://dt28w2ff0b2cj"]
+
+[ext_resource type="Texture2D" uid="uid://co383t2rfc8gf" path="res://assets圖片_字體_音效/寵物/寶寶/idle_down/frame00003.png" id="1_6n1vn"]
+[ext_resource type="Script" uid="uid://dmsc6qfxhej85" path="res://resources身分證/monster/PetResource.gd" id="1_pet"]
+[ext_resource type="Script" uid="uid://cohjp83qg2w1b" path="res://resources身分證/monster/PetSkillEntry.gd" id="3_entry"]
+[ext_resource type="Resource" uid="uid://jlbk0vfvv6wo" path="res://resources身分證/skill/skill_slime_heal.tres" id="4_heal"]
+[ext_resource type="SpriteFrames" uid="uid://dq14b0x8klsn4" path="res://resources身分證/pet/baby_bird_sprite_frames.tres" id="5_sf"]
+
+[sub_resource type="Resource" id="PetSkillEntry_heal"]
+script = ExtResource("3_entry")
+skill = ExtResource("4_heal")
+skill_level = 1
+
+[resource]
+script = ExtResource("1_pet")
+pet_id = "baby_bird"
+instance_id = ""
+pet_name = "寶寶"
+nickname = "寶寶"
+icon = ExtResource("1_6n1vn")
+sprite_frames = ExtResource("5_sf")
+level = 1
+experience = 0
+story = "一隻貪吃的綠繡眼"
+skills = Array[ExtResource("3_entry")]([SubResource("PetSkillEntry_heal")])
+follow_distance = 60.0
+follow_speed_mult = 0.8
+max_hp = 0
+heal_amount = 12
+heal_cooldown = 10.0
+luck_bonus_rate = 0.12

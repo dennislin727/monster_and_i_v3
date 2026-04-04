@@ -1,0 +1,31 @@
+《怪物與我》ARCHITECTURE.md 同步快照 2026-03-30（三槽寵物跟隨／ARCHITECTURE 修訂）
+
+【章節索引】
+L14: 開工前置作業（先對齊需求，再寫程式）
+L42: 核心五大鐵則（不可破）
+L67: 命名規範（Naming Conventions）
+L90: 專案目錄結構（Directory Structure）
+L106: SignalBus 規範（Omni-Protocol）
+L148: 封印系統（Sealing）協議摘要
+L167: Phase 4：寵物 Resource 定義與轉化流程（已落地）
+L259: Phase 5：背包、寵物頁 UI、放生確認、底欄與 HUD（已落地；**道具／寵物頁互動本階段已結案**）
+L283: Phase 11：日記與單槽存檔（2026-03-30 已落地）
+L314: Phase 6：技能特效模板化（進行中，約 75%）
+L334: Phase 7：頭飾系統（進行中，已可預覽）
+L414: Phase 9：NPC 對話／互動（MVP 地基已落地）
+L463: 湖畔關卡（LakeSideLevel）地圖與場景編排（實作定版，2026-03-29）
+L531: Phase 10：家園與採收（第一階切片已結案；第二階起待做）
+L641: 下一階段（文件錨點，供新對話接手）
+L733: 寵物出戰策略
+L754: 開發節奏建議（降低翻車率）
+L791: 常見地雷（請避免）
+L837: AI 溝通詞彙表（避免需求誤解）
+
+---
+【本批重點】三槽編隊與 GlobalBalance PET_PARTY_SLOT*/TRAIL_LAG、無存檔種子 STARTER_PET_PATHS 可重複同模板（暱稱·序號）、PetCompanion 卡牆 idle（_motion_intent_vel／_seek_point／dot）、Phase 7 頭飾敘述改多槽、Phase 11 補 user://monster_and_i_save_v1.json、寵物出戰策略定調。
+
+（全文見 repo ARCHITECTURE.md；GlobalBalance 槽位數值以 scratch 為準。）
+
+---
+
+《怪物與我》2026-03-30：ARCHITECTURE 待辦收口— 湖畔§5 儀式感（寵物碰撞／採收鈕／搖桿）、Phase9 帳簿風、Phase8／底欄／頭飾運營／背包道具與頭飾請求 UI 改标已结或维护备注；下一階段清單重編 0～5。 ARCHITECTURE.md 共偵測 19 個 ## 章節（詳見檔案）

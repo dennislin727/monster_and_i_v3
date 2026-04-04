@@ -37,6 +37,12 @@ enum Visibility_mode {
 ## If true, the joystick uses Input Actions (Project -> Project Settings -> Input Map)
 @export var use_input_actions := true
 
+## 觸控落點落在任一 `joystick_touch_exclusion` 群組內的 Control 上時，不搶占為搖桿（讓翻滾／底欄等可點）。
+## 與搖桿重疊的 HUD 按鈕請在 Main 等處 `add_to_group("joystick_touch_exclusion")`。
+
+## 未拖曳時 Base／Tip 的透明度係數（僅在搖桿可見時；封印／採收／對話隱藏時仍為完全不可見）。
+@export_range(0.0, 1.0, 0.01) var idle_hint_opacity_scale: float = 0.12
+
 @export var action_left := "ui_left"
 @export var action_right := "ui_right"
 @export var action_up := "ui_up"
@@ -60,30 +66,64 @@ var _touch_index : int = -1
 @onready var _base_default_position : Vector2 = _base.position
 @onready var _tip_default_position : Vector2 = _tip.position
 
-@onready var _default_color : Color = _tip.modulate
+var _default_color: Color
+var _base_color0: Color
+var _tip_color0: Color
 
 # FUNCTIONS
 
 func _ready() -> void:
+	_base_color0 = _base.modulate
+	_tip_color0 = _tip.modulate
+	_default_color = _tip_color0
 	if ProjectSettings.get_setting("input_devices/pointing/emulate_mouse_from_touch"):
 		printerr("The Project Setting 'emulate_mouse_from_touch' should be set to False")
 	if not ProjectSettings.get_setting("input_devices/pointing/emulate_touch_from_mouse"):
 		printerr("The Project Setting 'emulate_touch_from_mouse' should be set to True")
 	
-	if not DisplayServer.is_touchscreen_available() and visibility_mode == Visibility_mode.TOUCHSCREEN_ONLY :
+	if not DisplayServer.is_touchscreen_available() and visibility_mode == Visibility_mode.TOUCHSCREEN_ONLY:
 		hide()
-	
-	if visibility_mode == Visibility_mode.WHEN_TOUCHED:
-		hide()
+	elif visibility_mode == Visibility_mode.WHEN_TOUCHED:
+		show()
+		_apply_idle_hint_visual()
+	elif visibility_mode == Visibility_mode.ALWAYS:
+		_apply_idle_hint_visual()
+	elif visibility_mode == Visibility_mode.TOUCHSCREEN_ONLY and DisplayServer.is_touchscreen_available():
+		_apply_idle_hint_visual()
 		
 	if SignalBus:
 		SignalBus.seal_mode_toggled.connect(_on_seal_mode_toggled)
 		# 🟢 新增：聽這個信號來恢復顯示，這樣就不會跟 SealManager 互衝
 		SignalBus.seal_button_reset_requested.connect(func(): _on_seal_mode_toggled(false))
 
+
+func _is_touch_in_exclusion_zone(screen_pos: Vector2) -> bool:
+	var tree := get_tree()
+	if tree == null:
+		return false
+	for n in tree.get_nodes_in_group("joystick_touch_exclusion"):
+		if not (n is Control):
+			continue
+		var c := n as Control
+		if not c.is_visible_in_tree():
+			continue
+		if c.get_global_rect().has_point(screen_pos):
+			return true
+	return false
+
+
+func _apply_idle_hint_visual() -> void:
+	if not visible:
+		return
+	var s: float = clampf(idle_hint_opacity_scale, 0.0, 1.0)
+	_base.modulate = Color(_base_color0.r, _base_color0.g, _base_color0.b, _base_color0.a * s)
+	_tip.modulate = Color(_tip_color0.r, _tip_color0.g, _tip_color0.b, _tip_color0.a * s)
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		if event.pressed:
+			if _is_touch_in_exclusion_zone(event.position):
+				return
 			if _is_point_inside_joystick_area(event.position) and _touch_index == -1:
 				if joystick_mode == Joystick_mode.DYNAMIC or joystick_mode == Joystick_mode.FOLLOWING or (joystick_mode == Joystick_mode.FIXED and _is_point_inside_base(event.position)):
 					if joystick_mode == Joystick_mode.DYNAMIC or joystick_mode == Joystick_mode.FOLLOWING:
@@ -91,13 +131,12 @@ func _input(event: InputEvent) -> void:
 					if visibility_mode == Visibility_mode.WHEN_TOUCHED:
 						show()
 					_touch_index = event.index
+					_base.modulate = _base_color0
 					_tip.modulate = pressed_color
 					_update_joystick(event.position)
 					get_viewport().set_input_as_handled()
 		elif event.index == _touch_index:
 			_reset()
-			if visibility_mode == Visibility_mode.WHEN_TOUCHED:
-				hide()
 			get_viewport().set_input_as_handled()
 	elif event is InputEventScreenDrag:
 		if event.index == _touch_index:
@@ -169,6 +208,7 @@ func _reset():
 	is_pressed = false
 	output = Vector2.ZERO
 	_touch_index = -1
+	_base.modulate = _base_color0
 	_tip.modulate = _default_color
 	_base.position = _base_default_position
 	_tip.position = _tip_default_position
@@ -177,6 +217,37 @@ func _reset():
 		for action in [action_left, action_right, action_down, action_up]:
 			if Input.is_action_pressed(action):
 				Input.action_release(action)
+	_apply_idle_hint_if_visible_after_reset()
+
+
+func _apply_idle_hint_if_visible_after_reset() -> void:
+	if not visible:
+		return
+	match visibility_mode:
+		Visibility_mode.WHEN_TOUCHED, Visibility_mode.ALWAYS:
+			_apply_idle_hint_visual()
+		Visibility_mode.TOUCHSCREEN_ONLY:
+			if DisplayServer.is_touchscreen_available():
+				_apply_idle_hint_visual()
+
+
+## 對話／採收等全螢幕阻擋結束後呼叫；對齊封印結束邏輯，避免 WHEN_TOUCHED 被硬性常駐顯示。
+func restore_after_blocking_overlay() -> void:
+	set_process_input(true)
+	match visibility_mode:
+		Visibility_mode.ALWAYS:
+			show()
+			_apply_idle_hint_visual()
+		Visibility_mode.TOUCHSCREEN_ONLY:
+			if DisplayServer.is_touchscreen_available():
+				show()
+				_apply_idle_hint_visual()
+			else:
+				hide()
+		Visibility_mode.WHEN_TOUCHED:
+			show()
+			_apply_idle_hint_visual()
+
 
 func _on_seal_mode_toggled(is_enabled: bool):
 	if is_enabled:
@@ -185,8 +256,4 @@ func _on_seal_mode_toggled(is_enabled: bool):
 		self.hide()
 		self.set_process_input(false)
 	else:
-		# 🔴 恢復處理能力，但不強制 show()
-		# 讓它維持原本的 Visibility_mode (觸碰才顯示)
-		self.set_process_input(true)
-		if visibility_mode == Visibility_mode.ALWAYS:
-			self.show()
+		restore_after_blocking_overlay()

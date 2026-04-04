@@ -69,23 +69,23 @@ func _draw_warning_circle(p: float, a: Color, b: Color) -> void:
 	draw_arc(Vector2.ZERO, r, 0.0, TAU, 40, b, w, true)
 
 func _draw_warning_line(p: float, a: Color, b: Color) -> void:
-	var len: float = float(fx.get("length"))
+	var seg_len: float = float(fx.get("length"))
 	var w: float = float(fx.get("width"))
 	var dir: Vector2 = facing
 	var perp: Vector2 = Vector2(-dir.y, dir.x)
-	var start: Vector2 = -dir * len * 0.5
-	var end: Vector2 = dir * len * 0.5
+	var start: Vector2 = -dir * seg_len * 0.5
+	var end: Vector2 = dir * seg_len * 0.5
 	draw_line(start, end, b, w, true)
 	draw_polygon([start + perp * (w * 0.5), end + perp * (w * 0.5), end - perp * (w * 0.5), start - perp * (w * 0.5)], [Color(a.r, a.g, a.b, a.a * (0.2 + 0.2 * sin(p * TAU * 5.0)))])
 
 func _draw_fissure(p: float, a: Color, b: Color) -> void:
-	var len: float = float(fx.get("length"))
+	var seg_len: float = float(fx.get("length"))
 	var w: float = float(fx.get("width"))
 	var pts: PackedVector2Array = PackedVector2Array()
 	var steps: int = 6
 	for i in range(steps + 1):
 		var t: float = float(i) / float(steps)
-		var x: float = lerpf(-len * 0.5, len * 0.5, t)
+		var x: float = lerpf(-seg_len * 0.5, seg_len * 0.5, t)
 		var y: float = sin((t * 6.0 + float(_seed % 5)) * 2.1) * (w * 0.45)
 		pts.append(Vector2(x, y))
 	for i in range(steps):
@@ -130,19 +130,19 @@ func _draw_rain(p: float, a: Color, b: Color) -> void:
 		draw_line(from, to, a if i % 2 == 0 else b, w, true)
 
 func _draw_afterimage(p: float, a: Color, b: Color) -> void:
-	var len: float = float(fx.get("length"))
+	var seg_len: float = float(fx.get("length"))
 	var w: float = float(fx.get("width"))
 	var dir: Vector2 = facing
 	var perp: Vector2 = Vector2(-dir.y, dir.x)
 	for i in range(3):
 		var tp: float = float(i) / 2.0
-		var tail: Vector2 = -dir * len * (tp + p * 0.2)
+		var tail: Vector2 = -dir * seg_len * (tp + p * 0.2)
 		var width_now: float = w * (1.0 - tp) * (1.0 - p * 0.6)
 		draw_polygon(
 			[tail - perp * width_now, tail + perp * width_now, tail + perp * width_now + dir * 14.0, tail - perp * width_now + dir * 14.0],
 			[Color(a.r, a.g, a.b, a.a * (0.45 - tp * 0.2))]
 		)
-	draw_line(Vector2.ZERO, -dir * len, b, 1.0, true)
+	draw_line(Vector2.ZERO, -dir * seg_len, b, 1.0, true)
 
 func _draw_purple_trail(p: float, a: Color, b: Color) -> void:
 	_draw_afterimage(p, a, b)
@@ -156,12 +156,12 @@ func _draw_water_column(p: float, a: Color, b: Color) -> void:
 	draw_rect(rect.grow(-2.0), Color(b.r, b.g, b.b, b.a * 0.45), true)
 
 func _draw_projectile_tail(p: float, a: Color, b: Color) -> void:
-	var len: float = float(fx.get("length")) * (1.0 - p * 0.5)
+	var seg_len: float = float(fx.get("length")) * (1.0 - p * 0.5)
 	var w: float = float(fx.get("width"))
 	var dir: Vector2 = facing
 	var perp: Vector2 = Vector2(-dir.y, dir.x)
 	var tip: Vector2 = Vector2.ZERO
-	var tail: Vector2 = -dir * len
+	var tail: Vector2 = -dir * seg_len
 	draw_polygon([tip, tail + perp * w, tail - perp * w], [a])
 	draw_line(tail + perp * (w * 0.4), tip, b, 1.0, true)
 	draw_line(tail - perp * (w * 0.4), tip, b, 1.0, true)

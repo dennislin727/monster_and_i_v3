@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="SkillResource" load_steps=2 format=3 uid="uid://byjnloirmiem5"]
+
+[ext_resource type="Script" uid="uid://dsfdn1urr6jud" path="res://resources身分證/skill_fx_templates/SkillResource.gd" id="1_sk"]
+
+[resource]
+script = ExtResource("1_sk")
+skill_name = "投石"
+type = 1
+animation_name = "attack"
+cooldown = 5.5
+description = "遠程普攻：施法瞬間鎖定地面位置，警示後小範圍傷害。怪物：由 MonsterAttackState 施放，冷卻吃 MonsterResource.attack_cooldown（不看本欄）。寵物出戰：作為 AOE 戰鬥技時冷卻讀本欄。"
+startup_time = 0.0
+trigger_delay = 0.7
+recovery_time = 0.0
+dash_before_skill = false
+dash_distance = 0.0
+power = 20
+max_hp_pct = 1.0
+aoe_sweep_duration_sec = 0.5
+aoe_sweep_hit_radius = 38.0
+aoe_sweep_margin_world = 0.0
+aoe_sweep_anchor_on_caster = false
+aoe_use_ground_target = true
+show_warning_circle = false
+warning_color = Color(1, 0.35, 0.2, 0.35)
+ground_telegraph_y_scale = 0.6
+telegraph_fx_template_id = ""
+cast_fx_template_id = ""
+impact_fx_template_id = ""
+recovery_animation = "idle"
+is_homestead_till_skill = false

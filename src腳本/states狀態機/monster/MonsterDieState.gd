@@ -19,6 +19,7 @@ func enter():
 	if ui_anchor: ui_anchor.hide()
 	
 	monster.play_monster_animation("die")
+	_grant_gold_and_xp()
 	_spawn_loot()
 	
 	# 等待動畫結束或強制消失
@@ -28,6 +29,15 @@ func enter():
 		await get_tree().create_timer(0.5).timeout
 		
 	monster.queue_free()
+
+func _grant_gold_and_xp() -> void:
+	if monster.data == null:
+		return
+	if InventoryManager and monster.data.gold_reward > 0:
+		InventoryManager.add_gold(monster.data.gold_reward)
+	if ProgressionManager and monster.data.xp_reward > 0:
+		ProgressionManager.distribute_kill_xp(monster.data.xp_reward)
+
 
 func _spawn_loot():
 	if monster.data and monster.data.drop_item:

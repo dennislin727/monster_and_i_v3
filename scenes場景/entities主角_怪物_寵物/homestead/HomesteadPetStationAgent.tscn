@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://homestead_pet_station_agent"]
+
+[ext_resource type="Script" path="res://src腳本/entities/homestead/HomesteadPetStationAgent.gd" id="1_scr"]
+[ext_resource type="Script" uid="uid://bhcbk11by1xld" path="res://src腳本/components積木/ShadowComponent.gd" id="2_shadow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_area"]
+radius = 52.0
+
+[node name="HomesteadPetStationAgent" type="CharacterBody2D"]
+z_index = 5
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_scr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+centered = false
+offset = Vector2(-65, -75)
+
+[node name="ShadowComponent" type="AnimatedSprite2D" parent="."]
+script = ExtResource("2_shadow")
+base_offset = Vector2(-0.665, 20.715)
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_area")
+
+[node name="PromptAnchor" type="Marker2D" parent="."]
+position = Vector2(0, -52)

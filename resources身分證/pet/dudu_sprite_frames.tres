@@ -1,0 +1,131 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://duduspriteframes01"]
+
+[ext_resource type="Texture2D" uid="uid://cvqfdsul5rsbw" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50000.png" id="1_ph"]
+
+[resource]
+animations = [{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": false,
+"name": &"attack_down",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": false,
+"name": &"attack_side",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": false,
+"name": &"attack_side_down",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": false,
+"name": &"attack_side_up",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": false,
+"name": &"attack_up",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": false,
+"name": &"die",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": false,
+"name": &"happy",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": false,
+"name": &"hit_down",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": false,
+"name": &"hit_side",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": false,
+"name": &"hit_up",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": true,
+"name": &"idle_down",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": true,
+"name": &"idle_side",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": true,
+"name": &"idle_side_down",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": true,
+"name": &"idle_side_up",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": true,
+"name": &"idle_up",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": true,
+"name": &"run_down",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": true,
+"name": &"run_side",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": true,
+"name": &"run_side_down",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": true,
+"name": &"run_side_up",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": true,
+"name": &"run_up",
+"speed": 8.0
+},
+{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_ph")}],
+"loop": false,
+"name": &"spell",
+"speed": 8.0
+}]

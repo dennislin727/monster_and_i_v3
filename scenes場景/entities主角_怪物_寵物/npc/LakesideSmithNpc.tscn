@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://cuccrvxhy7gw8"]
+
+[ext_resource type="Script" uid="uid://r1t8xokckjc7" path="res://src腳本/entities/npcs/NpcFieldAgent.gd" id="1_agent"]
+[ext_resource type="Resource" uid="uid://cpanyp45jacs0" path="res://resources身分證/npc/lakeside_smith.tres" id="2_npcres"]
+[ext_resource type="Script" uid="uid://bhcbk11by1xld" path="res://src腳本/components積木/ShadowComponent.gd" id="2_shadow"]
+[ext_resource type="Texture2D" uid="uid://cvqfdsul5rsbw" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50000.png" id="3_f0"]
+[ext_resource type="Texture2D" uid="uid://glh3yuysteaa" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50001.png" id="4_f1"]
+[ext_resource type="Texture2D" uid="uid://bnc3gjeunxg2s" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50002.png" id="5_f2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_idle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_f0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f2")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_npc"]
+radius = 72.0
+
+[node name="LakesideSmithNpc" type="Node2D"]
+z_index = 5
+y_sort_enabled = true
+script = ExtResource("1_agent")
+npc_data = ExtResource("2_npcres")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_idle")
+animation = &"idle_down"
+autoplay = "idle_down"
+offset = Vector2(0, -30)
+
+[node name="ShadowComponent" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+show_behind_parent = true
+z_index = -1
+script = ExtResource("2_shadow")
+main_sprite_path = NodePath("..")
+base_offset = Vector2(0.245, 16.74)
+preview_offset = Vector2(0.47, 0)
+shadow_offset_extra = Vector2(-0.9, 0)
+shadow_scale = Vector2(1.135, 0.36)
+shadow_opacity = 0.4
+
+[node name="InteractionArea" type="Area2D" parent="."]
+position = Vector2(0, -19)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_npc")
+
+[node name="PromptAnchor" type="Marker2D" parent="."]
+position = Vector2(28, -55)

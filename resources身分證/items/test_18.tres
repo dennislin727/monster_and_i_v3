@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://cbejfq75e65w4"]
+
+[ext_resource type="Script" uid="uid://6nvyxel85i2p" path="res://resources身分證/items/item_resource.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cvqfdsul5rsbw" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50000.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_script")
+item_id = "test_item_18"
+display_name = "測試道具 18"
+type = 0
+description = "測試用道具（暫存），用於背包多格／捲動視覺。"
+is_stackable = true
+max_stack = 99
+icon = ExtResource("2_icon")
+world_texture = ExtResource("2_icon")
+metadata/_custom_type_script = "uid://6nvyxel85i2p"

@@ -22,6 +22,15 @@ DataManager="*res://src腳本/autoload管理員/DataManager.gd"
 SignalBus="*res://src腳本/autoload管理員/SignalBus.gd"
 PetManager="*res://src腳本/autoload管理員/PetManager.gd"
 InventoryManager="*res://src腳本/autoload管理員/InventoryManager.gd"
+NpcInteractionManager="*res://src腳本/autoload管理員/NpcInteractionManager.gd"
+NpcStateManager="*res://src腳本/autoload管理員/NpcStateManager.gd"
+DialogueManager="*res://src腳本/autoload管理員/DialogueManager.gd"
+HomeManager="*res://src腳本/autoload管理員/HomeManager.gd"
+PlayerHintCatalog="*res://src腳本/autoload管理員/PlayerHintCatalog.gd"
+SaveGameManager="*res://src腳本/autoload管理員/SaveGameManager.gd"
+DiaryManager="*res://src腳本/autoload管理員/DiaryManager.gd"
+ProgressionManager="*res://src腳本/autoload管理員/ProgressionManager.gd"
+HomesteadStationDialogue="*res://src腳本/autoload管理員/HomesteadStationDialogue.gd"
 
 [display]
 

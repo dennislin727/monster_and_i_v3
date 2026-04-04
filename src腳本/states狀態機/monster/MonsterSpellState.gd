@@ -33,12 +33,19 @@ func _execute_sequence(skill: SkillResource):
 		_clear_protection()
 		return
 	
-	# 3. 播放 Spell 動畫
+	# 3. 播放 Spell 動畫（落地圈 AOE 鎖定施法當下目標位置）
+	var impact_world: Vector2 = monster.global_position
+	if monster.target_player and is_instance_valid(monster.target_player):
+		impact_world = monster.target_player.global_position
 	monster.play_monster_animation(skill.animation_name)
 	if effect_manager and skill.cast_fx_template_id != "" and effect_manager.has_method("play_template_fx_by_id"):
 		effect_manager.play_template_fx_by_id(skill.cast_fx_template_id, monster.global_position, effect_manager, facing)
 	
-	# 等待觸發延遲
+	if skill.type == SkillResource.SkillType.AOE_ATTACK and skill.aoe_use_ground_target:
+		if effect_manager and effect_manager.has_method("play_ground_slam_aoe_from_skill"):
+			effect_manager.play_ground_slam_aoe_from_skill(skill, monster, true, impact_world)
+	
+	# 等待觸發延遲（與 GroundSlam 警示／拋物線時長一致）
 	await get_tree().create_timer(skill.trigger_delay).timeout
 	if monster.state_machine.current_state != self: 
 		_clear_protection()
@@ -49,6 +56,9 @@ func _execute_sequence(skill: SkillResource):
 		monster.health.current_hp += skill.power
 		print("[Spell] %s 補血成功" % monster.name)
 		SignalBus.heal_spawned.emit(monster.global_position, skill.power)
+	elif skill.type == SkillResource.SkillType.AOE_ATTACK and not skill.aoe_use_ground_target:
+		if effect_manager and effect_manager.has_method("play_line_sweep_aoe_from_skill"):
+			effect_manager.play_line_sweep_aoe_from_skill(skill, monster, true)
 	if effect_manager and skill.impact_fx_template_id != "" and effect_manager.has_method("play_template_fx_by_id"):
 		effect_manager.play_template_fx_by_id(skill.impact_fx_template_id, monster.global_position, effect_manager, facing)
 	
