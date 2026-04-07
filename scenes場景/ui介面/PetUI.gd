@@ -356,6 +356,8 @@ func _refresh() -> void:
 	for p in _pet_items:
 		if p == null:
 			continue
+		if PetManager.is_pet_stationed(p):
+			continue
 		list_rows.add_child(_make_pet_list_row(p, row_font))
 
 	_refresh_details()

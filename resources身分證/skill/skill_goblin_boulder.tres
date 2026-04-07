@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SkillResource" load_steps=2 format=3 uid="uid://b8g0bln7r0ck"]
+
+[ext_resource type="Script" uid="uid://dsfdn1urr6jud" path="res://resources身分證/skill_fx_templates/SkillResource.gd" id="1_sk"]
+
+[resource]
+script = ExtResource("1_sk")
+skill_name = "天災滾石"
+type = 1
+animation_name = "spell"
+cooldown = 15.0
+description = "Spell 大絕：巨石沿視窗對角橫掃（以攝影機可視範圍推算），路徑附近敵方各受一次傷。與普攻投石（落地圈）分開。"
+startup_time = 0.35
+trigger_delay = 1.5
+recovery_time = 2.0
+dash_before_skill = false
+dash_distance = 0.0
+power = 10
+max_hp_pct = 1.0
+aoe_sweep_duration_sec = 0.92
+aoe_sweep_hit_radius = 46.0
+aoe_sweep_margin_world = 155.0
+aoe_sweep_anchor_on_caster = false
+aoe_use_ground_target = false
+show_warning_circle = false
+warning_color = Color(1, 0.25, 0.15, 0.38)
+ground_telegraph_y_scale = 0.6
+telegraph_fx_template_id = "warning_line"
+cast_fx_template_id = "smoke"
+impact_fx_template_id = ""
+recovery_animation = "idle"
+is_homestead_till_skill = false
+metadata/_custom_type_script = "uid://dsfdn1urr6jud"

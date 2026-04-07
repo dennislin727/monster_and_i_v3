@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NpcResource" load_steps=2 format=3 uid="uid://cpanyp45jacs0"]
+
+[ext_resource type="Script" uid="uid://dm86pln4dyu8q" path="res://resources身分證/npc/npc_resource.gd" id="1_npc"]
+
+[resource]
+script = ExtResource("1_npc")
+npc_id = "npc_lakeside_smith"
+display_name = "湖邊學徒"
+prompt_line = "找牠對話"
+prompt_affinity_threshold = 50
+prompt_line_high_affinity = "（心想）他好像願意借我工具了……"
+dialogue_graph_key = "lakeside_smith"
