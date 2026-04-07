@@ -8,12 +8,10 @@ func enter():
 	# 🔴 修正：刪掉歸零那行！
 	# 我們不手動改 attack_cd_timer，讓它自己慢慢扣
 	
-	# 擊退效果
+	# 擊退：勿 Tween global_position（會穿牆）；改 MonsterBase.request_knockback_push + 下幀分段 move_and_collide
 	if monster.target_player:
-		var knockback = (monster.global_position - monster.target_player.global_position).normalized()
-		var t = create_tween()
-		t.tween_property(monster, "global_position", 
-		monster.global_position + knockback * GlobalBalance.KNOCKBACK_FORCE, 0.2)
+		var knockback := (monster.global_position - monster.target_player.global_position).normalized()
+		monster.request_knockback_push(knockback, GlobalBalance.KNOCKBACK_FORCE)
 	
 	# 閃白效果
 	monster.modulate = Color(10, 10, 10)

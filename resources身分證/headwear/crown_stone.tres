@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="HeadwearResource" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://resources身分證/headwear/headwear_resource.gd" id="1_hw"]
+[ext_resource type="Texture2D" path="res://assets圖片_字體_音效/環境/小石頭/frame40000.png" id="2_stone"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crown_stone"]
+animations = [{
+"frames": [{"duration": 1.0, "texture": ExtResource("2_stone")}],
+"loop": true,
+"name": &"idle_down",
+"speed": 8.0
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("2_stone")}],
+"loop": true,
+"name": &"idle_side",
+"speed": 8.0
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("2_stone")}],
+"loop": true,
+"name": &"idle_up",
+"speed": 8.0
+}]
+
+[resource]
+script = ExtResource("1_hw")
+headwear_id = "headwear_crown_stone"
+display_name = "石之皇冠"
+description = "暫用石頭造型的王冠，供皇冠史萊姆原型演出。"
+icon = ExtResource("2_stone")
+sprite_frames = SubResource("SpriteFrames_crown_stone")

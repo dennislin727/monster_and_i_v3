@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://cwq0n0o2h1buv"]
+
+[ext_resource type="Script" uid="uid://6nvyxel85i2p" path="res://resources身分證/items/item_resource.gd" id="1_4fv25"]
+[ext_resource type="Texture2D" uid="uid://xd6p02mr7cnv" path="res://assets圖片_字體_音效/環境/小石頭/frame40000.png" id="1_jp52f"]
+
+[resource]
+script = ExtResource("1_4fv25")
+item_id = "mat_stone_01"
+display_name = "小石頭"
+type = 0
+description = "路邊隨處可見的石頭，或許能用來做點什麼？"
+icon = ExtResource("1_jp52f")
+world_texture = ExtResource("1_jp52f")
+is_stackable = true
+max_stack = 99
+metadata/_custom_type_script = "uid://6nvyxel85i2p"

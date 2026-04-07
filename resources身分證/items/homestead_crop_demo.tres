@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://csidd1558lcll"]
+
+[ext_resource type="Script" uid="uid://6nvyxel85i2p" path="res://resources身分證/items/item_resource.gd" id="1_item"]
+[ext_resource type="Texture2D" uid="uid://xd6p02mr7cnv" path="res://assets圖片_字體_音效/環境/小石頭/frame40000.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_item")
+item_id = "homestead_crop_demo"
+display_name = "家園作物（試作）"
+type = 0
+description = "Phase 10 單品種採收雛形用。"
+icon = ExtResource("2_icon")
+world_texture = ExtResource("2_icon")
+is_stackable = true
+max_stack = 99
+is_seed = true

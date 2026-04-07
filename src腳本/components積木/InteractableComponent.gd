@@ -36,11 +36,15 @@ func start_harvest() -> void:
 
 func _on_parent_died() -> void:
 	if is_collected: return
-	is_collected = true 
-	
+	is_collected = true
 	finish_harvest()
-	get_parent().set_deferred("process_mode", PROCESS_MODE_DISABLED) 
-	get_parent().queue_free()
+	var pr := get_parent()
+	if pr == null:
+		return
+	if pr is CanvasItem:
+		(pr as CanvasItem).visible = false
+	pr.set_deferred("process_mode", PROCESS_MODE_DISABLED)
+	pr.queue_free()
 
 func finish_harvest() -> void:
 	if item_data and item_data.icon:

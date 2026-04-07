@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cp6jcoh6f6ejc" path="res://scenes場景/entities主角_怪物_寵物/environment環境物件/Rock.gd" id="1_2ejva"]
 [ext_resource type="Script" uid="uid://qi2anmbkijqa" path="res://src腳本/components積木/InteractableComponent.gd" id="1_58sbn"]
 [ext_resource type="Texture2D" uid="uid://xd6p02mr7cnv" path="res://assets圖片_字體_音效/環境/小石頭/frame40000.png" id="2_2ejva"]
-[ext_resource type="Resource" uid="uid://cwq0n0o2h1buv" path="res://src腳本/resources身分證/items/stone.tres" id="2_48iwc"]
+[ext_resource type="Resource" uid="uid://cwq0n0o2h1buv" path="res://resources身分證/items/stone.tres" id="2_48iwc"]
 [ext_resource type="Script" uid="uid://bsvw8p158mk2f" path="res://src腳本/components積木/HealthComponent.gd" id="5_b2ni6"]
 [ext_resource type="PackedScene" uid="uid://bhk3cmoh47jfg" path="res://scenes場景/ui介面/HealthBar.tscn" id="6_wrnp2"]
 
@@ -11,6 +11,7 @@
 size = Vector2(55, 32)
 
 [node name="Rock" type="Node2D"]
+z_index = 5
 script = ExtResource("1_2ejva")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

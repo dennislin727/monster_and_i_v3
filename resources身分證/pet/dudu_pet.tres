@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="PetResource" load_steps=8 format=3 uid="uid://dudupetres01"]
+
+[ext_resource type="Script" uid="uid://dmsc6qfxhej85" path="res://resources身分證/monster/PetResource.gd" id="1_pet"]
+[ext_resource type="Texture2D" uid="uid://cvqfdsul5rsbw" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50000.png" id="2_icon"]
+[ext_resource type="Script" uid="uid://cohjp83qg2w1b" path="res://resources身分證/monster/PetSkillEntry.gd" id="3_entry"]
+[ext_resource type="Resource" uid="uid://jlbk0vfvv6wo" path="res://resources身分證/skill/skill_slime_heal.tres" id="4_heal"]
+[ext_resource type="Resource" uid="uid://cskillhomesteadtill" path="res://resources身分證/skill/skill_homestead_till.tres" id="5_till"]
+[ext_resource type="SpriteFrames" uid="uid://duduspriteframes01" path="res://resources身分證/pet/dudu_sprite_frames.tres" id="6_sf"]
+
+[sub_resource type="Resource" id="PetSkillEntry_heal"]
+script = ExtResource("3_entry")
+skill = ExtResource("4_heal")
+skill_level = 1
+
+[sub_resource type="Resource" id="PetSkillEntry_till"]
+script = ExtResource("3_entry")
+skill = ExtResource("5_till")
+skill_level = 1
+
+[resource]
+script = ExtResource("1_pet")
+pet_id = "dudu"
+instance_id = ""
+pet_name = "嘟嘟"
+nickname = "嘟嘟"
+icon = ExtResource("2_icon")
+sprite_frames = ExtResource("6_sf")
+level = 1
+story = "預留寵物：動畫圖檔請替換 `dudu_sprite_frames.tres` 內各軌；目前為透明占位。\n技能：治療（與史萊姆共用時序資源）＋家園翻土。"
+skills = Array[ExtResource("3_entry")]([SubResource("PetSkillEntry_heal"), SubResource("PetSkillEntry_till")])
+follow_distance = 60.0
+follow_speed_mult = 1.1
+max_hp = 0
+heal_amount = 15
+heal_cooldown = 10.0

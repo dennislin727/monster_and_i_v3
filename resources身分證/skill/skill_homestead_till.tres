@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SkillResource" load_steps=2 format=3 uid="uid://cskillhomesteadtill"]
+
+[ext_resource type="Script" path="res://resources身分證/skill_fx_templates/SkillResource.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_name = "家園翻土"
+type = 0
+animation_name = "spell"
+cooldown = 2.8
+description = "在家園內翻鬆土壤，讓格子長出作物。"
+startup_time = 0.0
+trigger_delay = 0.35
+recovery_time = 0.4
+dash_before_skill = false
+dash_distance = 0.0
+power = 0
+max_hp_pct = 0.0
+show_warning_circle = false
+warning_color = Color(1, 0, 0, 0.4)
+telegraph_fx_template_id = ""
+cast_fx_template_id = ""
+impact_fx_template_id = ""
+recovery_animation = "idle"
+is_homestead_till_skill = true

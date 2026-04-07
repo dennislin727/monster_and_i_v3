@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://confirm_dialog_ui_v1"]
+[gd_scene load_steps=7 format=3 uid="uid://confirm_dialog_ui_v1"]
 
 [ext_resource type="Script" path="res://scenes場景/ui介面/ConfirmDialog.gd" id="1_script"]
 [ext_resource type="FontFile" uid="uid://c2uixuydo8x6w" path="res://assets圖片_字體_音效/PixelFont.ttf" id="2_font"]
@@ -14,6 +14,54 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ledger_btn_n"]
+bg_color = Color(0.741176, 0.717647, 0.65098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29, 0.22, 0.16, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ledger_btn_h"]
+bg_color = Color(0.588235, 0.568627, 0.513725, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29, 0.22, 0.16, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ledger_btn_p"]
+bg_color = Color(0.886275, 0.827451, 0.709804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29, 0.22, 0.16, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ledger_btn_d"]
+bg_color = Color(0.629, 0.609, 0.553333, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29, 0.22, 0.16, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="ConfirmDialog" type="Control"]
 z_index = 200
@@ -67,6 +115,7 @@ theme_override_constants/separation = 10
 
 [node name="TitleLabel" type="Label" parent="PanelRoot/Column"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 14
 text = "確認"
@@ -76,6 +125,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("2_font")
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
@@ -86,18 +136,40 @@ scroll_active = false
 [node name="ButtonsRow" type="HBoxContainer" parent="PanelRoot/Column"]
 layout_mode = 2
 alignment = 1
-theme_override_constants/separation = 12
+theme_override_constants/separation = 6
 
 [node name="CancelBtn" type="Button" parent="PanelRoot/Column/ButtonsRow"]
+custom_minimum_size = Vector2(90, 28)
 layout_mode = 2
+focus_mode = 0
 size_flags_horizontal = 3
+theme_override_colors/font_disabled_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_hover_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_focus_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_pressed_color = Color(0.29, 0.22, 0.16, 1)
 theme_override_fonts/font = ExtResource("2_font")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ledger_btn_d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ledger_btn_h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ledger_btn_p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ledger_btn_n")
 text = "取消"
 
 [node name="ConfirmBtn" type="Button" parent="PanelRoot/Column/ButtonsRow"]
+custom_minimum_size = Vector2(90, 28)
 layout_mode = 2
+focus_mode = 0
 size_flags_horizontal = 3
+theme_override_colors/font_disabled_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_hover_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_focus_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_pressed_color = Color(0.29, 0.22, 0.16, 1)
 theme_override_fonts/font = ExtResource("2_font")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ledger_btn_d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ledger_btn_h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ledger_btn_p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ledger_btn_n")
 text = "確認"

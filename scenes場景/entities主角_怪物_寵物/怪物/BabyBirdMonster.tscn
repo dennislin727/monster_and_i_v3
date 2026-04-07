@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c56pyt32sr12"]
+
+[ext_resource type="PackedScene" uid="uid://ckgvmt8hosbxi" path="res://scenes場景/entities主角_怪物_寵物/怪物/MonsterBase.tscn" id="1_ms"]
+[ext_resource type="SpriteFrames" uid="uid://dq14b0x8klsn4" path="res://resources身分證/pet/baby_bird_sprite_frames.tres" id="2_sf"]
+[ext_resource type="Resource" uid="uid://b8ybb1rdamb1t" path="res://resources身分證/monster/baby_bird_monster.tres" id="3_data"]
+[ext_resource type="Script" uid="uid://c3ddbf0trw3a3" path="res://src腳本/entities/monsters/AmbientBabyBirdMonster.gd" id="4_scr"]
+
+[node name="BabyBirdMonster" instance=ExtResource("1_ms")]
+script = ExtResource("4_scr")
+lake_ambient_save_slot = 0
+data = ExtResource("3_data")
+
+[node name="ShadowComponent" parent="." index="1"]
+base_offset = Vector2(-0.665, 20.715)
+shadow_scale = Vector2(0.8, 0.4)
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = ExtResource("2_sf")
+frame_progress = 0.751402
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, -2)
+
+[node name="CollisionShape2D" parent="HurtboxComponent" index="0"]
+position = Vector2(0, -7)
+
+[node name="AccessoryPoint" parent="." index="8"]
+position = Vector2(0, -40)
+
+[node name="AccessorySprite" parent="." index="9"]
+position = Vector2(0, -40)
+
+[editable path="HurtboxComponent"]

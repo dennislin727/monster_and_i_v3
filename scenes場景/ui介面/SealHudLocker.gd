@@ -15,17 +15,32 @@ func _ready() -> void:
 func _hud_items(layer: CanvasLayer) -> Array[CanvasItem]:
 	var out: Array[CanvasItem] = []
 	var hb := layer.get_node_or_null("PlayerHealthBar") as CanvasItem
+	var xp_row := layer.get_node_or_null("PlayerXpRow") as CanvasItem
+	var right_action := layer.get_node_or_null("RightActionHud") as CanvasItem
 	var dash := layer.get_node_or_null("DashButton") as CanvasItem
 	var pet_btn := layer.get_node_or_null("PetUI/OpenButton") as CanvasItem
 	var inv_btn := layer.get_node_or_null("InventoryUI/OpenButton") as CanvasItem
+	var diary_btn := layer.get_node_or_null("DiaryUI/OpenButton") as CanvasItem
+	var save_btn := layer.get_node_or_null("SaveGameButton") as CanvasItem
+	var party_hud := layer.get_node_or_null("PetPartySlotHud") as CanvasItem
 	if hb:
 		out.append(hb)
-	if dash:
+	if xp_row:
+		out.append(xp_row)
+	if right_action:
+		out.append(right_action)
+	elif dash:
 		out.append(dash)
 	if pet_btn:
 		out.append(pet_btn)
 	if inv_btn:
 		out.append(inv_btn)
+	if diary_btn:
+		out.append(diary_btn)
+	if save_btn:
+		out.append(save_btn)
+	if party_hud:
+		out.append(party_hud)
 	return out
 
 func _kill_fade() -> void:

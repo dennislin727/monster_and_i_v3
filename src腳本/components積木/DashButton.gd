@@ -1,5 +1,5 @@
 extends Button
+## 視覺以場景（例如 Main.tscn）的 Theme Overrides 為準；此腳本只負責發送 dash 請求。
 
 func _on_pressed() -> void:
-	# 簡單粗暴：直接發電報說「我要瞬移！」
 	SignalBus.dash_requested.emit()

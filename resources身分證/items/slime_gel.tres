@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://dcaycpusgqs64"]
+
+[ext_resource type="Script" uid="uid://6nvyxel85i2p" path="res://resources身分證/items/item_resource.gd" id="1_e27jh"]
+
+[resource]
+script = ExtResource("1_e27jh")
+item_id = "史萊姆黏液"
+display_name = "黏液"
+type = 0
+description = "史萊姆的肉塊，嚐起來像果凍XD"
+is_stackable = true
+max_stack = 99
+is_seed = false
+metadata/_custom_type_script = "uid://6nvyxel85i2p"

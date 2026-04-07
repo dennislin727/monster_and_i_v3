@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8homesteadsoilplot"]
+
+[ext_resource type="Script" path="res://src腳本/entities/homestead/HomesteadSoilPlot.gd" id="1_plot"]
+[ext_resource type="Script" path="res://src腳本/entities/homestead/HomesteadCrop.gd" id="2_crop"]
+[ext_resource type="Resource" path="res://resources身分證/items/homestead_crop_demo.tres" id="3_item"]
+[ext_resource type="Texture2D" path="res://assets圖片_字體_音效/環境/小石頭/frame40000.png" id="4_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crop"]
+radius = 28.0
+
+[node name="HomesteadSoilPlot" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_plot")
+item_template = ExtResource("3_item")
+
+[node name="SoilVisual" type="Sprite2D" parent="."]
+modulate = Color(0.55, 0.72, 0.38, 1)
+position = Vector2(0, 4)
+scale = Vector2(0.5, 0.35)
+texture = ExtResource("4_tex")
+
+[node name="Crop" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_crop")
+is_mature = false
+free_after_pickup = false
+item_template = ExtResource("3_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crop"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crop"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("4_tex")

@@ -1,0 +1,546 @@
+[gd_scene load_steps=37 format=3 uid="uid://c41howmqh1srg"]
+
+[ext_resource type="Script" uid="uid://8leq68eao2xd" path="res://src腳本/entities/homestead/LevelRoot.gd" id="1_lr"]
+[ext_resource type="Texture2D" uid="uid://du4deh20sgk04" path="res://assets圖片_字體_音效/環境/城鎮含家園/hometown_01.png" id="2_bg"]
+[ext_resource type="Script" uid="uid://w4bh3kf3ck34" path="res://src腳本/entities/homestead/HomesteadZone.gd" id="3_zone"]
+[ext_resource type="Script" uid="uid://ckrwwldtttvc0" path="res://src腳本/entities/homestead/HomesteadCrop.gd" id="4_crop"]
+[ext_resource type="Resource" uid="uid://csidd1558lcll" path="res://resources身分證/items/homestead_crop_demo.tres" id="5_item"]
+[ext_resource type="Texture2D" uid="uid://xd6p02mr7cnv" path="res://assets圖片_字體_音效/環境/小石頭/frame40000.png" id="6_tex"]
+[ext_resource type="Script" uid="uid://brj156fmnghcc" path="res://src腳本/entities/homestead/HomesteadStationVisualController.gd" id="12_stvis"]
+[ext_resource type="PackedScene" uid="uid://olv4vx8a82ot" path="res://scenes場景/levels/homestead/HomesteadSoilPlot.tscn" id="13_soil"]
+[ext_resource type="Script" uid="uid://dgpqr1pib8sa7" path="res://src腳本/entities/homestead/TownLeafAmbientVfx.gd" id="14_leaf_amb"]
+[ext_resource type="Texture2D" uid="uid://cdfw4xgn6ly44" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/14.png" id="21_oggha"]
+[ext_resource type="Texture2D" uid="uid://bdkn58gult556" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/25.png" id="23_f6l7c"]
+[ext_resource type="Texture2D" uid="uid://dunhtyf8papg3" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/15.png" id="24_2hn5q"]
+[ext_resource type="Texture2D" uid="uid://dypt7dh2i16wf" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/24.png" id="25_awopp"]
+[ext_resource type="Texture2D" uid="uid://c1udx1kqsl4nr" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/01.png" id="fg_01"]
+[ext_resource type="Texture2D" uid="uid://cr6ddsf10tx0g" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/02.png" id="fg_02"]
+[ext_resource type="Texture2D" uid="uid://bl2ceelb70hiq" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/03.png" id="fg_03"]
+[ext_resource type="Texture2D" uid="uid://c2tssdacyd26t" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/04.png" id="fg_04"]
+[ext_resource type="Texture2D" uid="uid://7ajril7ihdid" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/05.png" id="fg_05"]
+[ext_resource type="Texture2D" uid="uid://bo400p0saief" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/06.png" id="fg_06"]
+[ext_resource type="Texture2D" uid="uid://3x2qy50x78jy" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/07.png" id="fg_07"]
+[ext_resource type="Texture2D" uid="uid://bucwo4de4jk5a" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/08.png" id="fg_08"]
+[ext_resource type="Texture2D" uid="uid://bphtbdrqkkge5" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/09.png" id="fg_09"]
+[ext_resource type="Texture2D" uid="uid://d2b331soy31bb" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/10.png" id="fg_10"]
+[ext_resource type="Texture2D" uid="uid://bqyqo63wrei8g" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/12.png" id="fg_12"]
+[ext_resource type="Texture2D" uid="uid://g5orbdvx6qnm" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/13.png" id="fg_13"]
+[ext_resource type="Texture2D" uid="uid://biq4n4uydb4tm" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/16.png" id="fg_16"]
+[ext_resource type="Texture2D" uid="uid://3ocbuhd4oef7" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/17.png" id="fg_17"]
+[ext_resource type="Texture2D" uid="uid://daqvrapk2dmpc" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/19.png" id="fg_19"]
+[ext_resource type="Texture2D" uid="uid://bsxmx8rdbf1ui" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/20.png" id="fg_20"]
+[ext_resource type="Texture2D" uid="uid://bl8b23yjxcvin" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/21.png" id="fg_21"]
+[ext_resource type="Texture2D" uid="uid://btqti2t34w6px" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/22.png" id="fg_22"]
+[ext_resource type="Texture2D" uid="uid://brrs2nbglod5q" path="res://assets圖片_字體_音效/環境/城鎮含家園/前景/23.png" id="fg_23"]
+[ext_resource type="Script" uid="uid://di2p173ryhsf5" path="res://src腳本/entities/homestead/ForegroundCanopyHoist.gd" id="fg_hoist"]
+[ext_resource type="Script" uid="uid://ddl0n0kpuidce" path="res://src腳本/entities/homestead/LevelPortal.gd" id="portal_scr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crop"]
+radius = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_portal"]
+size = Vector2(125, 81.5)
+
+[node name="FallenLeafTown" type="Node2D"]
+script = ExtResource("1_lr")
+
+[node name="Art" type="Node2D" parent="."]
+
+[node name="MapBase" type="Node2D" parent="Art"]
+
+[node name="Background" type="Sprite2D" parent="Art/MapBase"]
+z_index = -4
+texture = ExtResource("2_bg")
+metadata/_edit_lock_ = true
+
+[node name="TerrainCollision" type="StaticBody2D" parent="Art/MapBase"]
+
+[node name="EdgeNorth" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+polygon = PackedVector2Array(-940, -632, 940, -632, 940, -575, -940, -575)
+
+[node name="EdgeNorth2" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+position = Vector2(383, 248)
+polygon = PackedVector2Array(28, -673, 36, -663, 133, -700, 128, -736, 116, -775, 55, -762, 59, -736, 91, -729, 93, -713, 68.5779, -695.347)
+
+[node name="EdgeNorth4" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+position = Vector2(493, 424)
+polygon = PackedVector2Array(135, -716, 174, -692, 217, -680, 215, -671, 237, -654, 262, -650, 333, -746, 144, -831, -61, -837, 1, -739, 5, -710, 11, -683, 54, -667)
+
+[node name="EdgeNorth5" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+position = Vector2(460, 535)
+polygon = PackedVector2Array(65, -765, 1, -800, -1, -830, -85, -940, -92, -901, -268, -1001, -318, -1021, -394, -974, -562, -911, -670, -909, -693, -880, -698, -855, -716, -836, -675, -813, -682, -763, -622, -737, -584, -752, -491, -721, -459, -682, -542, -675, -562, -667, -555, -652, -547, -638, -612, -610, -612, -573, -593, -564, -390, -665, -394, -705, -469, -750, -575, -806, -595, -816, -510, -852, -465, -857, -425, -846, -344, -899, -289, -919, -104, -852, -42, -835, -44, -786, 21, -753, 44, -729)
+
+[node name="EdgeNorth3" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+position = Vector2(193, 271)
+polygon = PackedVector2Array(183, -637, 185, -670, 68, -727, 91, -736, 109, -722, 139, -735, 123, -760, 189, -782, 225, -765, 244, -760, 239, -812, 222, -838, 21, -838, 20, -740, 55, -708)
+
+[node name="EdgeSouthLeft" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+position = Vector2(-31.0744, 53.8333)
+scale = Vector2(0.921131, 0.916667)
+polygon = PackedVector2Array(-801.108, 586, -778.31, 547.818, -728.371, 517.273, -658.892, 492.182, -572.042, 443.091, -502.562, 490, -306.065, 557.636, -385.315, 629.636, -940, 628, -858.646, 595.818)
+
+[node name="EdgeSouthRight" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+polygon = PackedVector2Array(-94, 559, 529, 542, 631, 520, 671, 497, 673, 488, 940, 628, -379, 632, -303, 561)
+
+[node name="EdgeWest" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+polygon = PackedVector2Array(-940, -632, -880, -632, -888, 517, -940, 615)
+
+[node name="EdgeEast" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+polygon = PackedVector2Array(880, -632, 940, -632, 940, 624, 673, 486, 782, 432, 865, 405)
+
+[node name="RoughBlock_Clinic" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+polygon = PackedVector2Array(-599, -515, -390, -625, 34, -432, -43, -402, -94, -419, -122, -401, -175, -426, -239, -463, -294, -464, -321, -436, -276, -377, -289, -350, -321, -338, -359, -374, -386, -389, -373, -427, -332, -435, -327, -479, -403, -506, -423, -508, -393, -480, -398, -453, -445, -430, -558, -490, -553, -389, -398, -342, -390, -316, -456, -315, -488, -297, -505, -269, -459, -274, -432, -266, -427, -259, -451, -228, -478, -227, -533, -238, -604, -219, -636, -208, -646, -184, -635, -160, -628, -147, -694, -125, -606, -112, -608, -77, -628, -58, -804, 6, -879, 6, -798, -228, -609, -372)
+
+[node name="RoughBlock_Forge" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+position = Vector2(112, 397)
+polygon = PackedVector2Array(87, -370, 307, -300, 318, -255, 230, -218, 195, -232, 184, -226, 193, -206, 179, -192, 165, -189, 145, -191, 116, -209, 124, -215, 122, -225, 77, -221, 54, -231, 58, -257, 76, -270, 112, -265, 129.095, -263.4, 159, -266, 132, -292, 95, -309, 81, -304, 84, -288, 63, -281, 39, -289, -51, -246, -72, -211, -146, -248, -141, -275)
+
+[node name="RoughBlock_Forge2" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+position = Vector2(149, 153)
+polygon = PackedVector2Array(24, -342, 25, -327, -57, -286, -65, -288, -66, -295)
+
+[node name="RoughBlock_Forge6" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+position = Vector2(158, 544)
+polygon = PackedVector2Array(48, -346, 81, -329, 82, -303, 50, -286, -32, -341, -31, -354, 19, -331)
+
+[node name="RoughBlock_Forge5" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+position = Vector2(631, 136)
+polygon = PackedVector2Array(44, -367, 72, -326, 40, -331, -30, -297, -61, -310, -93, -311, -91, -320, -68, -350, -37, -346)
+
+[node name="RoughBlock_Forge4" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+position = Vector2(-140, 296)
+polygon = PackedVector2Array(-186, -149, -187, -141, -237, -115, -247, -101, -310, -129, -309, -147, -244, -164)
+
+[node name="RoughBlock_Forge3" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+position = Vector2(212, 228)
+polygon = PackedVector2Array(280, -130, -20, -278, -7, -293, 71, -267, 122, -248, 271, -173, 310, -165, 565, -308, 562, -330, 488, -358, 490, -374, 586, -346, 659, -328, 656, -193, 534, -253, 434, -187, 363, -156)
+
+[node name="RoughBlock_Bakery" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+polygon = PackedVector2Array(-386, 71, -330, 82, -251, 136, -224, 234, -298, 267, -336, 201, -289, 160, -296, 149, -343, 118, -386, 106, -445, 127, -459, 145, -468, 196, -397, 238, -342, 294, -339, 314, -372, 321, -537, 296, -575, 323, -572, 353, -553, 384, -587, 408, -659, 429, -722, 468, -755, 484, -787, 482, -784, 501, -792, 523, -828, 534, -875, 509, -872, 266, -877, 112, -818, 99, -784, 116, -798, 138, -749, 166, -731, 167, -665, 194, -654, 183, -604, 180, -583, 157, -566, 143, -475, 102)
+
+[node name="RoughBlock_FlowerShop" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+polygon = PackedVector2Array(510, 326, 499, 337, 477, 347, 427, 349, 369, 314, 338, 335, 409, 376, 437, 376, 423, 390, 402, 409, 244, 363, 334, 277, 387, 243, 475, 264, 528, 241, 617, 285, 584, 284)
+
+[node name="RoughBlock_FlowerShop2" type="CollisionPolygon2D" parent="Art/MapBase/TerrainCollision"]
+polygon = PackedVector2Array(824, 360, 738, 412, 673, 446, 627, 462, 542, 468, 478, 446, 482, 409, 529, 373, 640, 397, 792, 324, 795, 295, 748, 273, 704, 289, 698, 303, 688, 307, 677, 303, 664, 312, 678, 323, 677, 338, 645, 348, 599, 326, 598, 308, 627, 284, 536, 240, 629, 200, 813, 244, 812, 300)
+
+[node name="Ambience" type="Node2D" parent="Art"]
+script = ExtResource("14_leaf_amb")
+
+[node name="LeafZones" type="Node2D" parent="Art/Ambience"]
+
+[node name="NorthWest_Canopy" type="Marker2D" parent="Art/Ambience/LeafZones"]
+position = Vector2(-455, -320)
+
+[node name="NorthWest_Canopy2" type="Marker2D" parent="Art/Ambience/LeafZones"]
+position = Vector2(8, -512)
+
+[node name="NorthWest_Canopy3" type="Marker2D" parent="Art/Ambience/LeafZones"]
+position = Vector2(-195, -607)
+
+[node name="NorthWest_Canopy4" type="Marker2D" parent="Art/Ambience/LeafZones"]
+position = Vector2(-568, 556)
+
+[node name="NorthWest_Canopy5" type="Marker2D" parent="Art/Ambience/LeafZones"]
+position = Vector2(-812, 50)
+
+[node name="North_Plaza" type="Marker2D" parent="Art/Ambience/LeafZones"]
+position = Vector2(-75, -187)
+
+[node name="NorthEast_Trees" type="Marker2D" parent="Art/Ambience/LeafZones"]
+position = Vector2(-652, -227)
+
+[node name="MidWest_Lane" type="Marker2D" parent="Art/Ambience/LeafZones"]
+position = Vector2(-638, 124)
+
+[node name="SouthEast_Open" type="Marker2D" parent="Art/Ambience/LeafZones"]
+position = Vector2(852, 238)
+
+[node name="SouthEast_Open2" type="Marker2D" parent="Art/Ambience/LeafZones"]
+position = Vector2(778, -262)
+
+[node name="HomesteadBundle" type="Node2D" parent="."]
+position = Vector2(540, -465)
+
+[node name="HomesteadZone" type="Area2D" parent="HomesteadBundle"]
+position = Vector2(151, 257)
+collision_layer = 0
+script = ExtResource("3_zone")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="HomesteadBundle/HomesteadZone"]
+position = Vector2(-230, -39.58)
+polygon = PackedVector2Array(-582, -31.42, -391, 74.58, -289, 22.58, -255, 36.58, -264, 82.58, -323, 112.58, 54, 304.58, 308, 161.58, 236, 117.58, 232, 80.58, 161, 86.58, 138, 91.58, 71, 78.58, 2, 27.58, -51, -3.41995, -53, -49.42, -294, -132.42, -337, -114.42, -419, -61.42, -464, -68.42, -524, -55.42)
+metadata/_edit_lock_ = true
+
+[node name="ZoneDebug" type="Polygon2D" parent="HomesteadBundle/HomesteadZone"]
+visible = false
+z_index = 1
+color = Color(1, 1, 1, 0.12)
+polygon = PackedVector2Array(-802, -83, -517, -225, 126, 126, -171, 258, -600, 100)
+metadata/_edit_lock_ = true
+
+[node name="HomesteadStationRoot" type="Node2D" parent="HomesteadBundle"]
+position = Vector2(-146, 271)
+script = ExtResource("12_stvis")
+markers_path = NodePath("StationMarkers")
+
+[node name="StationMarkers" type="Node2D" parent="HomesteadBundle/HomesteadStationRoot"]
+position = Vector2(-45, -8)
+
+[node name="M0" type="Marker2D" parent="HomesteadBundle/HomesteadStationRoot/StationMarkers"]
+position = Vector2(4, 75)
+
+[node name="M1" type="Marker2D" parent="HomesteadBundle/HomesteadStationRoot/StationMarkers"]
+position = Vector2(130, 58)
+
+[node name="M2" type="Marker2D" parent="HomesteadBundle/HomesteadStationRoot/StationMarkers"]
+position = Vector2(94, 105)
+
+[node name="M3" type="Marker2D" parent="HomesteadBundle/HomesteadStationRoot/StationMarkers"]
+position = Vector2(158, 160)
+
+[node name="M4" type="Marker2D" parent="HomesteadBundle/HomesteadStationRoot/StationMarkers"]
+position = Vector2(237, 99)
+
+[node name="Crops" type="Node2D" parent="HomesteadBundle"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-357, 298)
+
+[node name="MatureCrop01" type="Area2D" parent="HomesteadBundle/Crops"]
+position = Vector2(-69, -160)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_crop")
+item_template = ExtResource("5_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomesteadBundle/Crops/MatureCrop01"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="HomesteadBundle/Crops/MatureCrop01"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("6_tex")
+
+[node name="MatureCrop02" type="Area2D" parent="HomesteadBundle/Crops"]
+position = Vector2(-13, -175)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_crop")
+item_template = ExtResource("5_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomesteadBundle/Crops/MatureCrop02"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="HomesteadBundle/Crops/MatureCrop02"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("6_tex")
+
+[node name="MatureCrop03" type="Area2D" parent="HomesteadBundle/Crops"]
+position = Vector2(38, -189)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_crop")
+item_template = ExtResource("5_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomesteadBundle/Crops/MatureCrop03"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="HomesteadBundle/Crops/MatureCrop03"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("6_tex")
+
+[node name="MatureCrop04" type="Area2D" parent="HomesteadBundle/Crops"]
+position = Vector2(85, -145)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_crop")
+item_template = ExtResource("5_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomesteadBundle/Crops/MatureCrop04"]
+shape = SubResource("CircleShape2D_crop")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="HomesteadBundle/Crops/MatureCrop04"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("6_tex")
+
+[node name="MatureCrop05" type="Area2D" parent="HomesteadBundle/Crops"]
+position = Vector2(-31, -122)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_crop")
+item_template = ExtResource("5_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomesteadBundle/Crops/MatureCrop05"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="HomesteadBundle/Crops/MatureCrop05"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("6_tex")
+
+[node name="MatureCrop06" type="Area2D" parent="HomesteadBundle/Crops"]
+position = Vector2(27, -138)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_crop")
+item_template = ExtResource("5_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomesteadBundle/Crops/MatureCrop06"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="HomesteadBundle/Crops/MatureCrop06"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("6_tex")
+
+[node name="MatureCrop07" type="Area2D" parent="HomesteadBundle/Crops"]
+position = Vector2(-139, -113)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_crop")
+item_template = ExtResource("5_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomesteadBundle/Crops/MatureCrop07"]
+position = Vector2(-4, 5)
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="HomesteadBundle/Crops/MatureCrop07"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("6_tex")
+
+[node name="MatureCrop08" type="Area2D" parent="HomesteadBundle/Crops"]
+position = Vector2(-101, -50)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_crop")
+item_template = ExtResource("5_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomesteadBundle/Crops/MatureCrop08"]
+shape = SubResource("CircleShape2D_crop")
+
+[node name="Sprite2D" type="Sprite2D" parent="HomesteadBundle/Crops/MatureCrop08"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("6_tex")
+
+[node name="SoilPlots" type="Node2D" parent="HomesteadBundle"]
+visible = false
+position = Vector2(-7, 460)
+
+[node name="SoilPlot01" parent="HomesteadBundle/SoilPlots" instance=ExtResource("13_soil")]
+position = Vector2(0, -74)
+
+[node name="SoilPlot02" parent="HomesteadBundle/SoilPlots" instance=ExtResource("13_soil")]
+position = Vector2(-65, -47)
+
+[node name="SoilPlot03" parent="HomesteadBundle/SoilPlots" instance=ExtResource("13_soil")]
+position = Vector2(77, -65)
+
+[node name="SoilPlot04" parent="HomesteadBundle/SoilPlots" instance=ExtResource("13_soil")]
+position = Vector2(102, -118)
+
+[node name="ForegroundDecor" type="Node2D" parent="."]
+z_index = 5
+y_sort_enabled = true
+script = ExtResource("fg_hoist")
+
+[node name="FgSprite_01" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(450, -416)
+texture = ExtResource("fg_01")
+offset = Vector2(3, -39)
+
+[node name="FgSprite_02" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(395, -323)
+texture = ExtResource("fg_02")
+offset = Vector2(-1, -54)
+
+[node name="FgSprite_03" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(132, -150)
+texture = ExtResource("fg_03")
+offset = Vector2(0, -23)
+
+[node name="FgSprite_04" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(262, -28)
+texture = ExtResource("fg_04")
+offset = Vector2(1, -9)
+
+[node name="FgSprite_05" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(832, -110)
+texture = ExtResource("fg_05")
+offset = Vector2(-22, -84)
+
+[node name="FgSprite_06" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(636, 356)
+texture = ExtResource("fg_06")
+offset = Vector2(3, -213)
+
+[node name="FgSprite_07" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(530, 427)
+texture = ExtResource("fg_07")
+offset = Vector2(-2, -148)
+
+[node name="FgSprite_08" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(826, 530)
+texture = ExtResource("fg_08")
+offset = Vector2(-2, -160)
+
+[node name="FgSprite_09" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-114, 652)
+texture = ExtResource("fg_09")
+offset = Vector2(0, -120)
+
+[node name="FgSprite_10" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(205, 112)
+texture = ExtResource("fg_10")
+offset = Vector2(0, -68)
+
+[node name="FgSprite_11" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-640, 215)
+texture = ExtResource("21_oggha")
+offset = Vector2(-5, -58)
+
+[node name="FgSprite_12" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-392, 113)
+texture = ExtResource("fg_12")
+offset = Vector2(-1, -56)
+
+[node name="FgSprite_18" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-531, 164)
+texture = ExtResource("23_f6l7c")
+offset = Vector2(-5, -81)
+
+[node name="FgSprite_13" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-389, 173)
+texture = ExtResource("fg_13")
+offset = Vector2(-2, -35)
+
+[node name="FgSprite_14" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-813, 109)
+texture = ExtResource("24_2hn5q")
+offset = Vector2(-8, -60)
+
+[node name="FgSprite_15" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-410, 254)
+texture = ExtResource("25_awopp")
+offset = Vector2(-7, -113)
+
+[node name="FgSprite_16" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-647, -89)
+texture = ExtResource("fg_16")
+offset = Vector2(-3, -19)
+
+[node name="FgSprite_17" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-650, -158)
+texture = ExtResource("fg_17")
+offset = Vector2(-3, -66)
+
+[node name="FgSprite_19" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-71, -113)
+texture = ExtResource("fg_19")
+offset = Vector2(-3, -91)
+
+[node name="FgSprite_20" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-115, -293)
+texture = ExtResource("fg_20")
+offset = Vector2(-1, -66)
+
+[node name="FgSprite_21" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-283, -396)
+texture = ExtResource("fg_21")
+offset = Vector2(9, -74)
+
+[node name="FgSprite_22" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-469, -327)
+texture = ExtResource("fg_22")
+offset = Vector2(-9, -80)
+
+[node name="FgSprite_23" type="Sprite2D" parent="ForegroundDecor"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-451, -263)
+texture = ExtResource("fg_23")
+offset = Vector2(-10, -51)
+metadata/_edit_lock_ = true
+
+[node name="ShopBlockerAnchors" type="Node2D" parent="."]
+
+[node name="PlayerSpawn_Bed" type="Marker2D" parent="."]
+position = Vector2(372, -481)
+
+[node name="PlayerSpawn_FromLake" type="Marker2D" parent="."]
+position = Vector2(-825, 556)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(382, -252)
+
+[node name="NPC_Shop_Clinic" type="Marker2D" parent="."]
+position = Vector2(-416, -408)
+
+[node name="NPC_Shop_Forge" type="Marker2D" parent="."]
+position = Vector2(146, 138)
+
+[node name="NPC_Shop_Flower" type="Marker2D" parent="."]
+position = Vector2(580, 304)
+
+[node name="NPC_Shop_Bakery" type="Marker2D" parent="."]
+position = Vector2(-272, 273)
+
+[node name="Portal_ToLake" type="Area2D" parent="."]
+position = Vector2(-715, 598)
+collision_layer = 0
+script = ExtResource("portal_scr")
+spawn_marker_name = &"PlayerSpawn_FromTown"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal_ToLake"]
+position = Vector2(-193, 10)
+shape = SubResource("RectangleShape2D_portal")

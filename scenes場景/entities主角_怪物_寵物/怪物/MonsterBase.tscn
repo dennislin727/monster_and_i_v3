@@ -1,6 +1,7 @@
-[gd_scene load_steps=137 format=3 uid="uid://ckgvmt8hosbxi"]
+[gd_scene load_steps=108 format=3 uid="uid://ckgvmt8hosbxi"]
 
 [ext_resource type="Script" uid="uid://kamax0gji0cj" path="res://src腳本/entities/monsters/MonsterBase.gd" id="1_pu83x"]
+[ext_resource type="Resource" uid="uid://55hoes7rq8p7" path="res://resources身分證/monster/goblin.tres" id="2_pf1uy"]
 [ext_resource type="Script" uid="uid://bhcbk11by1xld" path="res://src腳本/components積木/ShadowComponent.gd" id="2_pvi6g"]
 [ext_resource type="Texture2D" uid="uid://dxdcs14r6mi6y" path="res://assets圖片_字體_音效/ui介面/seal_UI/spell/frame0000.png" id="2_xi3xf"]
 [ext_resource type="Texture2D" uid="uid://dnmiebsx3bcd5" path="res://assets圖片_字體_音效/ui介面/seal_UI/spell/frame0001.png" id="3_54rlc"]
@@ -19,119 +20,89 @@
 [ext_resource type="Texture2D" uid="uid://bl2mct7ww31wx" path="res://assets圖片_字體_音效/ui介面/seal_UI/success/frame10004.png" id="16_fjqal"]
 [ext_resource type="Texture2D" uid="uid://dn5jw6nkln5xc" path="res://assets圖片_字體_音效/ui介面/seal_UI/success/frame10005.png" id="17_j2jy7"]
 [ext_resource type="Texture2D" uid="uid://b3firw8ig2fjs" path="res://assets圖片_字體_音效/ui介面/seal_UI/success/frame10006.png" id="18_ar3cb"]
-[ext_resource type="Texture2D" uid="uid://bev8wwc8hfpc" path="res://assets圖片_字體_音效/怪物/史萊姆/attack/frame0000.png" id="20_568kr"]
-[ext_resource type="Texture2D" uid="uid://br3vne3okd8ry" path="res://assets圖片_字體_音效/怪物/史萊姆/attack/frame0001.png" id="21_nfy3f"]
-[ext_resource type="Texture2D" uid="uid://cb6bqaqvhhl8k" path="res://assets圖片_字體_音效/怪物/史萊姆/attack/frame0002.png" id="22_iurvq"]
-[ext_resource type="Texture2D" uid="uid://bw3rr0p50aet6" path="res://assets圖片_字體_音效/怪物/史萊姆/attack/frame0003.png" id="23_numda"]
-[ext_resource type="Texture2D" uid="uid://bhblfmermed8g" path="res://assets圖片_字體_音效/怪物/史萊姆/attack/frame0004.png" id="24_efnn8"]
-[ext_resource type="Texture2D" uid="uid://b4toau2l7usef" path="res://assets圖片_字體_音效/怪物/史萊姆/attack/frame0005.png" id="25_m72mo"]
+[ext_resource type="Texture2D" uid="uid://bgp83v3sv8q15" path="res://assets圖片_字體_音效/怪物/哥不林/attack_down/frame0000.png" id="20_onepj"]
+[ext_resource type="Texture2D" uid="uid://03bocl3xlo42" path="res://assets圖片_字體_音效/怪物/哥不林/attack_down/frame0001.png" id="21_bkyvv"]
+[ext_resource type="Texture2D" uid="uid://f74ry8gg0txc" path="res://assets圖片_字體_音效/怪物/哥不林/attack_down/frame0002.png" id="22_qwg8b"]
+[ext_resource type="Texture2D" uid="uid://p0tdn3831qdq" path="res://assets圖片_字體_音效/怪物/哥不林/attack_down/frame0003.png" id="23_bkyvv"]
+[ext_resource type="Texture2D" uid="uid://bo76vu3ev8pnw" path="res://assets圖片_字體_音效/怪物/哥不林/attack_down/frame0004.png" id="23_w72y4"]
+[ext_resource type="Texture2D" uid="uid://lg6la3lh5218" path="res://assets圖片_字體_音效/怪物/哥不林/attack_down/frame0005.png" id="24_f57da"]
+[ext_resource type="Texture2D" uid="uid://b0eab4vbs3hjx" path="res://assets圖片_字體_音效/怪物/哥不林/attack_side/frame0000.png" id="25_qxyu0"]
 [ext_resource type="PackedScene" uid="uid://cdbjqixa2gq31" path="res://src腳本/components積木/HurtboxComponent.tscn" id="26_g2uis"]
-[ext_resource type="Texture2D" uid="uid://b0wqg4tp0ugfd" path="res://assets圖片_字體_音效/怪物/史萊姆/attack/frame0006.png" id="26_jfqee"]
+[ext_resource type="Texture2D" uid="uid://dnxie55step6d" path="res://assets圖片_字體_音效/怪物/哥不林/attack_side/frame0001.png" id="26_nsx1n"]
+[ext_resource type="Texture2D" uid="uid://c3hx7c3qxwvcr" path="res://assets圖片_字體_音效/怪物/哥不林/attack_side/frame0003.png" id="27_8hlmi"]
 [ext_resource type="Script" uid="uid://bsvw8p158mk2f" path="res://src腳本/components積木/HealthComponent.gd" id="27_25o1u"]
-[ext_resource type="Texture2D" uid="uid://nw34k01sakx4" path="res://assets圖片_字體_音效/怪物/史萊姆/attack/frame0007.png" id="27_50nvt"]
-[ext_resource type="Texture2D" uid="uid://dfsuewog36882" path="res://assets圖片_字體_音效/怪物/史萊姆/attack/frame0008.png" id="28_61xnn"]
+[ext_resource type="Texture2D" uid="uid://c8h81j8c8b2bc" path="res://assets圖片_字體_音效/怪物/哥不林/attack_side/frame0004.png" id="28_06gbc"]
 [ext_resource type="Script" uid="uid://c3tlm8y78sx62" path="res://src腳本/components積木/SealingComponent.gd" id="28_bvk6s"]
-[ext_resource type="Texture2D" uid="uid://c43bkff1vjaj8" path="res://assets圖片_字體_音效/怪物/史萊姆/die/frame0000.png" id="29_0v18b"]
+[ext_resource type="Texture2D" uid="uid://bquak0odupfbq" path="res://assets圖片_字體_音效/怪物/哥不林/attack_side/frame0002.png" id="28_qwg8b"]
 [ext_resource type="PackedScene" uid="uid://bhk3cmoh47jfg" path="res://scenes場景/ui介面/HealthBar.tscn" id="29_hexxi"]
-[ext_resource type="Texture2D" uid="uid://ci4236weijst2" path="res://assets圖片_字體_音效/怪物/史萊姆/die/frame0001.png" id="30_pyf3h"]
-[ext_resource type="Texture2D" uid="uid://bickltt354wso" path="res://assets圖片_字體_音效/怪物/史萊姆/die/frame0002.png" id="31_w0ef4"]
-[ext_resource type="Texture2D" uid="uid://dlod0jg5ygcxe" path="res://assets圖片_字體_音效/怪物/史萊姆/die/frame0003.png" id="32_bwkm6"]
-[ext_resource type="Texture2D" uid="uid://5f3eb6mvuw8b" path="res://assets圖片_字體_音效/怪物/史萊姆/die/frame0004.png" id="33_doukn"]
-[ext_resource type="Texture2D" uid="uid://douos2npb387n" path="res://assets圖片_字體_音效/怪物/史萊姆/die/frame0005.png" id="34_ttp3k"]
-[ext_resource type="Texture2D" uid="uid://b23vb55bdfs3b" path="res://assets圖片_字體_音效/怪物/史萊姆/die/frame0006.png" id="35_tti4j"]
-[ext_resource type="Texture2D" uid="uid://duh2g6smfmlg2" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40000.png" id="36_d2ri3"]
-[ext_resource type="Texture2D" uid="uid://lhnydyrl2p2w" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40001.png" id="37_rhea8"]
-[ext_resource type="Texture2D" uid="uid://bdg8p5m7a8nn6" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40002.png" id="38_iyfac"]
-[ext_resource type="Texture2D" uid="uid://bwb3c57cyofsa" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40003.png" id="39_wbf3m"]
-[ext_resource type="Texture2D" uid="uid://fkva3sshmnd4" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40004.png" id="40_7pybl"]
-[ext_resource type="Texture2D" uid="uid://cbwp1xgsx4n11" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40005.png" id="41_2wlxs"]
-[ext_resource type="Texture2D" uid="uid://dkrmrgp1bakbx" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40006.png" id="42_jk1b7"]
-[ext_resource type="Texture2D" uid="uid://ve05uxduarx2" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40007.png" id="43_2i81p"]
-[ext_resource type="Texture2D" uid="uid://5gm8almf4dge" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40008.png" id="44_6y2j8"]
-[ext_resource type="Texture2D" uid="uid://c1h2rmwrs1dpe" path="res://assets圖片_字體_音效/怪物/史萊姆/happy/frame40009.png" id="45_qsh5k"]
-[ext_resource type="Texture2D" uid="uid://bvmb1fu2xfk2k" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0000.png" id="46_pq8aj"]
-[ext_resource type="Texture2D" uid="uid://vrhnkmj32kh3" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0001.png" id="47_wjnsj"]
-[ext_resource type="Texture2D" uid="uid://30ao2gelgt72" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0002.png" id="48_n62t7"]
-[ext_resource type="Texture2D" uid="uid://5dk5ebsme3it" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0003.png" id="49_1fcmu"]
-[ext_resource type="Texture2D" uid="uid://bi5rwvfi1y70m" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0004.png" id="50_oq2c6"]
-[ext_resource type="Texture2D" uid="uid://cu4ttkg2nltn6" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0005.png" id="51_f6o8n"]
-[ext_resource type="Texture2D" uid="uid://dhct2dhqg5fkl" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame0006.png" id="52_dhbmv"]
-[ext_resource type="Texture2D" uid="uid://bi15br1fx24rj" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame10000.png" id="53_qylyw"]
-[ext_resource type="Texture2D" uid="uid://cu3nasdor1rci" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame10001.png" id="54_tnsvu"]
-[ext_resource type="Texture2D" uid="uid://cg1tfwfowuemg" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame10002.png" id="55_8yn3y"]
-[ext_resource type="Texture2D" uid="uid://ohwrewjyeg1s" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame10003.png" id="56_5ptwo"]
-[ext_resource type="Texture2D" uid="uid://uomsmy4e7tjc" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame10004.png" id="57_x4ax5"]
-[ext_resource type="Texture2D" uid="uid://eap0uso7dkvs" path="res://assets圖片_字體_音效/怪物/史萊姆/hit/frame10005.png" id="58_8fhuv"]
-[ext_resource type="Texture2D" uid="uid://cvqfdsul5rsbw" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50000.png" id="59_c3lw6"]
-[ext_resource type="Texture2D" uid="uid://glh3yuysteaa" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50001.png" id="60_gs66i"]
-[ext_resource type="Texture2D" uid="uid://bnc3gjeunxg2s" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50002.png" id="61_obnm0"]
-[ext_resource type="Texture2D" uid="uid://7mf7c31w35gr" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50003.png" id="62_82tsj"]
-[ext_resource type="Texture2D" uid="uid://bym15j5cuvd3c" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50004.png" id="63_v3vs0"]
-[ext_resource type="Texture2D" uid="uid://c18yifpoefu5v" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50005.png" id="64_4nm3r"]
-[ext_resource type="Texture2D" uid="uid://chi4ggmt3e4a0" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50006.png" id="65_8y5ar"]
-[ext_resource type="Texture2D" uid="uid://eonm4lu8fp0n" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50008.png" id="66_vgh26"]
-[ext_resource type="Texture2D" uid="uid://cw0bvka0swp7f" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50009.png" id="67_evg3g"]
-[ext_resource type="Texture2D" uid="uid://s3a8gv6hloh3" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50010.png" id="68_tyyvm"]
-[ext_resource type="Texture2D" uid="uid://ckwww3owrweqb" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50011.png" id="69_waqwc"]
-[ext_resource type="Texture2D" uid="uid://uexubbwqhwqe" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50012.png" id="70_7cluy"]
-[ext_resource type="Texture2D" uid="uid://81ihyxp2x667" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50013.png" id="71_pnmko"]
-[ext_resource type="Texture2D" uid="uid://c6fuherlftwer" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50014.png" id="72_surpv"]
-[ext_resource type="Texture2D" uid="uid://dyxvvmtttf7cg" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50015.png" id="73_tgpph"]
-[ext_resource type="Texture2D" uid="uid://bqxyr8taomu1f" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50016.png" id="74_tf0kr"]
-[ext_resource type="Texture2D" uid="uid://g0sxrfbprxrd" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50017.png" id="75_lmdvc"]
-[ext_resource type="Texture2D" uid="uid://dm8ia55krcovh" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50018.png" id="76_sgc0d"]
-[ext_resource type="Texture2D" uid="uid://bb3g7bi5htt7j" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50019.png" id="77_65ges"]
-[ext_resource type="Texture2D" uid="uid://cu0240bfrphnf" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50020.png" id="78_nfvpy"]
-[ext_resource type="Texture2D" uid="uid://u2uq2eu8tnnk" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50021.png" id="79_n38gi"]
-[ext_resource type="Texture2D" uid="uid://bpf1gk34ef15" path="res://assets圖片_字體_音效/怪物/史萊姆/idle/frame50022.png" id="80_2uman"]
-[ext_resource type="Texture2D" uid="uid://hjkj2l2mi6h5" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0016.png" id="81_php57"]
-[ext_resource type="Texture2D" uid="uid://bd3ehl6y2dy1h" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0017.png" id="82_iojy5"]
-[ext_resource type="Texture2D" uid="uid://c3c4n2amkltyx" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0018.png" id="83_g46nn"]
-[ext_resource type="Texture2D" uid="uid://ec5jmwup1s3p" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0019.png" id="84_lb338"]
-[ext_resource type="Texture2D" uid="uid://duaqha2x0v2hn" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0020.png" id="85_n1a00"]
-[ext_resource type="Texture2D" uid="uid://12ld75mm0oyg" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0021.png" id="86_y47jh"]
-[ext_resource type="Texture2D" uid="uid://dtedx78wl23fs" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0022.png" id="87_1cyde"]
-[ext_resource type="Texture2D" uid="uid://bnw4avj4mrol6" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0009.png" id="88_7f0ax"]
-[ext_resource type="Texture2D" uid="uid://c6n6m6qr728n6" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0010.png" id="89_jc1gt"]
-[ext_resource type="Texture2D" uid="uid://dfwd1wlw55fhx" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0011.png" id="90_wjwix"]
-[ext_resource type="Texture2D" uid="uid://b1ytt1pgm2w5u" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0012.png" id="91_f8niu"]
-[ext_resource type="Texture2D" uid="uid://dgwn8g4ut3hqh" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0013.png" id="92_irn2a"]
-[ext_resource type="Texture2D" uid="uid://cngblxfyuov43" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0014.png" id="93_uhyh0"]
-[ext_resource type="Texture2D" uid="uid://cib1cx56e70i1" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0015.png" id="94_i0wl5"]
-[ext_resource type="Texture2D" uid="uid://4yhaxjtcs6mu" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0023.png" id="95_s68ys"]
-[ext_resource type="Texture2D" uid="uid://cwwu6dw3f7qy1" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0024.png" id="96_85bbi"]
-[ext_resource type="Texture2D" uid="uid://7qeyobl5inlf" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0025.png" id="97_sdxyr"]
-[ext_resource type="Texture2D" uid="uid://c2q3tfqh8tb3u" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0026.png" id="98_t4uy2"]
-[ext_resource type="Texture2D" uid="uid://d0j1r0gien70w" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0027.png" id="99_xtxj2"]
-[ext_resource type="Texture2D" uid="uid://gd8ng4edvfk8" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0028.png" id="100_hv1so"]
-[ext_resource type="Texture2D" uid="uid://daopgn3bq3ggq" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0029.png" id="101_5mkay"]
-[ext_resource type="Texture2D" uid="uid://u1c8k6dgwp8f" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0030.png" id="102_5skl3"]
-[ext_resource type="Texture2D" uid="uid://cbotyuwc1lr" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0031.png" id="103_dmpwc"]
-[ext_resource type="Texture2D" uid="uid://uny5v25xt86e" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0000.png" id="104_4641w"]
-[ext_resource type="Texture2D" uid="uid://b35l8ww623ubx" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0001.png" id="105_wvvu3"]
-[ext_resource type="Texture2D" uid="uid://bp7b4vhndddqk" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0002.png" id="106_ox0cp"]
-[ext_resource type="Texture2D" uid="uid://rk0umfr22k26" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0003.png" id="107_b0nyl"]
-[ext_resource type="Texture2D" uid="uid://03o7nn0o0ttp" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0004.png" id="108_fejmm"]
-[ext_resource type="Texture2D" uid="uid://eyqxufp6hb2u" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0005.png" id="109_t65k0"]
-[ext_resource type="Texture2D" uid="uid://dr2ywdlmmo04u" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0006.png" id="110_pmqwt"]
-[ext_resource type="Texture2D" uid="uid://c31q05lrwgn2d" path="res://assets圖片_字體_音效/怪物/史萊姆/run/frame0007.png" id="111_5ee6q"]
-[ext_resource type="Texture2D" uid="uid://dq3y5uculnbii" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame20000.png" id="112_5xnka"]
-[ext_resource type="Texture2D" uid="uid://dgib5ewtrhok3" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame20001.png" id="113_ukvr3"]
-[ext_resource type="Texture2D" uid="uid://cw0vwhhd1q5o4" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame20002.png" id="114_w8w2g"]
-[ext_resource type="Texture2D" uid="uid://c6nn3wo1epktx" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame20003.png" id="115_1qc0h"]
-[ext_resource type="Texture2D" uid="uid://dxsyaw05tdnim" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame20004.png" id="116_jrvs5"]
-[ext_resource type="Texture2D" uid="uid://7ib8pldedqmy" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame20005.png" id="117_fydkk"]
-[ext_resource type="Texture2D" uid="uid://6gkr1x3til6p" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame20006.png" id="118_nw2pm"]
-[ext_resource type="Texture2D" uid="uid://qkjj1s72o7ch" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame20007.png" id="119_rlghk"]
-[ext_resource type="Texture2D" uid="uid://c7qjs5vn8axk5" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame20008.png" id="120_tutwq"]
-[ext_resource type="Texture2D" uid="uid://dbyytpnl8a684" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame20010.png" id="121_1hemw"]
-[ext_resource type="Texture2D" uid="uid://yi1iwl4f38em" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame30000.png" id="122_drgfp"]
-[ext_resource type="Texture2D" uid="uid://bpssa1w3og08o" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame30001.png" id="123_eyv7o"]
-[ext_resource type="Texture2D" uid="uid://dvfnvjotkqoyn" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame30002.png" id="124_g8dx5"]
-[ext_resource type="Texture2D" uid="uid://bauvjt0o5esti" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame30003.png" id="125_aft6h"]
-[ext_resource type="Texture2D" uid="uid://dbt32bxumo8qi" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame30004.png" id="126_7tbvk"]
-[ext_resource type="Texture2D" uid="uid://bhtb3s1epdiur" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame30005.png" id="127_3jlmh"]
-[ext_resource type="Texture2D" uid="uid://cf40vujwnyrac" path="res://assets圖片_字體_音效/怪物/史萊姆/spell/frame30006.png" id="128_tg54q"]
+[ext_resource type="Texture2D" uid="uid://1q5nrusy4iw2" path="res://assets圖片_字體_音效/怪物/哥不林/attack_side/frame0005.png" id="29_rfo3h"]
+[ext_resource type="Texture2D" uid="uid://bgmu8gp7lq6ew" path="res://assets圖片_字體_音效/怪物/哥不林/attack_side/frame0006.png" id="30_k52j0"]
+[ext_resource type="Texture2D" uid="uid://codw5k3s448ph" path="res://assets圖片_字體_音效/怪物/哥不林/attack_up/frame0000.png" id="31_6lk8y"]
+[ext_resource type="Texture2D" uid="uid://cop1heesplm3q" path="res://assets圖片_字體_音效/怪物/哥不林/attack_up/frame0001.png" id="32_mgb7m"]
+[ext_resource type="Texture2D" uid="uid://87dalmweneeq" path="res://assets圖片_字體_音效/怪物/哥不林/attack_up/frame0002.png" id="33_33353"]
+[ext_resource type="Texture2D" uid="uid://cpxi51axh2xpp" path="res://assets圖片_字體_音效/怪物/哥不林/attack_up/frame0003.png" id="34_datdn"]
+[ext_resource type="Texture2D" uid="uid://c4trh56sbr62p" path="res://assets圖片_字體_音效/怪物/哥不林/attack_up/frame0004.png" id="35_fxxbp"]
+[ext_resource type="Texture2D" uid="uid://clsj0vlin1jft" path="res://assets圖片_字體_音效/怪物/哥不林/attack_up/frame0005.png" id="36_mwmur"]
+[ext_resource type="Texture2D" uid="uid://lovdddx33cli" path="res://assets圖片_字體_音效/怪物/哥不林/die/frame0000.png" id="37_ice6s"]
+[ext_resource type="Texture2D" uid="uid://draq113xvkf8p" path="res://assets圖片_字體_音效/怪物/哥不林/die/frame0001.png" id="38_meb4m"]
+[ext_resource type="Texture2D" uid="uid://wq8ahsywash7" path="res://assets圖片_字體_音效/怪物/哥不林/die/frame0002.png" id="39_y664c"]
+[ext_resource type="Texture2D" uid="uid://buwo8761trlyk" path="res://assets圖片_字體_音效/怪物/哥不林/die/frame0003.png" id="40_w8opb"]
+[ext_resource type="Texture2D" uid="uid://bgsuy33c6t2fh" path="res://assets圖片_字體_音效/怪物/哥不林/die/frame0004.png" id="41_7hndo"]
+[ext_resource type="Texture2D" uid="uid://dg46lha8ye1ku" path="res://assets圖片_字體_音效/怪物/哥不林/happy/frame0039.png" id="42_6t8x8"]
+[ext_resource type="Texture2D" uid="uid://c21fhk5764u32" path="res://assets圖片_字體_音效/怪物/哥不林/happy/frame0040.png" id="43_khqya"]
+[ext_resource type="Texture2D" uid="uid://b4wu74x03gh8x" path="res://assets圖片_字體_音效/怪物/哥不林/happy/frame0043.png" id="46_8dlsu"]
+[ext_resource type="Texture2D" uid="uid://bbctqs8umwxsq" path="res://assets圖片_字體_音效/怪物/哥不林/happy/frame0041.png" id="46_w72y4"]
+[ext_resource type="Texture2D" uid="uid://dao48lketjluv" path="res://assets圖片_字體_音效/怪物/哥不林/happy/frame0042.png" id="47_f57da"]
+[ext_resource type="Texture2D" uid="uid://bdgv0wyu0lcdf" path="res://assets圖片_字體_音效/怪物/哥不林/happy/frame0044.png" id="47_jww0e"]
+[ext_resource type="Texture2D" uid="uid://db4uksh26ucmn" path="res://assets圖片_字體_音效/怪物/哥不林/happy/frame0045.png" id="48_i2d5p"]
+[ext_resource type="Texture2D" uid="uid://cw20dqy0pj0hg" path="res://assets圖片_字體_音效/怪物/哥不林/hit/frame0000.png" id="49_24nip"]
+[ext_resource type="Texture2D" uid="uid://dqm5f0ts2sokh" path="res://assets圖片_字體_音效/怪物/哥不林/hit/frame0001.png" id="50_2w8ga"]
+[ext_resource type="Texture2D" uid="uid://dsrjmobivpvww" path="res://assets圖片_字體_音效/怪物/哥不林/hit/frame0002.png" id="51_c517c"]
+[ext_resource type="Texture2D" uid="uid://dq604pjpya3oo" path="res://assets圖片_字體_音效/怪物/哥不林/idle_down/frame0000.png" id="52_568kr"]
+[ext_resource type="Texture2D" uid="uid://cjlj4fataen7u" path="res://assets圖片_字體_音效/怪物/哥不林/idle_down/frame0001.png" id="53_nfy3f"]
+[ext_resource type="Texture2D" uid="uid://brua828v82mmi" path="res://assets圖片_字體_音效/怪物/哥不林/idle_down/frame0002.png" id="54_iurvq"]
+[ext_resource type="Texture2D" uid="uid://dnbolwjiufd3m" path="res://assets圖片_字體_音效/怪物/哥不林/idle_down/frame0003.png" id="55_numda"]
+[ext_resource type="Texture2D" uid="uid://ckwe707lfyl66" path="res://assets圖片_字體_音效/怪物/哥不林/idle_down/frame0004.png" id="56_efnn8"]
+[ext_resource type="Texture2D" uid="uid://j5efr8cups6f" path="res://assets圖片_字體_音效/怪物/哥不林/idle_down/frame0005.png" id="57_m72mo"]
+[ext_resource type="Texture2D" uid="uid://bss6iodn4bkvo" path="res://assets圖片_字體_音效/怪物/哥不林/idle_down/frame0006.png" id="58_jfqee"]
+[ext_resource type="Texture2D" uid="uid://cnee4ydsy5a0v" path="res://assets圖片_字體_音效/怪物/哥不林/idle_side/frame0000.png" id="59_50nvt"]
+[ext_resource type="Texture2D" uid="uid://ioi7d7t8gf3n" path="res://assets圖片_字體_音效/怪物/哥不林/idle_side/frame0001.png" id="60_61xnn"]
+[ext_resource type="Texture2D" uid="uid://dxc2n0m4ptfcd" path="res://assets圖片_字體_音效/怪物/哥不林/idle_side/frame0002.png" id="61_0v18b"]
+[ext_resource type="Texture2D" uid="uid://cumj56hnk7xxt" path="res://assets圖片_字體_音效/怪物/哥不林/idle_side/frame0003.png" id="62_pyf3h"]
+[ext_resource type="Texture2D" uid="uid://dvfgj2cbahswk" path="res://assets圖片_字體_音效/怪物/哥不林/idle_side/frame0004.png" id="63_w0ef4"]
+[ext_resource type="Texture2D" uid="uid://bpyo2w745nabs" path="res://assets圖片_字體_音效/怪物/哥不林/idle_side/frame0005.png" id="64_bwkm6"]
+[ext_resource type="Texture2D" uid="uid://cf5j2dxfed4ak" path="res://assets圖片_字體_音效/怪物/哥不林/idle_side/frame0006.png" id="65_doukn"]
+[ext_resource type="Texture2D" uid="uid://bjndqct11rlcp" path="res://assets圖片_字體_音效/怪物/哥不林/idle_up/frame0000.png" id="66_ttp3k"]
+[ext_resource type="Texture2D" uid="uid://bt5mmeqwdvk3n" path="res://assets圖片_字體_音效/怪物/哥不林/idle_up/frame0001.png" id="67_tti4j"]
+[ext_resource type="Texture2D" uid="uid://tcmiee1cbydh" path="res://assets圖片_字體_音效/怪物/哥不林/idle_up/frame0002.png" id="68_d2ri3"]
+[ext_resource type="Texture2D" uid="uid://bxkxdp0bm5vqn" path="res://assets圖片_字體_音效/怪物/哥不林/idle_up/frame0003.png" id="69_rhea8"]
+[ext_resource type="Texture2D" uid="uid://dei8cuoem0mb2" path="res://assets圖片_字體_音效/怪物/哥不林/idle_up/frame0004.png" id="70_iyfac"]
+[ext_resource type="Texture2D" uid="uid://461tu0rctkqb" path="res://assets圖片_字體_音效/怪物/哥不林/idle_up/frame0005.png" id="71_wbf3m"]
+[ext_resource type="Texture2D" uid="uid://cmlbiskr4fvqq" path="res://assets圖片_字體_音效/怪物/哥不林/run_down/frame0000.png" id="72_7pybl"]
+[ext_resource type="Texture2D" uid="uid://dacaxxl0a46ec" path="res://assets圖片_字體_音效/怪物/哥不林/run_down/frame0001.png" id="73_2wlxs"]
+[ext_resource type="Texture2D" uid="uid://c6s7o8wets0vf" path="res://assets圖片_字體_音效/怪物/哥不林/run_down/frame0002.png" id="74_jk1b7"]
+[ext_resource type="Texture2D" uid="uid://cpfcmsahuud3n" path="res://assets圖片_字體_音效/怪物/哥不林/run_down/frame0003.png" id="75_2i81p"]
+[ext_resource type="Texture2D" uid="uid://d26kt37ks81a5" path="res://assets圖片_字體_音效/怪物/哥不林/run_down/frame0004.png" id="76_6y2j8"]
+[ext_resource type="Texture2D" uid="uid://b06xly057xm61" path="res://assets圖片_字體_音效/怪物/哥不林/run_down/frame0005.png" id="77_qsh5k"]
+[ext_resource type="Texture2D" uid="uid://dhg82bbq3b5cg" path="res://assets圖片_字體_音效/怪物/哥不林/run_down/frame0006.png" id="78_pq8aj"]
+[ext_resource type="Texture2D" uid="uid://cv1rq4o1vamsm" path="res://assets圖片_字體_音效/怪物/哥不林/run_side/frame0000.png" id="79_wjnsj"]
+[ext_resource type="Texture2D" uid="uid://dsfydubyha6s7" path="res://assets圖片_字體_音效/怪物/哥不林/run_side/frame0001.png" id="80_n62t7"]
+[ext_resource type="Texture2D" uid="uid://datrdycp40ksa" path="res://assets圖片_字體_音效/怪物/哥不林/run_side/frame0002.png" id="81_1fcmu"]
+[ext_resource type="Texture2D" uid="uid://ve30qw173vwx" path="res://assets圖片_字體_音效/怪物/哥不林/run_side/frame0003.png" id="82_oq2c6"]
+[ext_resource type="Texture2D" uid="uid://d32ifaa8dmplm" path="res://assets圖片_字體_音效/怪物/哥不林/run_side/frame0004.png" id="83_f6o8n"]
+[ext_resource type="Texture2D" uid="uid://doxj7p3y07a4" path="res://assets圖片_字體_音效/怪物/哥不林/run_side/frame0005.png" id="84_dhbmv"]
+[ext_resource type="Texture2D" uid="uid://e3ekaj4vfwuw" path="res://assets圖片_字體_音效/怪物/哥不林/run_side/frame0006.png" id="85_qylyw"]
+[ext_resource type="Texture2D" uid="uid://wxt30vbxrxnv" path="res://assets圖片_字體_音效/怪物/哥不林/run_up/frame0000.png" id="86_tnsvu"]
+[ext_resource type="Texture2D" uid="uid://wbxpxe6nnwdk" path="res://assets圖片_字體_音效/怪物/哥不林/run_up/frame0001.png" id="87_8yn3y"]
+[ext_resource type="Texture2D" uid="uid://brdnspqvdlwjd" path="res://assets圖片_字體_音效/怪物/哥不林/run_up/frame0002.png" id="88_5ptwo"]
+[ext_resource type="Texture2D" uid="uid://cms1fnmy87y2r" path="res://assets圖片_字體_音效/怪物/哥不林/run_up/frame0003.png" id="89_x4ax5"]
+[ext_resource type="Texture2D" uid="uid://x05oafpl41o0" path="res://assets圖片_字體_音效/怪物/哥不林/run_up/frame0004.png" id="90_8fhuv"]
+[ext_resource type="Texture2D" uid="uid://b4xi4fj577how" path="res://assets圖片_字體_音效/怪物/哥不林/spell/frame0046.png" id="91_c3lw6"]
+[ext_resource type="Texture2D" uid="uid://c4g2kghmors60" path="res://assets圖片_字體_音效/怪物/哥不林/spell/frame0047.png" id="92_gs66i"]
+[ext_resource type="Texture2D" uid="uid://drw5ns08clygq" path="res://assets圖片_字體_音效/怪物/哥不林/spell/frame0048.png" id="93_obnm0"]
+[ext_resource type="Texture2D" uid="uid://dxyb0w3uvsqfq" path="res://assets圖片_字體_音效/怪物/哥不林/spell/frame0049.png" id="94_82tsj"]
+[ext_resource type="Texture2D" uid="uid://dyoqtp01vgr5a" path="res://assets圖片_字體_音效/怪物/哥不林/spell/frame0050.png" id="95_v3vs0"]
+[ext_resource type="Texture2D" uid="uid://chausjtm0ubuf" path="res://assets圖片_字體_音效/怪物/哥不林/spell/frame0051.png" id="96_4nm3r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sii4m"]
 animations = [{
@@ -208,461 +179,241 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_tl5i2"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_1k0fc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_568kr")
+"texture": ExtResource("20_onepj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_nfy3f")
+"texture": ExtResource("21_bkyvv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_iurvq")
+"texture": ExtResource("22_qwg8b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_numda")
+"texture": ExtResource("23_bkyvv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_efnn8")
+"texture": ExtResource("23_w72y4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("25_m72mo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_jfqee")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_50nvt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_61xnn")
+"texture": ExtResource("24_f57da")
 }],
 "loop": false,
 "name": &"attack_down",
-"speed": 10.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_568kr")
+"texture": ExtResource("25_qxyu0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_nfy3f")
+"texture": ExtResource("26_nsx1n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_iurvq")
+"texture": ExtResource("28_qwg8b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_numda")
+"texture": ExtResource("27_8hlmi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_efnn8")
+"texture": ExtResource("28_06gbc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("25_m72mo")
+"texture": ExtResource("29_rfo3h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("26_jfqee")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_50nvt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_61xnn")
+"texture": ExtResource("30_k52j0")
 }],
 "loop": false,
 "name": &"attack_side",
-"speed": 18.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_568kr")
+"texture": ExtResource("31_6lk8y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_nfy3f")
+"texture": ExtResource("32_mgb7m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_iurvq")
+"texture": ExtResource("33_33353")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_numda")
+"texture": ExtResource("34_datdn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_efnn8")
+"texture": ExtResource("35_fxxbp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("25_m72mo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_jfqee")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_50nvt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_61xnn")
-}],
-"loop": false,
-"name": &"attack_side_down",
-"speed": 18.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("20_568kr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_nfy3f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_iurvq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_numda")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_efnn8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_m72mo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_jfqee")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_50nvt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_61xnn")
-}],
-"loop": false,
-"name": &"attack_side_up",
-"speed": 18.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("20_568kr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_nfy3f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_iurvq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_numda")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_efnn8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_m72mo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_jfqee")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_50nvt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_61xnn")
+"texture": ExtResource("36_mwmur")
 }],
 "loop": false,
 "name": &"attack_up",
-"speed": 18.0
+"speed": 11.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("29_0v18b")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_pyf3h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_w0ef4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_bwkm6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_doukn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("34_ttp3k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("35_tti4j")
-}],
-"loop": false,
-"name": &"die",
+"frames": [],
+"loop": true,
+"name": &"default",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("36_d2ri3")
+"texture": ExtResource("37_ice6s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("37_rhea8")
+"texture": ExtResource("38_meb4m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("38_iyfac")
+"texture": ExtResource("39_y664c")
 }, {
 "duration": 1.0,
-"texture": ExtResource("39_wbf3m")
+"texture": ExtResource("40_w8opb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("40_7pybl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("41_2wlxs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("42_jk1b7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("43_2i81p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("44_6y2j8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("45_qsh5k")
+"texture": ExtResource("41_7hndo")
 }],
-"loop": true,
+"loop": false,
+"name": &"die",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("42_6t8x8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_khqya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_w72y4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_f57da")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_8dlsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_jww0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_i2d5p")
+}],
+"loop": false,
 "name": &"happy",
 "speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("46_pq8aj")
+"texture": ExtResource("49_24nip")
 }, {
 "duration": 1.0,
-"texture": ExtResource("47_wjnsj")
+"texture": ExtResource("50_2w8ga")
 }, {
 "duration": 1.0,
-"texture": ExtResource("48_n62t7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("49_1fcmu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("50_oq2c6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("51_f6o8n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("52_dhbmv")
+"texture": ExtResource("51_c517c")
 }],
 "loop": false,
-"name": &"hit_down",
-"speed": 12.0
+"name": &"hit",
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("53_qylyw")
+"texture": ExtResource("52_568kr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("54_tnsvu")
+"texture": ExtResource("53_nfy3f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("55_8yn3y")
+"texture": ExtResource("54_iurvq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("56_5ptwo")
+"texture": ExtResource("55_numda")
 }, {
 "duration": 1.0,
-"texture": ExtResource("57_x4ax5")
+"texture": ExtResource("56_efnn8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("58_8fhuv")
-}],
-"loop": false,
-"name": &"hit_side",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("46_pq8aj")
+"texture": ExtResource("57_m72mo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("47_wjnsj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("48_n62t7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("49_1fcmu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("50_oq2c6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("51_f6o8n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("52_dhbmv")
-}],
-"loop": false,
-"name": &"hit_up",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("59_c3lw6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("60_gs66i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("61_obnm0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("62_82tsj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("63_v3vs0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("64_4nm3r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("65_8y5ar")
+"texture": ExtResource("58_jfqee")
 }],
 "loop": true,
 "name": &"idle_down",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("66_vgh26")
+"texture": ExtResource("59_50nvt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("67_evg3g")
+"texture": ExtResource("60_61xnn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("68_tyyvm")
+"texture": ExtResource("61_0v18b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("69_waqwc")
+"texture": ExtResource("62_pyf3h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("70_7cluy")
+"texture": ExtResource("63_w0ef4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("71_pnmko")
+"texture": ExtResource("64_bwkm6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("72_surpv")
+"texture": ExtResource("65_doukn")
 }],
 "loop": true,
 "name": &"idle_side",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("59_c3lw6")
+"texture": ExtResource("66_ttp3k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("60_gs66i")
+"texture": ExtResource("67_tti4j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("61_obnm0")
+"texture": ExtResource("68_d2ri3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("62_82tsj")
+"texture": ExtResource("69_rhea8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("63_v3vs0")
+"texture": ExtResource("70_iyfac")
 }, {
 "duration": 1.0,
-"texture": ExtResource("64_4nm3r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("65_8y5ar")
-}],
-"loop": true,
-"name": &"idle_side_down",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("73_tgpph")
-}, {
-"duration": 1.0,
-"texture": ExtResource("74_tf0kr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("75_lmdvc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("76_sgc0d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("77_65ges")
-}, {
-"duration": 1.0,
-"texture": ExtResource("78_nfvpy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("79_n38gi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("80_2uman")
-}],
-"loop": true,
-"name": &"idle_side_up",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("73_tgpph")
-}, {
-"duration": 1.0,
-"texture": ExtResource("74_tf0kr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("75_lmdvc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("76_sgc0d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("77_65ges")
-}, {
-"duration": 1.0,
-"texture": ExtResource("78_nfvpy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("79_n38gi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("80_2uman")
+"texture": ExtResource("71_wbf3m")
 }],
 "loop": true,
 "name": &"idle_up",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("81_php57")
+"texture": ExtResource("72_7pybl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("82_iojy5")
+"texture": ExtResource("73_2wlxs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("83_g46nn")
+"texture": ExtResource("74_jk1b7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("84_lb338")
+"texture": ExtResource("75_2i81p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("85_n1a00")
+"texture": ExtResource("76_6y2j8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("86_y47jh")
+"texture": ExtResource("77_qsh5k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("87_1cyde")
+"texture": ExtResource("78_pq8aj")
 }],
 "loop": true,
 "name": &"run_down",
@@ -670,175 +421,72 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("88_7f0ax")
+"texture": ExtResource("79_wjnsj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("89_jc1gt")
+"texture": ExtResource("80_n62t7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("90_wjwix")
+"texture": ExtResource("81_1fcmu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("91_f8niu")
+"texture": ExtResource("82_oq2c6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("92_irn2a")
+"texture": ExtResource("83_f6o8n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("93_uhyh0")
+"texture": ExtResource("84_dhbmv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("94_i0wl5")
+"texture": ExtResource("85_qylyw")
 }],
 "loop": true,
 "name": &"run_side",
-"speed": 13.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("95_s68ys")
+"texture": ExtResource("86_tnsvu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("96_85bbi")
+"texture": ExtResource("87_8yn3y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("97_sdxyr")
+"texture": ExtResource("88_5ptwo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("98_t4uy2")
+"texture": ExtResource("89_x4ax5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("99_xtxj2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("100_hv1so")
-}, {
-"duration": 1.0,
-"texture": ExtResource("101_5mkay")
-}, {
-"duration": 1.0,
-"texture": ExtResource("102_5skl3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("103_dmpwc")
-}],
-"loop": true,
-"name": &"run_side_down",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("104_4641w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("105_wvvu3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("106_ox0cp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("107_b0nyl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("108_fejmm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("109_t65k0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("110_pmqwt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("111_5ee6q")
-}],
-"loop": true,
-"name": &"run_side_up",
-"speed": 13.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("104_4641w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("105_wvvu3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("106_ox0cp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("107_b0nyl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("108_fejmm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("109_t65k0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("110_pmqwt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("111_5ee6q")
+"texture": ExtResource("90_8fhuv")
 }],
 "loop": true,
 "name": &"run_up",
-"speed": 13.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("112_5xnka")
+"texture": ExtResource("91_c3lw6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("113_ukvr3")
+"texture": ExtResource("92_gs66i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("114_w8w2g")
+"texture": ExtResource("93_obnm0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("115_1qc0h")
+"texture": ExtResource("94_82tsj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("116_jrvs5")
+"texture": ExtResource("95_v3vs0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("117_fydkk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("118_nw2pm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("119_rlghk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("120_tutwq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("121_1hemw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("122_drgfp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("123_eyv7o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("124_g8dx5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("125_aft6h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("126_7tbvk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("127_3jlmh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("128_tg54q")
+"texture": ExtResource("96_4nm3r")
 }],
 "loop": false,
 "name": &"spell",
-"speed": 15.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3dvs"]
@@ -848,9 +496,10 @@ size = Vector2(18, 7)
 radius = 49.2544
 
 [node name="MonsterBase" type="CharacterBody2D" groups=["monsters"]]
-y_sort_enabled = true
+z_index = 5
 collision_layer = 2
 script = ExtResource("1_pu83x")
+data = ExtResource("2_pf1uy")
 
 [node name="MagicCircle" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sii4m")
@@ -864,10 +513,8 @@ base_offset = Vector2(1.28, 20.7)
 shadow_scale = Vector2(0.855, 0.415)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["monsters"]]
-y_sort_enabled = true
-sprite_frames = SubResource("SpriteFrames_tl5i2")
-animation = &"happy"
-frame_progress = 0.360753
+sprite_frames = SubResource("SpriteFrames_1k0fc")
+animation = &"idle_down"
 centered = false
 offset = Vector2(-65, -75)
 
@@ -890,10 +537,14 @@ position = Vector2(0, -10)
 script = ExtResource("28_bvk6s")
 
 [node name="UIAnchor" parent="." instance=ExtResource("29_hexxi")]
-position = Vector2(0, -44)
+position = Vector2(2, -67)
 
 [node name="AccessoryPoint" type="Marker2D" parent="."]
-position = Vector2(0, -40)
+position = Vector2(0, -48)
+
+[node name="AccessorySprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -48)
 
 [node name="StateMachine" parent="." instance=ExtResource("7_sii4m")]
 

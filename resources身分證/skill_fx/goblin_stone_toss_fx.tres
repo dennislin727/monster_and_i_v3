@@ -1,0 +1,51 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://c358ovr3dcgrg"]
+
+[ext_resource type="Texture2D" uid="uid://67fq14p3eeat" path="res://assets圖片_字體_音效/怪物/哥不林/fx_stone_toss/stone_flight/frame0000.png" id="1_rqmwa"]
+[ext_resource type="Texture2D" uid="uid://cbkxosxt3cy00" path="res://assets圖片_字體_音效/怪物/哥不林/fx_stone_toss/stone_impact/frame0001.png" id="2_hiuo5"]
+[ext_resource type="Texture2D" uid="uid://dx8kw7nqn3ah5" path="res://assets圖片_字體_音效/怪物/哥不林/fx_stone_toss/stone_impact/frame0003.png" id="3_2eajr"]
+[ext_resource type="Texture2D" uid="uid://blk65nuvomn6e" path="res://assets圖片_字體_音效/怪物/哥不林/fx_stone_toss/stone_impact/frame0005.png" id="4_8orof"]
+[ext_resource type="Texture2D" uid="uid://bv6xa0cf083kw" path="res://assets圖片_字體_音效/怪物/哥不林/fx_stone_toss/stone_impact/frame0008.png" id="5_1ffh4"]
+[ext_resource type="Texture2D" uid="uid://clytaaypfq612" path="res://assets圖片_字體_音效/怪物/哥不林/fx_stone_toss/stone_impact/frame0010.png" id="6_lwfr8"]
+[ext_resource type="Texture2D" uid="uid://c5ammup2384ae" path="res://assets圖片_字體_音效/怪物/哥不林/fx_stone_toss/stone_impact/frame0013.png" id="7_tmuhg"]
+[ext_resource type="Texture2D" uid="uid://bcbcbvwas0bwl" path="res://assets圖片_字體_音效/怪物/哥不林/fx_stone_toss/stone_impact/frame0015.png" id="8_twekl"]
+[ext_resource type="Texture2D" uid="uid://blkcx2raook50" path="res://assets圖片_字體_音效/怪物/哥不林/fx_stone_toss/stone_impact/frame0016.png" id="9_jkrl6"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rqmwa")
+}],
+"loop": true,
+"name": &"flight",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hiuo5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2eajr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8orof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1ffh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lwfr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tmuhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_twekl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jkrl6")
+}],
+"loop": false,
+"name": &"impact",
+"speed": 14.0
+}]

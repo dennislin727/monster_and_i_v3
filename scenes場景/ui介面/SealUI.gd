@@ -9,6 +9,8 @@ var is_finishing: bool = false # 🟢 防止大劍期間還在動進度條
 
 func _ready() -> void:
 	add_to_group("seal_ui")
+	# 根節點不攔 GUI，封印畫線依賴 SealManager._unhandled_input；Filter 亦為 IGNORE。
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_reset_ui()
 	SignalBus.seal_ui_requested.connect(_on_ui_requested)
 	SignalBus.seal_draw_progress.connect(_on_draw_progress)

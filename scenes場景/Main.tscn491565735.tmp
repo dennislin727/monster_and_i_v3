@@ -1,0 +1,538 @@
+[gd_scene load_steps=75 format=3 uid="uid://duan0a8lqkhxf"]
+
+[ext_resource type="Script" uid="uid://rr5mwtef7xot" path="res://src腳本/entities/pets/PetCompanionSpawner.gd" id="1_petspawn"]
+[ext_resource type="PackedScene" uid="uid://dvm83qs77b72y" path="res://scenes場景/entities主角_怪物_寵物/主角/Player.tscn" id="2_m76gh"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_m76gh"]
+[ext_resource type="Script" uid="uid://1vw4ls1gqdiq" path="res://src腳本/components積木/EffectManager.gd" id="4_48icw"]
+[ext_resource type="PackedScene" uid="uid://b6rmwe8pl8fls" path="res://scenes場景/entities主角_怪物_寵物/environment環境物件/Rock.tscn" id="4_r87x1"]
+[ext_resource type="PackedScene" uid="uid://ckgvmt8hosbxi" path="res://scenes場景/entities主角_怪物_寵物/怪物/MonsterBase.tscn" id="5_h8rcw"]
+[ext_resource type="FontFile" uid="uid://c2uixuydo8x6w" path="res://assets圖片_字體_音效/PixelFont.ttf" id="5_ta4ua"]
+[ext_resource type="Script" uid="uid://bars7nlebjeqa" path="res://src腳本/components積木/SealToggleButton.gd" id="6_3vicl"]
+[ext_resource type="Script" uid="uid://cv27paar7s2fo" path="res://src腳本/components積木/SealManager.gd" id="6_ka6fj"]
+[ext_resource type="Script" uid="uid://brm55aglai57s" path="res://src腳本/components積木/DashButton.gd" id="7_3vicl"]
+[ext_resource type="Script" uid="uid://bgrjw0e48jav5" path="res://scenes場景/ui介面/SealUI.gd" id="12_msxc1"]
+[ext_resource type="PackedScene" uid="uid://0h5i0akejppl" path="res://scenes場景/ui介面/InventoryUI.tscn" id="13_invui"]
+[ext_resource type="PackedScene" uid="uid://d3u3q3j2pr3pj" path="res://scenes場景/ui介面/PetUI.tscn" id="13_petui"]
+[ext_resource type="Script" uid="uid://chmdxtjc6uko0" path="res://scenes場景/ui介面/PlayerHUD.gd" id="14_phud"]
+[ext_resource type="Script" uid="uid://dppdyhk67i8uj" path="res://scenes場景/ui介面/SealHudLocker.gd" id="15_shud"]
+[ext_resource type="Texture2D" uid="uid://d1ksryc6nsd5g" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0000.png" id="114_473wb"]
+[ext_resource type="Texture2D" uid="uid://0r08qt5cof0g" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0001.png" id="115_x4upd"]
+[ext_resource type="Texture2D" uid="uid://b3vw8bxtbmxe1" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0002.png" id="116_vvg8b"]
+[ext_resource type="Texture2D" uid="uid://bup3kcopyidn" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0003.png" id="117_yct4i"]
+[ext_resource type="Texture2D" uid="uid://cick24n7i6448" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0004.png" id="118_gecb6"]
+[ext_resource type="Texture2D" uid="uid://dpygc5tlwheqq" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0005.png" id="119_8gvek"]
+[ext_resource type="Texture2D" uid="uid://dfqw6qeh8sqd6" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0006.png" id="120_mmkbn"]
+[ext_resource type="Texture2D" uid="uid://drngbwhdjow13" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0007.png" id="121_byqh6"]
+[ext_resource type="Texture2D" uid="uid://bglifomg5txrx" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0008.png" id="122_6fmxp"]
+[ext_resource type="Texture2D" uid="uid://bdiqdplkui1gy" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0009.png" id="123_findc"]
+[ext_resource type="Texture2D" uid="uid://cgnnrvbxv20c7" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0010.png" id="124_qw7g5"]
+[ext_resource type="Texture2D" uid="uid://bbvg3gqqw3w67" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0011.png" id="125_cy16v"]
+[ext_resource type="Texture2D" uid="uid://cf1tml2roeqv4" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0012.png" id="126_sqhkx"]
+[ext_resource type="Texture2D" uid="uid://d112sjlpvpts5" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0013.png" id="127_1otfm"]
+[ext_resource type="Texture2D" uid="uid://cyqsuwtvo6f38" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0014.png" id="128_mfi7f"]
+[ext_resource type="Texture2D" uid="uid://b1cqa73hc4ewu" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0015.png" id="129_u6iqp"]
+[ext_resource type="Texture2D" uid="uid://bbd0xoojejdxn" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0016.png" id="130_2hkf2"]
+[ext_resource type="Texture2D" uid="uid://bqc01vp1gmaq0" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0017.png" id="131_bhy6c"]
+[ext_resource type="Texture2D" uid="uid://d3unfnvf7kprh" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0018.png" id="132_lvxtt"]
+[ext_resource type="Texture2D" uid="uid://dpqfo0ql4fp3d" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0019.png" id="133_r77aq"]
+[ext_resource type="Texture2D" uid="uid://t4vrtt4yitjb" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0020.png" id="134_fr5v5"]
+[ext_resource type="Texture2D" uid="uid://bps4cxavelglh" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0021.png" id="135_gtcew"]
+[ext_resource type="Texture2D" uid="uid://d06n4e0xxyyrc" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0022.png" id="136_8oe7h"]
+[ext_resource type="Texture2D" uid="uid://d3jqlkchql47q" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0023.png" id="137_n10co"]
+[ext_resource type="Texture2D" uid="uid://b6trl18qwnihp" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame0024.png" id="138_w1ceh"]
+[ext_resource type="Texture2D" uid="uid://h4ouwkp6mjgr" path="res://assets圖片_字體_音效/ui介面/seal_UI/idle/frame10000.png" id="139_byqh6"]
+[ext_resource type="Texture2D" uid="uid://cgkuyphsalelk" path="res://assets圖片_字體_音效/ui介面/seal_UI/idle/frame10001.png" id="140_6fmxp"]
+[ext_resource type="Texture2D" uid="uid://d06aqedi30iq3" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40001.png" id="140_v4r4y"]
+[ext_resource type="Texture2D" uid="uid://chw144qu3qayx" path="res://assets圖片_字體_音效/ui介面/seal_UI/idle/frame10002.png" id="141_findc"]
+[ext_resource type="Texture2D" uid="uid://b4xaj6nyhafqy" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40002.png" id="141_yxhju"]
+[ext_resource type="Texture2D" uid="uid://sgdq360kitcr" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40003.png" id="142_g3jdg"]
+[ext_resource type="Texture2D" uid="uid://hp2by430ui3" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40004.png" id="143_galp0"]
+[ext_resource type="Texture2D" uid="uid://b2x6b1280vw0m" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40005.png" id="144_x2aok"]
+[ext_resource type="Texture2D" uid="uid://d0cexew2cfv7b" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40006.png" id="145_w1dcn"]
+[ext_resource type="Texture2D" uid="uid://ca2fee6ra0e1u" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40007.png" id="146_6cxs8"]
+[ext_resource type="Texture2D" uid="uid://bgmp2cmf5h7un" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40008.png" id="147_hoi11"]
+[ext_resource type="Texture2D" uid="uid://d1r0sul48xbk2" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40009.png" id="148_yoit8"]
+[ext_resource type="Texture2D" uid="uid://bep8ti7c1bwnl" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40010.png" id="149_iybbm"]
+[ext_resource type="Texture2D" uid="uid://iuy4esj2q4t2" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40011.png" id="152_qw7g5"]
+[ext_resource type="Texture2D" uid="uid://biibv4isqsnmx" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40012.png" id="153_cy16v"]
+[ext_resource type="Texture2D" uid="uid://cxca2vtifk4c5" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40013.png" id="154_sqhkx"]
+[ext_resource type="Texture2D" uid="uid://bou1ly4cex41x" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40014.png" id="155_1otfm"]
+[ext_resource type="Texture2D" uid="uid://djbm42rv1haoe" path="res://assets圖片_字體_音效/ui介面/seal_UI/soul/frame40015.png" id="156_mfi7f"]
+[ext_resource type="Script" uid="uid://bkgm62hkgbx6r" path="res://scenes場景/ui介面/DialogueHudLocker.gd" id="dialogue_hud_locker"]
+[ext_resource type="PackedScene" path="res://scenes場景/ui介面/DialoguePanel.tscn" id="dialogue_panel_ui"]
+[ext_resource type="Script" uid="uid://bcalalf26kuiu" path="res://scenes場景/ui介面/HarvestHudLocker.gd" id="harvest_hud_locker"]
+[ext_resource type="Script" uid="uid://be4751uhxhfhj" path="res://scenes場景/ui介面/HarvestModeHint.gd" id="harvest_mode_hint"]
+[ext_resource type="Script" uid="uid://bmwubftoxnb1t" path="res://scenes場景/ui介面/HarvestSwipeCapture.gd" id="harvest_swipe_cap"]
+[ext_resource type="Script" uid="uid://6r0ikenn36mn" path="res://src腳本/components積木/HarvestToggleButton.gd" id="harvest_toggle_btn"]
+[ext_resource type="PackedScene" path="res://scenes場景/levels/lake_side/LakeSideLevel.tscn" id="lake_level"]
+[ext_resource type="PackedScene" path="res://scenes場景/ui介面/NpcInteractionPrompt.tscn" id="npc_prompt_ui"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ledger_btn_d"]
+bg_color = Color(0.629, 0.609, 0.553333, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29, 0.22, 0.16, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ledger_btn_h"]
+bg_color = Color(0.588235, 0.568627, 0.513725, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29, 0.22, 0.16, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ledger_btn_p"]
+bg_color = Color(0.886275, 0.827451, 0.709804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29, 0.22, 0.16, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7uwit"]
+bg_color = Color(0.741176, 0.717647, 0.65098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29, 0.22, 0.16, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_222e3"]
+bg_color = Color(0.741176, 0.717647, 0.65098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29, 0.22, 0.16, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2we8b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("114_473wb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_x4upd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_vvg8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_yct4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_gecb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_8gvek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_mmkbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_byqh6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_6fmxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_findc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_qw7g5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_cy16v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_sqhkx")
+}],
+"loop": false,
+"name": &"open",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("127_1otfm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_mfi7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_u6iqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_2hkf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_bhy6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_lvxtt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_r77aq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_fr5v5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_gtcew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_8oe7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_n10co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_w1ceh")
+}],
+"loop": false,
+"name": &"spell",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("139_byqh6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_6fmxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_findc")
+}],
+"loop": true,
+"name": &"spell_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("140_v4r4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_yxhju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_g3jdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_galp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_x2aok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_w1dcn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_6cxs8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_hoi11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_yoit8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_iybbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_qw7g5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_cy16v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_sqhkx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_1otfm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_mfi7f")
+}],
+"loop": false,
+"name": &"sword_fall",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phud_bg"]
+bg_color = Color(0.12, 0.12, 0.14, 0.92)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phud_fill"]
+bg_color = Color(0.88, 0.28, 0.24, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Main" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="Light" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Light"]
+color = Color(0.537983, 0.507, 0.65, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Light"]
+rotation = -5.04924
+blend_mode = 2
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 1.5
+
+[node name="LevelContainer" type="Node2D" parent="." groups=["level_container"]]
+y_sort_enabled = true
+
+[node name="LakeSideLevel" parent="LevelContainer" instance=ExtResource("lake_level")]
+
+[node name="Player" parent="LevelContainer" instance=ExtResource("2_m76gh")]
+position = Vector2(-80, 40)
+
+[node name="PetCompanionSpawner" type="Node" parent="LevelContainer"]
+script = ExtResource("1_petspawn")
+
+[node name="Rock" parent="LevelContainer" instance=ExtResource("4_r87x1")]
+
+[node name="MonsterBase" parent="LevelContainer" instance=ExtResource("5_h8rcw")]
+position = Vector2(-178, -64)
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="bottom" type="Panel" parent="UILayer"]
+modulate = Color(1, 1, 1, 0.796078)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -236.0
+offset_top = -63.0
+offset_right = 237.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Virtual Joystick" parent="UILayer" instance=ExtResource("3_m76gh")]
+anchor_top = 0.7
+anchor_right = 0.994
+offset_left = -63.0
+offset_top = -207.0
+offset_right = 546.16
+offset_bottom = 316.0
+pivot_offset = Vector2(107, 111)
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Base" parent="UILayer/Virtual Joystick" index="0"]
+modulate = Color(0.64, 0.64, 0.64, 1)
+self_modulate = Color(1, 1, 1, 0.811765)
+
+[node name="Tip" parent="UILayer/Virtual Joystick/Base" index="0"]
+modulate = Color(0.74, 0.948, 1, 1)
+offset_left = -67.5
+offset_top = -71.5
+offset_right = 67.5
+offset_bottom = 71.5
+pivot_offset = Vector2(72, 67)
+
+[node name="SealToggleButton" type="Button" parent="UILayer"]
+z_index = 10
+anchors_preset = -1
+anchor_left = 0.101
+anchor_top = 0.274
+anchor_right = 0.101
+anchor_bottom = 0.274
+offset_left = -20.36
+offset_top = -18.36
+offset_right = 20.64
+offset_bottom = 21.64
+grow_vertical = 2
+theme_override_colors/font_disabled_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_hover_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_focus_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_pressed_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_fonts/font = ExtResource("5_ta4ua")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ledger_btn_d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ledger_btn_h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ledger_btn_p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7uwit")
+text = "封印"
+script = ExtResource("6_3vicl")
+
+[node name="DashButton" type="Button" parent="UILayer"]
+z_index = 10
+anchors_preset = -1
+anchor_left = 0.887
+anchor_top = 0.709
+anchor_right = 0.887
+anchor_bottom = 0.709
+offset_left = -19.32
+offset_top = -19.76
+offset_right = 19.68
+offset_bottom = 19.24
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_disabled_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_hover_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_focus_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_pressed_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_fonts/font = ExtResource("5_ta4ua")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ledger_btn_d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ledger_btn_h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ledger_btn_p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_222e3")
+text = "瞬移"
+script = ExtResource("7_3vicl")
+
+[node name="EffectManager" type="Node2D" parent="UILayer"]
+script = ExtResource("4_48icw")
+
+[node name="SealManager" type="Node2D" parent="UILayer"]
+script = ExtResource("6_ka6fj")
+
+[node name="SealUI" type="Control" parent="UILayer" groups=["seal_ui"]]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("12_msxc1")
+
+[node name="Filter" type="ColorRect" parent="UILayer/SealUI"]
+visible = false
+modulate = Color(0, 0, 0, 0.521569)
+layout_mode = 0
+offset_left = -3.0
+offset_right = 365.0
+offset_bottom = 644.0
+mouse_filter = 2
+
+[node name="ActorPlayer" type="AnimatedSprite2D" parent="UILayer/SealUI"]
+position = Vector2(178.875, 318.883)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2we8b")
+animation = &"spell"
+frame = 11
+frame_progress = 1.0
+
+[node name="PetUI" parent="UILayer" instance=ExtResource("13_petui")]
+z_index = 20
+
+[node name="InventoryUI" parent="UILayer" instance=ExtResource("13_invui")]
+z_index = 20
+
+[node name="DialogueHudLocker" type="Node" parent="UILayer"]
+script = ExtResource("dialogue_hud_locker")
+
+[node name="HarvestHudLocker" type="Node" parent="UILayer"]
+script = ExtResource("harvest_hud_locker")
+
+[node name="HarvestSwipeCapture" type="Control" parent="UILayer"]
+z_index = 11
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("harvest_swipe_cap")
+
+[node name="HarvestToggleButton" type="Button" parent="UILayer"]
+visible = false
+z_index = 14
+anchors_preset = -1
+anchor_left = 0.101
+anchor_top = 0.336
+anchor_right = 0.101
+anchor_bottom = 0.336
+offset_left = -20.36
+offset_top = -18.36
+offset_right = 20.64
+offset_bottom = 21.64
+grow_vertical = 2
+theme_override_colors/font_disabled_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_hover_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_focus_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_colors/font_pressed_color = Color(0.29, 0.22, 0.16, 1)
+theme_override_fonts/font = ExtResource("5_ta4ua")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ledger_btn_d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ledger_btn_h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ledger_btn_p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7uwit")
+text = "採收"
+script = ExtResource("harvest_toggle_btn")
+
+[node name="HarvestModeHint" type="Label" parent="UILayer"]
+visible = false
+z_index = 15
+theme_override_fonts/font = ExtResource("5_ta4ua")
+theme_override_font_sizes/font_size = 12
+script = ExtResource("harvest_mode_hint")
+
+[node name="DialoguePanel" parent="UILayer" instance=ExtResource("dialogue_panel_ui")]
+visible = true
+z_index = 28
+
+[node name="NpcInteractionPrompt" parent="UILayer" instance=ExtResource("npc_prompt_ui")]
+z_index = 32
+
+[node name="SealHudLocker" type="Node" parent="UILayer"]
+script = ExtResource("15_shud")
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="UILayer"]
+custom_minimum_size = Vector2(180, 14)
+anchors_preset = -1
+anchor_left = 0.258
+anchor_top = 0.03
+anchor_right = 0.258
+anchor_bottom = 0.03
+offset_left = -85.88
+offset_top = 6.8
+offset_right = 129.12
+offset_bottom = 27.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_phud_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_phud_fill")
+value = 100.0
+show_percentage = false
+script = ExtResource("14_phud")
+
+[connection signal="pressed" from="UILayer/SealToggleButton" to="UILayer/SealToggleButton" method="_on_pressed"]
+[connection signal="toggled" from="UILayer/SealToggleButton" to="UILayer/SealToggleButton" method="_on_toggled"]
+[connection signal="pressed" from="UILayer/DashButton" to="UILayer/DashButton" method="_on_pressed"]
+[connection signal="toggled" from="UILayer/HarvestToggleButton" to="UILayer/HarvestToggleButton" method="_on_toggled"]
+
+[editable path="UILayer/Virtual Joystick"]

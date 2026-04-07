@@ -21,6 +21,8 @@ func _ready() -> void:
 	rotation_degrees = 0.0
 	flip_v = true
 	z_index = -1
+	# 與本體像素圖一致：避免陰影縮放時邊緣過度平滑（NPC／採集物等共用此元件）
+	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
 func _process(_delta: float) -> void:
 	if main_sprite == null:

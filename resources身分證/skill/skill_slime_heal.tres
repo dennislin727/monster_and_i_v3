@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SkillResource" load_steps=2 format=3 uid="uid://jlbk0vfvv6wo"]
+
+[ext_resource type="Script" uid="uid://dsfdn1urr6jud" path="res://resources身分證/skill_fx_templates/SkillResource.gd" id="1_nl3bv"]
+
+[resource]
+script = ExtResource("1_nl3bv")
+skill_name = "治癒"
+type = 0
+animation_name = "spell"
+cooldown = 10.0
+description = "詠唱後為主人恢復生命值。"
+startup_time = 0.4
+trigger_delay = 1.06
+recovery_time = 0.4
+dash_before_skill = true
+dash_distance = 100.0
+power = 70
+max_hp_pct = 0.4
+aoe_sweep_duration_sec = 0.95
+aoe_sweep_hit_radius = 44.0
+aoe_sweep_margin_world = 140.0
+aoe_sweep_anchor_on_caster = false
+aoe_use_ground_target = false
+show_warning_circle = false
+warning_color = Color(1, 0, 0, 0.4)
+ground_telegraph_y_scale = 0.6
+telegraph_fx_template_id = ""
+cast_fx_template_id = ""
+impact_fx_template_id = ""
+recovery_animation = "idle"
+is_homestead_till_skill = false
+metadata/_custom_type_script = "uid://dsfdn1urr6jud"

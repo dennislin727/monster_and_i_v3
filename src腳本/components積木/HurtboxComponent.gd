@@ -4,6 +4,10 @@ extends Area2D
 
 func take_damage(amount: int) -> void:
 	var parent = get_parent()
+	if parent is MonsterBase:
+		var mb := parent as MonsterBase
+		if not mb.is_targetable():
+			return
 	var health = parent.get_node_or_null("HealthComponent")
 	
 	if health:

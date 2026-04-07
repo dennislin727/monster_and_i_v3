@@ -170,8 +170,8 @@
 ## 11) 程序化 FX 模板（v3）
 
 ### 模板資源與播放入口
-- 模板資源：`src腳本/resources身分證/FxTemplateResource.gd`
-- 預設模板庫：`src腳本/resources身分證/skill_fx_templates/FxTemplateLibrary.gd`
+- 模板資源：`resources身分證/skill_fx_templates/FxTemplateResource.gd`
+- 預設模板庫：`resources身分證/skill_fx_templates/FxTemplateLibrary.gd`
 - 播放節點：`src腳本/components積木/ProceduralFxNode.gd`
 - 世界層入口：`EffectManager.play_template_fx_by_id(template_id, world_pos, parent, facing)`
 

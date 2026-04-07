@@ -6,6 +6,13 @@ extends Node2D
 @onready var health_bar: ProgressBar = $UIAnchor/HealthBar
 
 func _ready() -> void:
+	if get_node_or_null("GroundShadow") == null:
+		var blob := GroundEllipseShadow.new()
+		blob.name = "GroundShadow"
+		blob.position = Vector2(2, 2)
+		blob.ellipse_radius = Vector2(22, 8)
+		blob.shadow_color = Color(0, 0, 0, 0.26)
+		add_child(blob)
 	if interactable and interactable.item_data:
 		$Sprite2D.texture = interactable.item_data.icon
 
